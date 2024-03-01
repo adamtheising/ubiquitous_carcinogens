@@ -1,0 +1,52 @@
+CASRN,NAME,comptox_CASRN,DTXSID,bio_flag,alc_tob_flag,radiation_flag
+319-85-7,"β-Hexachlorocyclohexane (see Lindane, Hexachlorocyclohexane Technical Grade), and Other Hexachlorocyclohexane Isomers)",319-85-7,DTXSID7020685,,,
+7646-79-9,Cobalt Chloride (see Cobalt-Related Exposures),7646-79-9,DTXSID9040180,,,
+10108-64-2,Cadmium Chloride (see Cadmium and Cadmium Compounds),10108-64-2,DTXSID6020226,,,
+66733-21-9,Erionite,12510-42-8,DTXSID40872384,,,
+,Alcoholic Beverage Consumption,,,,1,
+,Analgesic Mixtures Containing Phenacetin (see Phenacetin and Analgesic Mixtures containing Phenacetin),62-44-2,DTXSID1021116,,,
+,Aristolochic Acids,67123-64-2,DTXSID70217421,,,
+,"Arsenic Compounds, Inorganic ",7440-38-2,DTXSID4023886,,,
+,Beryllium Compounds (see Beryllium and Beryllium Compounds),7440-41-7,DTXSID4023913,,,
+,Cadmium Compounds (see Cadmium and Cadmium Compounds),7440-43-9,DTXSID1023940,,,
+,Ceramic Fibers (Respirable Size),NOCAS_24296,DTXSID2024296,,,
+,Coal-Tar Pitches (see Coal Tars and Coal-Tar Pitches),65996-93-2,DTXSID1028285,,,
+,Cobalt-Tungsten Carbide: Powders and Hard Metals,60674-89-7,DTXSID20209477,,,
+,Coke Oven Emissions,,,,,
+,Diesel Exhaust Particulates,,,,,
+,Dyes Metabolized to Benzidine (see Benzidine and Dyes Metabolized to Benzidine),92-87-5,DTXSID2020137,,,
+,"Dyes Metabolized to 3,3'-Dimethoxybenzidine (see 3,3'-Dimethoxybenzidine and Dyes Metabolized to 3,3'-Dimethoxybenzidine)",119-90-4,DTXSID3025091,,,
+,"Dyes Metabolized to 3,3'-Dimethylbenzidine (see 3,3'-Dimethylbenzidine  and Dyes Metabolized to 3,3'-Dimethylbenzidine )",119-93-7,DTXSID5024059,,,
+,Environmental Tobacco Smoke (see Tobacco-Related Exposures),,,,1,
+,Epstein-Barr Virus,,,1,,
+,"Estrogens, Steroidal",,,1,,
+,Certain Glass Wool Fibers (Inhalable),308066-92-4,DTXSID30891701,,,
+,Helicobacter pylori,,,1,,
+,Hepatitis B Virus,,,1,,
+,Hepatitis C Virus,,,1,,
+,"Hexachlorocyclohexane (Technical Grade) (see Lindane, Hexachlorocyclohexane [Technical Grade], and Other Hexachlorocyclohexane Isomers) ",608-73-1,DTXSID7020687,,,
+,Human Immunodeficiency Virus Type 1,,,1,,
+,Human Papillomaviruses: Some Genital Mucosal Type,,,1,,
+,Human T-Cell Lymphotropic Virus Type 1,,,1,,
+,Kaposi Sarcoma-Associated Herpesvirus,,,1,,
+,Lead Compounds (see Lead and Lead Compounds),7439-92-1,DTXSID2024161,,,
+,Merkel Cell Polyomavirus,,,1,,
+,Methoxsalen with Ultraviolet A Therapy,298-81-7,DTXSID8020830,,,
+,Mineral Oils: Untreated and Mildly Treated,8012-95-1,DTXSID3034743,,,
+,Neutrons (see Ionizing Radiation),,,,,1
+,Nickel Compounds (see Nickel Compounds and Metallic Nickel ),NOCAS_872425,DTXSID40872425,,,
+,Polybrominated Biphenyls (PBBs),59536-65-1,DTXSID5021174,,,
+,Polycyclic Aromatic Hydrocarbons (PAHs),130498-29-2,DTXSID3044043,,,
+,"Silica, Crystalline (Respirable Size)",14808-60-7,DTXSID3032040,,,
+,Smokeless Tobacco (see Tobacco-Related Exposures),,,,1,
+,Solar Radiation (see Ultraviolet-Radiation-Related Exposures),,,,,1
+,Soots,,,,,
+,Strong Inorganic Acid Mists Containing Sulfuric Acid,,,,,
+,"Sunlamps and Sunbeds, Exposure to (see Ultraviolet-Radiation-Related Exposures)",,,,,1
+,Tobacco Smoking (see Tobacco-Related Exposures),,,,1,
+,"UV Radiation, Broad Spectrum (see Ultraviolet-Radiation-Related Exposures)",,,,,1
+,UV Radiation A (see Ultraviolet-Radiation-Related Exposures),,,,,1
+,UV Radiation B (see Ultraviolet-Radiation-Related Exposures),,,,,1
+,UV Radiation C (see Ultraviolet-Radiation-Related Exposures),,,,,1
+,Wood Dust,,,,,
+,X-Radiation and Gamma Radiation (see Ionizing Radiation),,,,,1
