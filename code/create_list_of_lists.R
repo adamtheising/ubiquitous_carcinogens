@@ -56,8 +56,9 @@ roc.match <- merge(roc[!is.na(CASRN)],comptox.dta,
 roc.nomatch <- roc[!(CASRN %in% roc.match$CASRN)]
 roc.crosswalk <- data.table::fread('./raw_data/crosswalks/roc_crosswalk.csv' # This was manually created.
                                    )[is.na(bio_flag) # Drop viruses, etc.
-                                     ][is.na(alc_tob_flag) # Drop alcohol & tobacco consumption
-                                       ][is.na(radiation_flag)] # Drop radiation
+                                     ][is.na(radiation_flag) #
+                                       ]#[is.na(alc_tob_flag)] # Drop alcohol & tobacco consumption
+                                       
 roc.nomatch <- merge(roc.nomatch, roc.crosswalk,
       by.x = c('NAME'),
       by.y = c('NAME')
@@ -72,94 +73,64 @@ roc.clean <- rbind(roc.match,
                    by.x = 'DTXSID', by.y = 'dtxsid', all.x = T
                    )[, nametemp := preferredName
                      ][is.na(preferredName), nametemp := NAME
-                       ][, .(NAME,
+                       ][, .(NAME = nametemp,
                              CASRN,
                              LIST,
                              DTXSID)]
                    )
 
-# 
 rm(roc, roc.crosswalk, roc.match, roc.nomatch)
 
-
-
-# Match on chems with CASRN first
-ipr.matched <- data.table::as.data.table(rbind(iarc.p65, roc, fill = T)
-)[!is.na(CASRN)
-][, DTXSID.mode := Mode(DTXSID),
-  by = CASRN
-][, NAME.mode := Mode(NAME),
-  by = CASRN
-][, IUPAC_NAME.mode := Mode(IUPAC_NAME),
-  by = CASRN]
-
-
-
-
-
-
-##########################
+##############################
 # Next look at prop 65 data
-prop65 <- F # Set to true for first pass through.
-if (prop65 == T){
-  p65.comptox <- data.table::fread('./raw_data/CompTox_P65.csv'
-                                   )[, .(NAME = `PREFERRED NAME`,
-                                         CASRN,
-                                         IUPAC_NAME = `IUPAC NAME`,
-                                         DTXSID)][, LIST := 'Prop65']
-  p65.oehha <- data.table::fread('./raw_data/OEHHA_P65.csv'
-                                 )[`Type of Toxicity` %like% 'cancer'
-                                   ][`CAS No.` %in% c('--','---'), 
-                                     `CAS No.` := NA_character_
-                                     ]#[, `CAS No.` := gsub('/','-',`CAS No.`)]
-  
-  # First match on CAS Number: 523/632 matches.
-  p65.comptox.casmatch <- p65.comptox[CASRN %in% p65.oehha$`CAS No.`]
-  p65.oehha.nomatch <- p65.oehha[!(`CAS No.` %in% p65.comptox.casmatch$CASRN)
-                                 ][, .(NAME = Chemical,
-                                       CASRN = `CAS No.`)]
-  
-  # Unfortunately need to do some manual cleaning outside R
-  # Take this over to excel for a manual match.
-  intermediate.match <- rbind(p65.comptox.casmatch, p65.oehha.nomatch, fill = T)
-  fwrite(intermediate.match, './raw_data/intermediate_data/p65.csv')
-  
-  rm(p65.comptox, p65.comptox.casmatch, p65.oehha, p65.oehha.nomatch, intermediate.match)
-}
 
-p65.intermediate <- readxl::read_excel('./raw_data/intermediate_data/p65_manualclean.xlsx')
+# data from comptox
+p65.comptox <- data.table::fread('./raw_data/CompTox_P65.csv'
+)[, .(NAME = `PREFERRED NAME`,
+      CASRN,
+      DTXSID = gsub('.*details/','',DTXSID))][, LIST := 'Prop65']
 
-iarc.p65 <- data.table::as.data.table(rbind(iarc.files, p65.intermediate))
+# newer data from CA OEHHA website
+p65.oehha <- data.table::fread('./raw_data/OEHHA_P65.csv'
+)[`Type of Toxicity` %like% 'cancer'
+][`CAS No.` %in% c('--','---'), 
+  `CAS No.` := ''
+]#[, `CAS No.` := gsub('/','-',`CAS No.`)]
 
-Mode <- function(x) {
-  ux <- unique(x[!is.na(x)])
-  ux[which.max(tabulate(match(x, ux)))]
-}
+# Data that is properly formatted
+p65.match <- p65.comptox[CASRN %in% p65.oehha$`CAS No.`]
 
+# Data that needs formatting
+p65.nomatch <- p65.oehha[!(`CAS No.` %in% p65.match$CASRN)]
+p65.crosswalk <- data.table::fread('./raw_data/crosswalks/p65_crosswalk.csv' # This was manually created.
+)[is.na(bio_flag) # Drop viruses, etc.
+][is.na(radiation_flag) #
+]#[is.na(alc_tob_flag)] # Drop alcohol & tobacco consumption
 
-###########################
-# Next, RoC data
-roc <- data.table::fread('./raw_data/NTP_ROC15.csv',
-                         header = T)[, 1:2
-                                     ][, LIST := 'ROC']
+p65.nomatch <- merge(p65.nomatch, p65.crosswalk,
+                     by.x = c('Chemical'),
+                     by.y = c('Chemical')
+)[, .(NAME = Chemical,
+      CASRN = comptox_CAS,
+      LIST ='Prop65',
+      DTXSID)]
 
-# Match on chems with CASRN first
-ipr.matched <- data.table::as.data.table(rbind(iarc.p65, roc, fill = T)
-                                          )[!is.na(CASRN)
-                                            ][, DTXSID.mode := Mode(DTXSID),
-                                            by = CASRN
-                                            ][, NAME.mode := Mode(NAME),
-                                              by = CASRN
-                                              ][, IUPAC_NAME.mode := Mode(IUPAC_NAME),
-                                                by = CASRN]
+# Bind cleaned RoC lists together
+p65.clean <- rbind(p65.match,
+                   merge(p65.nomatch, comptox.dta[, .(dtxsid, preferredName)],
+                         by.x = 'DTXSID', by.y = 'dtxsid', all.x = T
+                   )[, nametemp := preferredName
+                   ][is.na(preferredName), nametemp := NAME
+                   ][, .(NAME = nametemp,
+                         CASRN,
+                         LIST,
+                         DTXSID)]
+)
 
-ipr.wide <- data.table::dcast(ipr.matched[, .(NAME.mode, IUPAC_NAME.mode,
-                                              CASRN, DTXSID.mode, LIST)],
-                              NAME.mode + IUPAC_NAME.mode + CASRN + DTXSID.mode ~
-                                LIST, length)
+rm(p65.comptox,p65.crosswalk,p65.match,p65.nomatch,p65.oehha)
 
-# Take the file over to excel for some manual edits.
-openxlsx::write.xlsx(ipr.wide, './raw_data/intermediate_data/ipr_wide.xlsx')
+# merge and save to csv
+ipr <- data.table::dcast(rbind(iarc.clean, roc.clean, p65.clean),
+                         NAME + CASRN + DTXSID ~ LIST, length)
 
-
-# Match on non CASRN chems
+data.table::fwrite(ipr, './output/merged_carcinogen_list.csv')
