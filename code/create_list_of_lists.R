@@ -130,7 +130,56 @@ p65.clean <- rbind(p65.match,
 rm(p65.comptox,p65.crosswalk,p65.match,p65.nomatch,p65.oehha)
 
 # merge and save to csv
-ipr <- data.table::dcast(rbind(iarc.clean, roc.clean, p65.clean),
+ipr <- data.table::dcast(rbind(unique(iarc.clean), unique(roc.clean), unique(p65.clean)),
                          NAME + CASRN + DTXSID ~ LIST, length)
+
+# manual correction of duplicates
+dupes <- ipr[duplicated(ipr$CASRN)]
+all.dupes <- ipr[CASRN %in% dupes$CASRN] #use this list for corrections below
+
+ipr <- ipr[!(NAME %in% 
+                c('(+/-)-1,2-Propylene oxide',
+                  '4,5-Dihydro-2-mercaptoimidazole',
+                  'Coconut oil acid/Diethanolamine condensate (2:1)',
+                  'Dibenz(a,h)anthracene',
+                  'Benzo(a)pyrene',
+                  'Benzo(k)fluoranthene',
+                  'Indeno(1,2,3-cd)pyrene',
+                  'Quartz-alpha (SiO2)',
+                  '4-Vinyl-1-cyclohexene diepoxide',
+                  'Polychlorinated biphenyls (containing 60 or more percent chlorine by molecular weight)', #duplicate
+                  'Wood dust',
+                  'Tobacco Smoking (see Tobacco-Related Exposures)',
+                  'Strong inorganic acid mists containing sulfuric acid',
+                  'Soots',
+                  'Smokeless Tobacco (see Tobacco-Related Exposures)',
+                  'Environmental Tobacco Smoke (see Tobacco-Related Exposures)',
+                  'Diesel engine exhaust',
+                  'Coke oven emissions',
+                  'Alcoholic beverages, when associated with alcohol abuse',
+                  'Alcoholic beverages'
+                  ))
+            ][NAME == '1,2-Propylene oxide', IARC2B := 1L
+              ][NAME == '1,2-Propylene oxide', Prop65 := 1L
+               ][NAME == 'Ethylene thiourea', Prop65 := 1L
+                 ][NAME == 'Amides, coco, N,N-bis(hydroxyethyl)', Prop65 := 1L
+                   ][NAME == 'Dibenz[a,h]anthracene', ROC_RAHC := 1L
+            ][NAME == 'Benzo[a]pyrene', ROC_RAHC := 1L
+              ][NAME == 'Benzo[k]fluoranthene', ROC_RAHC := 1L
+                ][NAME == 'Indeno[1,2,3-cd]pyrene', ROC_RAHC := 1L
+                  ][NAME == 'Quartz (SiO2)', Prop65 := 1L
+                    ][NAME == 'Quartz (SiO2)', ROC_Known := 1L
+            ][NAME == '4-Vinyl-1-cyclohexene dioxide', IARC2B := 1L
+              ][NAME == '4-Vinyl-1-cyclohexene dioxide', Prop65 := 1L
+               ][NAME == 'Wood Dust', Prop65 := 1L
+                 ][NAME == 'Tobacco smoke', ROC_Known := 1L
+                   ][NAME == 'Strong Inorganic Acid Mists Containing Sulfuric Acid', Prop65 := 1L
+            ][NAME == 'Soots, tars, and mineral oils (untreated and mildly treated oils and used engine oils)', ROC_Known := 1L
+              ][NAME == 'Diesel Exhaust Particulates', Prop65 := 1L
+                ][NAME == 'Coke Oven Emissions', Prop65 := 1L
+                  ][NAME == 'Alcoholic Beverage Consumption', Prop65 := 1L
+                    ][NAME == 'Tobacco, oral use of smokeless products', ROC_Known := 1L]
+
+rm(dupes, all.dupes)
 
 data.table::fwrite(ipr, './output/merged_carcinogen_list.csv')

@@ -1,6 +1,5 @@
 NAME,CASRN,DTXSID,IARC1,IARC2A,IARC2B,Prop65,ROC_Known,ROC_RAHC
 (+-)-Diclofop-methyl,51338-27-3,DTXSID0032605,0,0,0,1,0,0
-"(+/-)-1,2-Propylene oxide",75-56-9,DTXSID5021207,0,0,1,1,0,0
 "(2E,4E)-2,4-Hexadienal",142-83-6,DTXSID2025391,0,0,1,1,0,0
 (~32~P)Phosphane,14596-37-3,DTXSID80932734,1,0,0,0,0,0
 "1,1'-Biphenyl, 2,2',3,3',4,4',5,5',6,6'-decabromo-",13654-09-6,DTXSID9065572,0,0,0,0,0,1
@@ -24,7 +23,7 @@ NAME,CASRN,DTXSID,IARC1,IARC2A,IARC2B,Prop65,ROC_Known,ROC_RAHC
 "1,2-Epoxybutane",106-88-7,DTXSID6020569,0,0,1,0,0,0
 "1,2-Phenylenediamine",95-54-5,DTXSID3025881,0,0,1,1,0,0
 "1,2-Phenylenediamine dihydrochloride",615-28-1,DTXSID3021140,0,0,1,0,0,0
-"1,2-Propylene oxide",75-56-9,DTXSID5021207,0,0,0,0,0,1
+"1,2-Propylene oxide",75-56-9,DTXSID5021207,0,0,1,1,0,1
 "1,3-Butadiene",106-99-0,DTXSID3020203,1,0,0,1,1,0
 "1,3-Dichloro-2-propanol",96-23-1,DTXSID6025010,0,0,1,1,0,0
 "1,3-Dichloropropene",542-75-6,DTXSID1022057,0,0,1,1,0,1
@@ -58,7 +57,7 @@ NAME,CASRN,DTXSID,IARC1,IARC2A,IARC2B,Prop65,ROC_Known,ROC_RAHC
 "2,2'-Bioxirane",1464-53-5,DTXSID0041307,0,0,0,1,0,1
 "2,2-Dimethylvinyl chloride",513-37-1,DTXSID5020520,0,0,1,1,0,1
 "2,3,4,7,8-Pentachlorodibenzofuran",57117-31-4,DTXSID7030066,1,0,0,0,0,0
-"2,3,7,8-Tetrachlorodibenzo-p-dioxin",1746-01-6,DTXSID2021315,1,0,0,2,1,0
+"2,3,7,8-Tetrachlorodibenzo-p-dioxin",1746-01-6,DTXSID2021315,1,0,0,1,1,0
 "2,3-Benzofuran",271-89-6,DTXSID6020141,0,0,1,1,0,0
 "2,3-Dibromopropanol",96-13-9,DTXSID7021817,0,0,1,1,0,1
 "2,4,5-Trimethylaniline",137-17-7,DTXSID9021398,0,0,0,1,0,0
@@ -102,7 +101,7 @@ NAME,CASRN,DTXSID,IARC1,IARC2A,IARC2B,Prop65,ROC_Known,ROC_RAHC
 "3,3'-Dichloro-4,4'-diaminodiphenyl ether",28434-86-8,DTXSID5074842,0,0,1,1,0,0
 "3,3'-Dichlorobenzidine",91-94-1,DTXSID6020432,0,0,1,1,0,1
 "3,3'-Dichlorobenzidine dihydrochloride",612-83-9,DTXSID1020433,0,0,0,1,0,1
-"3,3'-Dimethylbenzidine",119-93-7,DTXSID5024059,0,0,1,2,0,2
+"3,3'-Dimethylbenzidine",119-93-7,DTXSID5024059,0,0,1,1,0,1
 "3,3'-Dimethylbenzidine dihydrochloride",612-82-8,DTXSID6020511,0,0,0,1,0,1
 "3,4-Dihydroxycinnamic acid",331-39-5,DTXSID5020231,0,0,1,1,0,0
 "3,7-Dinitrofluoranthene",105735-71-5,DTXSID20147305,0,0,1,1,0,0
@@ -122,13 +121,12 @@ NAME,CASRN,DTXSID,IARC1,IARC2A,IARC2B,Prop65,ROC_Known,ROC_RAHC
 "4,4'-Methylenedianiline dihydrochloride",13552-44-8,DTXSID9020871,0,0,0,1,0,1
 "4,4'-Oxydianiline",101-80-4,DTXSID0021094,0,0,1,1,0,1
 "4,4'-Thiodianiline",139-65-1,DTXSID9021344,0,0,1,1,0,1
-"4,5-Dihydro-2-mercaptoimidazole",96-45-7,DTXSID5020601,0,0,0,1,0,0
 4-(N-Methyl-N-nitrosamino)-1-(3-pyridyl)-1-butanone,64091-91-4,DTXSID3020881,0,0,0,1,0,1
 4-Amino-2-nitrophenol,119-34-6,DTXSID6020064,0,0,0,1,0,0
 "4-Androstene-3,17-dione",63-05-8,DTXSID8024523,0,0,0,1,0,0
 4-Biphenylamine,92-67-1,DTXSID5020071,1,0,0,1,1,0
 "4-Chloro-1,2-diaminobenzene",95-83-0,DTXSID5020283,0,0,1,1,0,1
-4-Chloro-2-methylaniline,95-69-2,DTXSID1041508,0,1,0,2,0,1
+4-Chloro-2-methylaniline,95-69-2,DTXSID1041508,0,1,0,1,0,1
 4-Chloro-2-methylaniline hydrochloride,3165-93-3,DTXSID0020288,0,0,0,0,0,1
 4-Chloroaniline,106-47-8,DTXSID9020295,0,0,1,1,0,0
 4-Chloroaniline hydrochloride,20265-96-7,DTXSID4020296,0,0,0,1,0,0
@@ -138,8 +136,7 @@ NAME,CASRN,DTXSID,IARC1,IARC2A,IARC2B,Prop65,ROC_Known,ROC_RAHC
 4-Nitrobiphenyl,92-93-3,DTXSID9041522,0,0,0,1,0,0
 4-Nitropyrene,57835-92-4,DTXSID5074844,0,0,1,1,0,1
 4-Nitrosodiphenylamine,156-10-5,DTXSID1021031,0,0,0,1,0,0
-4-Vinyl-1-cyclohexene diepoxide,106-87-6,DTXSID0020604,0,0,1,1,0,0
-4-Vinyl-1-cyclohexene dioxide,106-87-6,DTXSID0020604,0,0,0,0,0,1
+4-Vinyl-1-cyclohexene dioxide,106-87-6,DTXSID0020604,0,0,1,1,0,1
 4-Vinylcyclohexene,100-40-3,DTXSID3021437,0,0,1,1,0,0
 "5,5-Diphenylhydantoin",57-41-0,DTXSID8020541,0,0,1,1,0,1
 5-Azacytidine,320-67-2,DTXSID9020116,0,1,0,1,0,1
@@ -153,7 +150,7 @@ NAME,CASRN,DTXSID,IARC1,IARC2A,IARC2B,Prop65,ROC_Known,ROC_RAHC
 6-Propyl-2-thiouracil,51-52-5,DTXSID5021209,0,0,1,1,0,1
 "7,12-Dimethylbenz(a)anthracene",57-97-6,DTXSID1020510,0,0,0,1,0,0
 "7H-Dibenzo[c,g]carbazole",194-59-2,DTXSID9059755,0,0,1,1,0,1
-8-Methoxypsoralen,298-81-7,DTXSID8020830,1,0,0,1,2,0
+8-Methoxypsoralen,298-81-7,DTXSID8020830,1,0,0,1,1,0
 AF-2,3688-53-7,DTXSID9020033,0,0,1,1,0,0
 Acetaldehyde,75-07-0,DTXSID5039224,1,0,1,1,0,1
 Acetaldehyde methylformylhydrazone,16568-02-8,DTXSID0039225,0,0,0,1,0,0
@@ -170,11 +167,9 @@ Adriamycin hydrochloride,25316-40-9,DTXSID3030636,0,0,0,1,0,1
 Aflatoxin,1402-68-2,DTXSID4020036,1,0,0,1,1,0
 Aflatoxin M1,6795-23-9,DTXSID40891797,0,0,1,0,0,0
 Alachlor,15972-60-8,DTXSID1022265,0,0,0,1,0,0
-Alcoholic Beverage Consumption,"","",0,0,0,0,1,0
-Alcoholic beverages,"","",0,0,0,1,0,0
-"Alcoholic beverages, when associated with alcohol abuse","","",0,0,0,1,0,0
+Alcoholic Beverage Consumption,"","",0,0,0,1,1,0
 Aldrin,309-00-2,DTXSID8020040,0,0,0,1,0,0
-"Amides, coco, N,N-bis(hydroxyethyl)",68603-42-9,DTXSID0024842,0,0,1,0,0,0
+"Amides, coco, N,N-bis(hydroxyethyl)",68603-42-9,DTXSID0024842,0,0,1,1,0,0
 Amitrole,61-82-5,DTXSID0020076,0,0,0,1,0,1
 Ammonium chromate,7788-98-9,DTXSID3064857,0,0,0,0,1,0
 Ammonium dichromate,7789-09-5,DTXSID70872953,0,0,0,0,1,0
@@ -189,7 +184,7 @@ Arecoline,63-75-2,DTXSID3022617,0,0,1,0,0,0
 Aristolochic acid,313-67-7,DTXSID0040969,1,0,0,0,1,0
 Aristolochic acid II,475-80-9,DTXSID00197166,0,0,0,0,1,0
 Aristolochic acids,67123-64-2,DTXSID70217421,0,0,0,1,1,0
-Arsenic,7440-38-2,DTXSID4023886,1,0,0,1,2,0
+Arsenic,7440-38-2,DTXSID4023886,1,0,0,1,1,0
 Arsenic oxide (As2O3),1327-53-3,DTXSID0020103,0,0,0,0,1,0
 Asbestos,1332-21-4,DTXSID4023888,0,0,0,1,1,0
 "Asbestos, anthophyllite",77536-67-5,DTXSID00108999,0,0,0,0,1,0
@@ -203,18 +198,16 @@ Benthiavalicarb-isopropyl,177406-68-7,DTXSID9058232,0,0,0,1,0,0
 Benz(a)anthracene,56-55-3,DTXSID5023902,0,0,1,1,0,1
 Benz(j)aceanthrylene,202-33-5,DTXSID30174041,0,0,1,0,0,0
 Benzene,71-43-2,DTXSID3039242,1,0,0,1,1,0
-Benzo(a)pyrene,50-32-8,DTXSID2020139,0,0,0,0,0,1
 Benzo(b)fluoranthene,205-99-2,DTXSID0023907,0,0,1,1,0,1
 Benzo(j)fluoranthene,205-82-3,DTXSID8052691,0,0,1,1,0,1
-Benzo(k)fluoranthene,207-08-9,DTXSID0023909,0,0,0,0,0,1
-Benzo[a]pyrene,50-32-8,DTXSID2020139,1,0,0,1,0,0
+Benzo[a]pyrene,50-32-8,DTXSID2020139,1,0,0,1,0,1
 Benzo[c]phenanthrene,195-19-7,DTXSID4075459,0,0,1,0,0,0
-Benzo[k]fluoranthene,207-08-9,DTXSID0023909,0,0,1,1,0,0
+Benzo[k]fluoranthene,207-08-9,DTXSID0023909,0,0,1,1,0,1
 Benzophenone,119-61-9,DTXSID0021961,0,0,1,1,0,0
 Benzotrichloride,98-07-7,DTXSID1020148,0,0,0,1,0,1
 Benzyl Violet 4B,1694-09-3,DTXSID7021441,0,0,1,1,0,0
 Benzyl chloride,100-44-7,DTXSID0020153,0,0,0,1,0,0
-Beryllium,7440-41-7,DTXSID4023913,1,0,0,1,2,0
+Beryllium,7440-41-7,DTXSID4023913,1,0,0,1,1,0
 Beryllium carbonate hydroxide (3/2/2),66104-24-3,DTXSID10984600,0,0,0,0,1,0
 Beryllium chloride,7787-47-5,DTXSID10858756,0,0,0,0,1,0
 Beryllium hydrogen phosphate,13598-15-7,DTXSID70929198,0,0,0,0,1,0
@@ -241,7 +234,7 @@ Busulfan,55-98-1,DTXSID3020910,1,0,0,1,1,0
 Butyl glycidyl ether,2426-08-6,DTXSID9024691,0,0,1,1,0,0
 Butylated hydroxyanisole,25013-16-5,DTXSID7020215,0,0,1,1,0,1
 C.I. Acid Red 114,6459-94-5,DTXSID8021224,0,0,1,1,0,1
-C.I. Azoic Diazo Component 112,92-87-5,DTXSID2020137,1,0,0,2,2,0
+C.I. Azoic Diazo Component 112,92-87-5,DTXSID2020137,1,0,0,1,1,0
 C.I. Basic Red 9 monohydrochloride,569-61-9,DTXSID1021247,0,0,1,1,0,1
 C.I. Basic Violet 14,632-99-5,DTXSID6021246,0,0,1,0,0,0
 C.I. Direct Black 38,1937-37-7,DTXSID7020184,0,0,0,1,1,0
@@ -250,7 +243,7 @@ C.I. Direct Blue 15,2429-74-5,DTXSID7020186,0,0,1,1,0,1
 C.I. Direct Blue 218,28407-37-6,DTXSID2020187,0,0,1,1,0,0
 C.I. Direct Blue 6,2602-46-2,DTXSID2020185,0,0,0,1,1,0
 C.I. Direct Brown 95,16071-86-6,DTXSID3020201,0,0,0,1,1,0
-C.I. Disperse Black 6,119-90-4,DTXSID3025091,0,0,1,2,0,2
+C.I. Disperse Black 6,119-90-4,DTXSID3025091,0,0,1,1,0,1
 C.I. Disperse Black 6 dihydrochloride,20325-40-0,DTXSID1020485,0,0,0,1,0,0
 C.I. Disperse Blue 1,2475-45-8,DTXSID7020188,0,0,1,1,0,1
 C.I. Disperse Yellow 3,2832-40-8,DTXSID6021450,0,0,0,1,0,0
@@ -263,14 +256,14 @@ C.I. Solvent Yellow 1,60-09-3,DTXSID6024460,0,0,1,1,0,0
 C.I. Solvent Yellow 14,842-07-9,DTXSID4021135,0,0,0,1,0,0
 C.I. Solvent Yellow 2,60-11-7,DTXSID5020491,0,0,1,1,0,1
 C10-12 chloroalkanes,108171-26-2,DTXSID10872316,0,0,0,1,0,1
-Cadmium,7440-43-9,DTXSID1023940,1,0,0,1,2,0
+Cadmium,7440-43-9,DTXSID1023940,1,0,0,1,1,0
 Cadmium chloride,10108-64-2,DTXSID6020226,0,0,0,0,1,0
 Calcium arsenate,7778-44-1,DTXSID6058182,0,0,0,0,1,0
 Calcium monochromate,13765-19-0,DTXSID0024717,0,0,0,0,1,0
 Captafol,2425-06-1,DTXSID4020242,0,1,0,1,0,1
 Captan,133-06-2,DTXSID9020243,0,0,0,1,0,0
 Carbazole,86-74-8,DTXSID4020248,0,0,1,1,0,0
-Carbon black,1333-86-4,DTXSID7051216,0,0,1,2,0,0
+Carbon black,1333-86-4,DTXSID7051216,0,0,1,1,0,0
 Carbon nanotubes,308068-56-6,DTXSID301020377,0,0,1,0,0,0
 Carbon tetrachloride,56-23-5,DTXSID8020250,0,0,1,1,0,1
 Carboxymethylnitrosourea,60391-92-6,DTXSID3020251,0,0,0,1,0,0
@@ -314,9 +307,7 @@ Cobalt tungsten carbide,60674-89-7,DTXSID20209477,0,0,0,0,0,1
 Cobalt(II) acetate,71-48-7,DTXSID6026373,0,0,0,0,0,1
 Cobalt(II) nitrate,10141-05-6,DTXSID9064970,0,0,0,0,0,1
 Cobalt(II) oxide,1307-96-6,DTXSID6051649,0,0,0,1,0,0
-Coconut oil acid/Diethanolamine condensate (2:1),68603-42-9,DTXSID0024842,0,0,0,1,0,0
-Coke Oven Emissions,"","",0,0,0,0,1,0
-Coke oven emissions,"","",0,0,0,1,0,0
+Coke Oven Emissions,"","",0,0,0,1,1,0
 Creosote,8001-58-9,DTXSID2023987,0,1,0,1,0,0
 Cristobalite,14464-46-1,DTXSID5041801,0,0,0,0,1,0
 Crotonaldehyde,4170-30-3,DTXSID8024864,0,0,1,0,0,0
@@ -338,11 +329,10 @@ Daunorubicin,20830-81-3,DTXSID7022883,0,0,1,1,0,0
 Di(2-ethylhexyl) phthalate,117-81-7,DTXSID5020607,0,0,1,1,0,1
 Diazinon,333-41-5,DTXSID9020407,0,1,0,0,0,0
 Diazoaminobenzene,136-35-6,DTXSID9024934,0,0,0,1,0,1
-"Dibenz(a,h)anthracene",53-70-3,DTXSID9020409,0,0,0,0,0,1
 "Dibenz(c,h)acridine",224-53-3,DTXSID30176929,0,0,1,0,0,0
-"Dibenz[a,c]anthracene",215-58-7,DTXSID9049245,0,0,0,2,0,0
+"Dibenz[a,c]anthracene",215-58-7,DTXSID9049245,0,0,0,1,0,0
 "Dibenz[a,h]acridine",226-36-8,DTXSID3059761,0,0,1,1,0,1
-"Dibenz[a,h]anthracene",53-70-3,DTXSID9020409,0,1,0,1,0,0
+"Dibenz[a,h]anthracene",53-70-3,DTXSID9020409,0,1,0,1,0,1
 "Dibenz[a,j]acridine",224-42-0,DTXSID4059758,0,1,0,1,0,1
 "Dibenz[a,j]anthracene",224-41-9,DTXSID8074811,0,0,0,1,0,0
 "Dibenzo(a,e)pyrene",192-65-4,DTXSID3052690,0,0,0,1,0,1
@@ -357,8 +347,7 @@ Dichloroacetic acid,79-43-6,DTXSID2020428,0,0,1,1,0,1
 Dichloromethane,75-09-2,DTXSID0020868,0,1,0,1,0,1
 Dichlorvos,62-73-7,DTXSID5020449,0,0,1,1,0,0
 Dieldrin,60-57-1,DTXSID9020453,0,0,0,1,0,0
-Diesel Exhaust Particulates,"","",0,0,0,0,0,1
-Diesel engine exhaust,"","",0,0,0,1,0,0
+Diesel Exhaust Particulates,"","",0,0,0,1,0,1
 "Diesel fuel, marine",77650-28-3,DTXSID4025030,0,0,1,0,0,0
 Diethanolamine,111-42-2,DTXSID3021932,0,0,1,1,0,0
 Diethyl sulfate,64-67-5,DTXSID1024045,0,1,0,1,0,1
@@ -379,7 +368,6 @@ Doxorubicin,23214-92-8,DTXSID8021480,0,1,0,0,0,1
 Elmiron,37319-17-8,DTXSID1025229,0,0,1,0,0,0
 Emissions from combustion of coal,"","",0,0,0,1,0,0
 Emissions from high-temperature unrefined rapeseed oil,"","",0,0,0,1,0,0
-Environmental Tobacco Smoke (see Tobacco-Related Exposures),"","",0,0,0,0,1,0
 Epichlorohydrin,106-89-8,DTXSID1020566,0,1,0,1,0,1
 Erionite,12510-42-8,DTXSID40872384,1,0,0,1,1,0
 Estragole,140-67-0,DTXSID0020575,0,0,0,1,0,0
@@ -391,9 +379,9 @@ Ethyl acrylate,140-88-5,DTXSID4020583,0,0,1,1,0,0
 Ethyl methanesulfonate,62-50-0,DTXSID6025309,0,0,1,1,0,1
 Ethylbenzene,100-41-4,DTXSID3020596,0,0,1,1,0,0
 Ethylene oxide,75-21-8,DTXSID0020600,1,0,0,1,1,0
-Ethylene thiourea,96-45-7,DTXSID5020601,0,0,0,0,0,1
+Ethylene thiourea,96-45-7,DTXSID5020601,0,0,0,1,0,1
 Ethyleneimine,151-56-4,DTXSID8020599,0,0,1,1,0,0
-Etoposide,33419-42-0,DTXSID5023035,1,0,0,2,0,0
+Etoposide,33419-42-0,DTXSID5023035,1,0,0,1,0,0
 Etridiazole,2593-15-9,DTXSID3032547,0,0,0,1,0,0
 Fenoxycarb,72490-01-8,DTXSID7032393,0,0,0,1,0,0
 Fluoro-edenite fibrous amphibole,67164-60-7,DTXSID401335773,0,0,0,1,0,0
@@ -402,7 +390,7 @@ Formaldehyde,50-00-0,DTXSID7020637,1,0,0,1,1,0
 Formic acid 2-[4-(5-nitro-2-furyl)-2-thiazolyl]hydrazide,3570-75-0,DTXSID6020640,0,0,1,1,0,0
 Fumonisin B1,116355-83-0,DTXSID6020644,0,0,1,1,0,0
 Furaltadone,139-91-3,DTXSID4048016,0,0,0,1,0,0
-Furan,110-00-9,DTXSID6020646,0,0,1,2,0,1
+Furan,110-00-9,DTXSID6020646,0,0,1,1,0,1
 Furazolidone,67-45-8,DTXSID4041997,0,0,0,1,0,0
 Furfuryl alcohol,98-00-0,DTXSID2025347,0,0,1,1,0,0
 Furilazole,121776-33-8,DTXSID4041999,0,0,0,1,0,0
@@ -437,8 +425,7 @@ Hydrazine,302-01-2,DTXSID3020702,0,1,0,1,0,1
 Hydrazine sulfate,10034-93-2,DTXSID8020703,0,0,0,1,0,1
 Hydrochlorothiazide,58-93-5,DTXSID2020713,0,0,1,0,0,0
 Imazalil,35554-44-0,DTXSID8024151,0,0,0,1,0,0
-"Indeno(1,2,3-cd)pyrene",193-39-5,DTXSID8024153,0,0,0,0,0,1
-"Indeno[1,2,3-cd]pyrene",193-39-5,DTXSID8024153,0,0,1,1,0,0
+"Indeno[1,2,3-cd]pyrene",193-39-5,DTXSID8024153,0,0,1,1,0,1
 Indium phosphide,22398-80-7,DTXSID3031444,0,1,0,1,0,0
 Indium tin oxide,71243-84-0,DTXSID10904045,0,0,0,1,0,0
 Iprovalicarb,140923-17-7,DTXSID0047662,0,0,0,1,0,0
@@ -452,7 +439,7 @@ Kepone,143-50-0,DTXSID1020770,0,0,1,1,0,1
 Kresoxim-methyl,143390-89-0,DTXSID2032558,0,0,0,1,0,0
 Lactofen,77501-63-4,DTXSID7024160,0,0,0,1,0,0
 Lasiocarpine,303-34-4,DTXSID1020772,0,0,1,1,0,0
-Lead,7439-92-1,DTXSID2024161,0,0,1,1,0,2
+Lead,7439-92-1,DTXSID2024161,0,0,1,1,0,1
 Lead acetate,15347-57-6,DTXSID10274073,0,0,0,0,0,1
 Lead arsenate,7784-40-9,DTXSID4042092,0,0,0,0,1,0
 Lead phosphate (3:2),7446-27-7,DTXSID5064706,0,0,0,1,0,1
@@ -576,12 +563,12 @@ Oxadiazon,19666-30-9,DTXSID3024239,0,0,0,1,0,0
 Oxazepam,604-75-1,DTXSID1021087,0,0,1,1,0,0
 Oxymetholone,434-07-1,DTXSID5023794,0,0,0,1,0,1
 Parathion,56-38-2,DTXSID7021100,0,0,1,1,0,0
-Pentachlorophenol,87-86-5,DTXSID7021106,1,0,0,2,0,1
+Pentachlorophenol,87-86-5,DTXSID7021106,1,0,0,1,0,1
 Pentaerythritol dibromide,3296-90-0,DTXSID9020164,0,0,1,1,0,1
 Pentosan polysulfate sodium,140207-93-8,DTXSID70102623,0,0,0,1,0,0
 Perfluorooctanesulfonic acid,1763-23-1,DTXSID3031864,0,0,0,1,0,0
 Perfluorooctanoic acid,335-67-1,DTXSID8031865,0,0,1,1,0,0
-Phenacetin,62-44-2,DTXSID1021116,1,0,0,2,1,1
+Phenacetin,62-44-2,DTXSID1021116,1,0,0,1,1,1
 Phenazopyridine,94-78-0,DTXSID1023445,0,0,0,1,0,0
 Phenazopyridine hydrochloride,136-40-3,DTXSID1021118,0,0,1,1,0,1
 Phenesterin,3546-10-9,DTXSID6021119,0,0,0,1,0,0
@@ -593,11 +580,10 @@ Phenyl glycidyl ether,122-60-1,DTXSID8021145,0,0,1,1,0,0
 Phenylhydrazine,100-63-0,DTXSID8021147,0,0,0,1,0,0
 Pioglitazone,111025-46-8,DTXSID3037129,0,1,0,1,0,0
 Pirimicarb,23103-98-2,DTXSID1032569,0,0,0,1,0,0
-"Pitch, coal tar, high-temp.",65996-93-2,DTXSID1028285,1,0,0,1,2,0
+"Pitch, coal tar, high-temp.",65996-93-2,DTXSID1028285,1,0,0,1,1,0
 Plutonium,7440-07-5,DTXSID4064682,1,0,0,0,0,0
 Polybrominated biphenyls (PBB),59536-65-1,DTXSID5021174,0,1,0,1,0,1
 Polychlorinated biphenyls,1336-36-3,DTXSID5024267,1,0,0,1,0,1
-Polychlorinated biphenyls (containing 60 or more percent chlorine by molecular weight),"","",0,0,0,1,0,0
 Polycyclic aromatic hydrocarbons,130498-29-2,DTXSID3044043,0,0,0,0,0,1
 Ponceau 3R,3564-09-8,DTXSID7021231,0,0,1,1,0,0
 Potassium N-methyldithiocarbamate,137-41-7,DTXSID1034424,0,0,0,1,0,0
@@ -618,8 +604,7 @@ Propyleneimine,75-55-8,DTXSID8024286,0,0,1,1,0,1
 Propyzamide,23950-58-5,DTXSID2020420,0,0,0,1,0,0
 Pymetrozine,123312-89-0,DTXSID2032637,0,0,0,1,0,0
 Pyridine,110-86-1,DTXSID9021924,0,0,1,1,0,0
-Quartz (SiO2),14808-60-7,DTXSID3032040,1,0,0,0,0,0
-Quartz-alpha (SiO2),14808-60-7,DTXSID3032040,0,0,0,1,2,0
+Quartz (SiO2),14808-60-7,DTXSID3032040,1,0,0,1,1,0
 Quinoline,91-22-5,DTXSID1021798,0,0,1,1,0,0
 R-(+)-Pulegone,89-82-7,DTXSID2025975,0,0,1,1,0,0
 Radium-224,13233-32-4,DTXSID50912341,1,0,0,0,0,0
@@ -641,22 +626,19 @@ Semustine,13909-09-6,DTXSID8031603,1,0,0,1,1,0
 Shale oils,68308-34-9,DTXSID7028435,1,0,0,1,0,0
 Silicon carbide,409-21-2,DTXSID5052751,0,1,0,1,0,0
 "Silicon carbide, fibrous",308076-74-6,DTXSID701020379,0,0,1,0,0,0
-Smokeless Tobacco (see Tobacco-Related Exposures),"","",0,0,0,0,1,0
 Sodium 2-phenylphenate,132-27-4,DTXSID2021153,0,0,1,1,0,0
 Sodium arsenate,7631-89-2,DTXSID5020102,0,0,0,0,1,0
 Sodium arsenite,7784-46-5,DTXSID5020104,0,0,0,0,1,0
 Sodium chromate,7775-11-3,DTXSID7032056,0,0,0,0,1,0
 Sodium dichromate,10588-01-9,DTXSID8021274,0,0,0,0,1,0
 Sodium pentachlorophenate,131-52-2,DTXSID4040264,0,0,0,0,0,1
-Soots,"","",0,0,0,0,1,0
-"Soots, tars, and mineral oils (untreated and mildly treated oils and used engine oils)","","",0,0,0,1,0,0
+"Soots, tars, and mineral oils (untreated and mildly treated oils and used engine oils)","","",0,0,0,1,1,0
 Spirodiclofen,148477-71-8,DTXSID6034928,0,0,0,1,0,0
 Spironolactone,52-01-7,DTXSID6034186,0,0,0,1,0,0
 Stanozolol,10418-03-8,DTXSID3044128,0,0,0,1,0,0
 Sterigmatocystin,10048-13-2,DTXSID2021280,0,0,1,1,0,0
 Streptozotocin,18883-66-4,DTXSID2021282,0,0,1,1,0,1
-Strong Inorganic Acid Mists Containing Sulfuric Acid,"","",0,0,0,0,1,0
-Strong inorganic acid mists containing sulfuric acid,"","",0,0,0,1,0,0
+Strong Inorganic Acid Mists Containing Sulfuric Acid,"","",0,0,0,1,1,0
 Strontium chromate,7789-06-2,DTXSID70872832,0,0,0,0,1,0
 Styrene,100-42-5,DTXSID2021284,0,1,0,1,0,1
 Styrene oxide,96-09-3,DTXSID2021286,0,1,0,1,0,1
@@ -682,9 +664,8 @@ Thiourea,62-56-6,DTXSID9021348,0,0,0,1,0,1
 Thorium,7440-29-1,DTXSID6049800,1,0,0,0,0,0
 Thorium(IV) oxide,1314-20-1,DTXSID0051657,0,0,0,1,1,0
 Titanium dioxide,13463-67-7,DTXSID3021352,0,0,1,1,0,0
-Tobacco Smoking (see Tobacco-Related Exposures),"","",0,0,0,0,1,0
-Tobacco smoke,"","",0,0,0,1,0,0
-"Tobacco, oral use of smokeless products","","",0,0,0,1,0,0
+Tobacco smoke,"","",0,0,0,1,1,0
+"Tobacco, oral use of smokeless products","","",0,0,0,1,1,0
 "Toluene 2,4-diisocyanate",584-84-9,DTXSID7026156,0,0,0,0,0,1
 Toluene diisocyanate,26471-62-5,DTXSID0024341,0,0,1,1,0,1
 "Toluene-2,6-diisocyanate",91-08-7,DTXSID2026157,0,0,0,0,0,1
@@ -717,8 +698,7 @@ Vinyl acetate,108-05-4,DTXSID3021431,0,0,1,0,0,0
 Vinyl bromide,593-60-2,DTXSID8021432,0,1,0,1,0,1
 Vinyl chloride,75-01-4,DTXSID8021434,1,0,0,1,1,0
 Vinyl fluoride,75-02-5,DTXSID3021435,0,1,0,1,0,1
-Wood Dust,"","",0,0,0,0,1,0
-Wood dust,"","",0,0,0,1,0,0
+Wood Dust,"","",0,0,0,1,1,0
 Z-Tetrachlorvinphos,22248-79-9,DTXSID1032648,0,0,1,1,0,0
 Zileuton,111406-87-2,DTXSID9023752,0,0,0,1,0,0
 Zinc chromate,13530-65-9,DTXSID7047485,0,0,0,0,1,0
