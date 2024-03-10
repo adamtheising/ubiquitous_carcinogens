@@ -1,1 +1,6 @@
 raw_data/DSSTox_Identifiers_and_CASRN_2021r1.csv
+raw_data/NHANES/nhanes_chems.csv
+raw_data/NHANES/nhanes_coms.csv
+raw_data/NHANES/nhanes_demo.csv
+raw_data/NHANES/nhanes_dict.csv
+raw_data/NHANES/nhanes_weights.csv
