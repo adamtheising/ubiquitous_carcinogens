@@ -80,6 +80,7 @@ cas.match <- nhanes.dict[cas_num %in% unique(carcin$CASRN)]
 
 ## Loop through all carcinogens on list.
 return.me <- vector(mode = 'list', length = dim(cas.match)[1])
+options(survey.lonely.psu="adjust")
 for (i in 1:dim(cas.match)[1]){
   ###############################################
   # Subset data for analysis
@@ -137,11 +138,11 @@ for (i in 1:dim(cas.match)[1]){
   
   ## Merge all subpop quantiles into single df
   together.subset <- rbind(subset.quan %>% #Gender-varying statistics
-                             dplyr::reframe(median = survey::svyby(~chem, ~RIAGENDR, dsn.subset, survey::svyquantile, quantiles = 0.5, keep.var=FALSE)[,2],
+                             dplyr::reframe(RIAGENDR = survey::svyby(~chem, ~RIAGENDR, dsn.subset, survey::svyquantile, quantiles = 0.5, keep.var=T)[,1],
+                                            median = survey::svyby(~chem, ~RIAGENDR, dsn.subset, survey::svyquantile, quantiles = 0.5, keep.var=FALSE)[,2],
                                             perc_75 = survey::svyby(~chem, ~RIAGENDR, dsn.subset, survey::svyquantile, quantiles = 0.75, keep.var=FALSE)[,2],
                                             perc_95 = survey::svyby(~chem, ~RIAGENDR, dsn.subset, survey::svyquantile, quantiles = 0.95, keep.var=FALSE)[,2],
                                             perc_99 = survey::svyby(~chem, ~RIAGENDR, dsn.subset, survey::svyquantile, quantiles = 0.99, keep.var=FALSE)[,2]) %>%
-                             dplyr::mutate(RIAGENDR = unique(subset.quan$RIAGENDR)) %>%
                              dplyr::mutate(cat = ifelse(RIAGENDR == 1,
                                                         "Gender: male", 
                                                         "Gender: female")) %>%
@@ -149,11 +150,11 @@ for (i in 1:dim(cas.match)[1]){
                              dplyr::relocate(cat),
                            # Race/Ethn varying statistics
                            subset.quan %>%
-                             dplyr::reframe(median = survey::svyby(~chem, ~RIDRETH1, dsn.subset, survey::svyquantile, quantiles = 0.5, keep.var=FALSE)[,2],
+                             dplyr::reframe(RIDRETH1 = survey::svyby(~chem, ~RIDRETH1, dsn.subset, survey::svyquantile, quantiles = 0.5, keep.var=T)[,1],
+                                            median = survey::svyby(~chem, ~RIDRETH1, dsn.subset, survey::svyquantile, quantiles = 0.5, keep.var=T)[,2],
                                             perc_75 = survey::svyby(~chem, ~RIDRETH1, dsn.subset, survey::svyquantile, quantiles = 0.75, keep.var=FALSE)[,2],
                                             perc_95 = survey::svyby(~chem, ~RIDRETH1, dsn.subset, survey::svyquantile, quantiles = 0.95, keep.var=FALSE)[,2],
                                             perc_99 = survey::svyby(~chem, ~RIDRETH1, dsn.subset, survey::svyquantile, quantiles = 0.99, keep.var=FALSE)[,2]) %>%
-                             dplyr::mutate(RIDRETH1 = unique(subset.quan$RIDRETH1)) %>%
                              mutate(cat = ifelse(RIDRETH1 %in% c(1,2),
                                                  "Race/eth: Hispanic", 
                                                  ifelse(RIDRETH1 == 3,
@@ -167,7 +168,8 @@ for (i in 1:dim(cas.match)[1]){
                              dplyr::relocate(cat),
                            # Income varying statistics
                            subset.quan %>%
-                             dplyr::reframe(median = survey::svyby(~chem, ~inc.pov, dsn.subset, survey::svyquantile, quantiles = 0.5, keep.var=FALSE)[,2],
+                             dplyr::reframe(inc.pov = survey::svyby(~chem, ~inc.pov, dsn.subset, survey::svyquantile, quantiles = 0.5, keep.var=T)[,1],
+                                            median = survey::svyby(~chem, ~inc.pov, dsn.subset, survey::svyquantile, quantiles = 0.5, keep.var=FALSE)[,2],
                                             perc_75 = survey::svyby(~chem, ~inc.pov, dsn.subset, survey::svyquantile, quantiles = 0.75, keep.var=FALSE)[,2],
                                             perc_95 = survey::svyby(~chem, ~inc.pov, dsn.subset, survey::svyquantile, quantiles = 0.95, keep.var=FALSE)[,2],
                                             perc_99 = survey::svyby(~chem, ~inc.pov, dsn.subset, survey::svyquantile, quantiles = 0.99, keep.var=FALSE)[,2]) %>%
@@ -226,7 +228,9 @@ for (i in 1:dim(cas.match)[1]){
                                     data = subset.mean)
     
     together.mean <- rbind(subset.mean %>% #Gender-varying statistics
-      dplyr::reframe(mean = exp(survey::svyby(~log(chem), ~RIAGENDR, dsn.subset, 
+      dplyr::reframe(RIAGENDR = survey::svyby(~log(chem), ~RIAGENDR, dsn.subset, 
+                                              survey::svymean, na.rm = T)[,1],
+                     mean = exp(survey::svyby(~log(chem), ~RIAGENDR, dsn.subset, 
                                               survey::svymean, na.rm = T)[,2])) %>%
       dplyr::mutate(RIAGENDR = unique(subset.mean$RIAGENDR)) %>%
       dplyr::mutate(cat = ifelse(RIAGENDR == 1,
@@ -236,7 +240,9 @@ for (i in 1:dim(cas.match)[1]){
       dplyr::relocate(cat),
       #Race/ethn varying statistics
       subset.mean %>%
-        dplyr::reframe(mean = exp(survey::svyby(~log(chem), ~RIDRETH1, dsn.subset, 
+        dplyr::reframe(RIDRETH1 = survey::svyby(~log(chem), ~RIDRETH1, dsn.subset, 
+                                                survey::svymean, na.rm = T)[,1],
+                       mean = exp(survey::svyby(~log(chem), ~RIDRETH1, dsn.subset, 
                                                 survey::svymean, na.rm = T)[,2])) %>%
         dplyr::mutate(RIDRETH1 = unique(subset.mean$RIDRETH1)) %>%
         mutate(cat = ifelse(RIDRETH1 %in% c(1,2),
@@ -252,7 +258,9 @@ for (i in 1:dim(cas.match)[1]){
         dplyr::relocate(cat),
       # Income varying statistics
       subset.mean %>%
-        dplyr::reframe(mean = exp(survey::svyby(~log(chem), ~inc.pov, dsn.subset,
+        dplyr::reframe(inc.pov = survey::svyby(~log(chem), ~inc.pov, dsn.subset, 
+                                                survey::svymean, na.rm = T)[,1],
+                       mean = exp(survey::svyby(~log(chem), ~inc.pov, dsn.subset,
                                                 survey::svymean, na.rm = T)[,2])) %>%
         dplyr::mutate(inc.pov = unique(subset.mean$inc.pov)) %>%
         mutate(cat = ifelse(inc.pov == 1,
@@ -275,4 +283,3 @@ for (i in 1:dim(cas.match)[1]){
   print(paste0('Iteration ',i,' complete.'))
 }
 
-## Still crashing on iteration 35. To be solved.
