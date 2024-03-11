@@ -283,3 +283,5 @@ for (i in 1:dim(cas.match)[1]){
   print(paste0('Iteration ',i,' complete.'))
 }
 
+combined <- data.table::rbindlist(return.me)
+data.table::fwrite(combined, './output/nhanes_summary.csv')
