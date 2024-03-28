@@ -1,0 +1,716 @@
+NAME,CASRN,DTXSID,IARC1,IARC2A,IARC2B,Prop65,ROC_Known,ROC_RAHC
+(+-)-Diclofop-methyl,51338-27-3,DTXSID0032605,0,0,0,1,0,0
+"(2E,4E)-2,4-Hexadienal",142-83-6,DTXSID2025391,0,0,1,1,0,0
+(~32~P)Phosphane,14596-37-3,DTXSID80932734,1,0,0,0,0,0
+"1,1'-Biphenyl, 2,2',3,3',4,4',5,5',6,6'-decabromo-",13654-09-6,DTXSID9065572,0,0,0,0,0,1
+"1,1,1,2-Tetrachloroethane",630-20-6,DTXSID2021317,0,0,1,1,0,0
+"1,1,1-Trichloroethane",71-55-6,DTXSID0021381,0,0,0,1,0,0
+"1,1,2,2-Tetrachloroethane",79-34-5,DTXSID7021318,0,0,1,1,0,0
+"1,1,2-Trichloroethane",79-00-5,DTXSID5021380,0,0,0,1,0,0
+"1,1-Dichloroethane",75-34-3,DTXSID1020437,0,0,0,1,0,0
+"1,1-Dichloroethylene",75-35-4,DTXSID8021438,0,0,1,1,0,0
+"1,1-Dimethylhydrazine",57-14-7,DTXSID1020516,0,0,1,1,0,1
+"1,2,3,4,5,6-Hexachlorocyclohexane",608-73-1,DTXSID7020687,0,0,1,1,0,1
+"1,2,3-Trichloropropane",96-18-4,DTXSID9021390,0,1,0,1,0,1
+"1,2-(Methylenedioxy)-4-propylbenzene",94-58-6,DTXSID7020475,0,0,1,1,0,0
+"1,2-Dibromo-3-chloropropane",96-12-8,DTXSID3020413,0,0,1,1,0,1
+"1,2-Dibromoethane",106-93-4,DTXSID3020415,0,1,0,1,0,1
+"1,2-Dichloroethane",107-06-2,DTXSID6020438,0,0,1,1,0,1
+"1,2-Dichloropropane",78-87-5,DTXSID0020448,1,0,0,1,0,0
+"1,2-Diethylhydrazine",1615-80-1,DTXSID1043754,0,0,1,1,0,0
+"1,2-Dimethylhydrazine",540-73-8,DTXSID0041228,0,1,0,1,0,0
+"1,2-Diphenylhydrazine",122-66-7,DTXSID7020710,0,0,0,1,0,1
+"1,2-Epoxybutane",106-88-7,DTXSID6020569,0,0,1,0,0,0
+"1,2-Phenylenediamine",95-54-5,DTXSID3025881,0,0,1,1,0,0
+"1,2-Phenylenediamine dihydrochloride",615-28-1,DTXSID3021140,0,0,1,0,0,0
+"1,2-Propylene oxide",75-56-9,DTXSID5021207,0,0,1,1,0,1
+"1,3-Butadiene",106-99-0,DTXSID3020203,1,0,0,1,1,0
+"1,3-Dichloro-2-propanol",96-23-1,DTXSID6025010,0,0,1,1,0,0
+"1,3-Dichloropropene",542-75-6,DTXSID1022057,0,0,1,1,0,1
+"1,3-Dinitropyrene",75321-20-9,DTXSID5074975,0,0,1,1,0,0
+"1,3-Propane sultone",1120-71-4,DTXSID8021195,0,1,0,1,0,1
+"1,4-Dichloro-2-butene",764-41-0,DTXSID9027310,0,0,0,1,0,0
+"1,4-Dichloro-2-nitrobenzene",89-61-2,DTXSID7052602,0,0,1,1,0,0
+"1,4-Dichlorobenzene",106-46-7,DTXSID1020431,0,0,1,1,0,1
+"1,4-Dioxane",123-91-1,DTXSID4020533,0,0,1,1,0,1
+"1,6-Dinitropyrene",42397-64-8,DTXSID90872819,0,0,1,1,0,1
+"1,8-Dinitropyrene",42397-65-9,DTXSID2073514,0,0,1,1,0,1
+"1,2-Benzenediol",120-80-9,DTXSID3020257,0,0,1,1,0,0
+"1-Amino-2,4-dibromoanthraquinone",81-49-2,DTXSID4039235,0,0,1,1,0,1
+1-Amino-2-methylanthraquinone,82-28-0,DTXSID7020057,0,0,0,1,0,1
+1-Bromo-3-chloropropane,109-70-6,DTXSID1051565,0,0,1,1,0,0
+1-Bromopropane,106-94-5,DTXSID6021874,0,0,1,1,0,1
+1-Chloro-2-nitrobenzene,88-73-3,DTXSID0020280,0,0,1,1,0,0
+1-Chloro-4-(trifluoromethyl)benzene,98-56-6,DTXSID7024821,0,0,1,1,0,0
+1-Chloro-4-nitrobenzene,100-00-5,DTXSID5020281,0,0,1,1,0,0
+1-Ethyl-1-nitrosourea,759-73-9,DTXSID8020593,0,1,0,1,0,1
+1-Hydroxyanthraquinone,129-43-1,DTXSID1020722,0,0,1,1,0,0
+1-Methoxy-2-nitrobenzene,91-23-6,DTXSID3020962,0,1,0,1,0,1
+"1-Naphthalenol, 1-(N-methylcarbamate)",63-25-2,DTXSID9020247,0,0,0,1,0,0
+1-Naphthylamine,134-32-7,DTXSID7020920,0,0,0,1,0,0
+1-Nitropyrene,5522-43-0,DTXSID6020983,0,1,0,1,0,1
+1-tert-Butoxy-2-propanol,57018-52-7,DTXSID8025967,0,0,1,1,0,0
+"1-{[3-(2-Chlorophenyl)-2-(4-fluorophenyl)oxiran-2-yl]methyl}-1H-1,2,4-triazole",135319-73-2,DTXSID901034223,0,0,0,1,0,0
+17alpha-Ethinylestradiol,57-63-6,DTXSID5020576,0,0,0,1,1,0
+17beta-Estradiol,50-28-2,DTXSID0020573,0,0,0,1,1,0
+"2',3'-Dideoxycytidine",7481-89-2,DTXSID0023747,0,0,1,1,0,0
+"2,2'-Bioxirane",1464-53-5,DTXSID0041307,0,0,0,1,0,1
+"2,2-Dimethylvinyl chloride",513-37-1,DTXSID5020520,0,0,1,1,0,1
+"2,3,4,7,8-Pentachlorodibenzofuran",57117-31-4,DTXSID7030066,1,0,0,0,0,0
+"2,3,7,8-Tetrachlorodibenzo-p-dioxin",1746-01-6,DTXSID2021315,1,0,0,1,1,0
+"2,3-Benzofuran",271-89-6,DTXSID6020141,0,0,1,1,0,0
+"2,3-Dibromopropanol",96-13-9,DTXSID7021817,0,0,1,1,0,1
+"2,4,5-Trimethylaniline",137-17-7,DTXSID9021398,0,0,0,1,0,0
+"2,4,6-Trichlorophenol",88-06-2,DTXSID5021386,0,0,1,1,0,1
+"2,4,6-Trinitrotoluene",118-96-7,DTXSID7024372,0,0,0,1,0,0
+"2,4-/2,6-Dinitrotoluene mixture",NOCAS_24069,DTXSID9024069,0,0,0,1,0,0
+"2,4-Diaminoanisole",615-05-4,DTXSID5041358,0,0,1,1,0,0
+"2,4-Diaminotoluene",95-80-7,DTXSID4020402,0,0,1,1,0,1
+"2,4-Dichloronitrobenzene",611-06-3,DTXSID3024998,0,0,1,1,0,0
+"2,4-Dichlorophenoxyacetic acid",94-75-7,DTXSID0020442,0,0,1,0,0,0
+"2,4-Dinitrotoluene",121-14-2,DTXSID0020529,0,0,1,1,0,0
+"2,6-Dimethylaniline",87-62-7,DTXSID8026307,0,0,1,1,0,0
+"2,6-Dinitrotoluene",606-20-2,DTXSID5020528,0,0,1,1,0,0
+2-Acetylaminofluorene,53-96-3,DTXSID0039227,0,0,0,1,0,1
+"2-Amino-1-methyl-6-phenylimidazo [4,5-b]pyridine",105650-23-5,DTXSID3037628,0,0,1,1,0,1
+"2-Amino-3-methyl-3H-imidazo[4,5-f]quinoline",76180-96-6,DTXSID4020745,0,1,0,1,0,1
+2-Amino-4-chlorophenol,95-85-2,DTXSID5024473,0,0,1,1,0,0
+"2-Amino-5-(5-nitro-2-furyl)-1,3,4-thiadiazole",712-68-5,DTXSID7020059,0,0,1,1,0,0
+2-Amino-alpha-carboline,26148-68-5,DTXSID7020001,0,0,1,1,0,0
+2-Aminoanthraquinone,117-79-3,DTXSID6020068,0,0,0,1,0,1
+2-Aminofluorene,153-78-6,DTXSID1049223,0,0,0,1,0,0
+2-Anisidine,90-04-0,DTXSID5023877,0,1,0,1,0,1
+2-Bromopropane,75-26-3,DTXSID7030197,0,0,0,1,0,0
+2-Ethylhexyl acrylate,103-11-7,DTXSID9025297,0,0,1,1,0,0
+2-Mercaptobenzothiazole,149-30-4,DTXSID1020807,0,1,0,1,0,0
+2-Methoxy-5-methylaniline,120-71-8,DTXSID1020350,0,0,1,1,0,1
+2-Methoxyaniline hydrochloride,134-29-2,DTXSID8020092,0,1,0,1,0,1
+2-Methyl-1-nitroanthraquinone,129-15-7,DTXSID7020847,0,0,1,1,0,0
+2-Methylaniline,95-53-4,DTXSID1026164,1,0,0,1,1,0
+2-Methylaniline hydrochloride,636-21-5,DTXSID7021364,0,0,0,1,0,0
+2-Methylimidazole,693-98-1,DTXSID4022107,0,0,1,1,0,0
+2-Naphthylamine,91-59-8,DTXSID2020921,1,0,0,1,1,0
+2-Nitrofluorene,607-57-8,DTXSID2020971,0,0,1,1,0,0
+2-Nitropropane,79-46-9,DTXSID6020981,0,0,1,1,0,1
+2-Nitrotoluene,88-72-2,DTXSID4025791,0,1,0,1,0,1
+2-Phenylphenol,90-43-7,DTXSID2021151,0,0,0,1,0,0
+3'-Azido-3'-deoxythymidine,30516-87-1,DTXSID8020127,0,0,1,1,0,0
+"3,3',4,4',5-Pentachlorobiphenyl",57465-28-8,DTXSID3032179,1,0,0,0,0,0
+"3,3',4,4'-Tetrachloroazobenzene",14047-09-7,DTXSID6026086,0,1,0,1,0,0
+"3,3',5,5'-Tetrabromobisphenol A",79-94-7,DTXSID1026081,0,1,0,1,0,0
+"3,3'-Dichloro-4,4'-diaminodiphenyl ether",28434-86-8,DTXSID5074842,0,0,1,1,0,0
+"3,3'-Dichlorobenzidine",91-94-1,DTXSID6020432,0,0,1,1,0,1
+"3,3'-Dichlorobenzidine dihydrochloride",612-83-9,DTXSID1020433,0,0,0,1,0,1
+"3,3'-Dimethylbenzidine",119-93-7,DTXSID5024059,0,0,1,1,0,1
+"3,3'-Dimethylbenzidine dihydrochloride",612-82-8,DTXSID6020511,0,0,0,1,0,1
+"3,4-Dihydroxycinnamic acid",331-39-5,DTXSID5020231,0,0,1,1,0,0
+"3,7-Dinitrofluoranthene",105735-71-5,DTXSID20147305,0,0,1,1,0,0
+"3,9-Dinitrofluoranthene",22506-53-2,DTXSID40177028,0,0,1,1,0,0
+"3-(3,5-Dichlorophenyl)-N-(1-methylethyl)-2,4-dioxo-1-imidazolidinecarboxamide",36734-19-7,DTXSID3024154,0,0,0,1,0,0
+3-Amino-9-ethylcarbazole hydrochloride,6109-97-3,DTXSID2020054,0,0,0,1,0,0
+"3-Chloro-1,2-propanediol",96-24-2,DTXSID4020664,0,0,1,1,0,0
+3-Chloro-2-methylpropene,563-47-3,DTXSID1020279,0,0,1,1,0,1
+3-Chloro-4-(dichloromethyl)-5-hydroxy-2(5H)-furanone,77439-76-0,DTXSID6020276,0,0,1,1,0,0
+3-Methylcholanthrene,56-49-5,DTXSID0020862,0,0,0,1,0,0
+3-Nitrobenzanthrone,17117-34-9,DTXSID60881271,0,0,1,0,0,0
+4'-(9-Acridinylamino)methanesulfon-m-anisidide,51264-14-3,DTXSID4022604,0,0,1,1,0,0
+"4,4'-Diaminobiphenyl methane",101-77-9,DTXSID6022422,0,0,1,1,0,1
+"4,4'-Methylenebis(2-chloroaniline)",101-14-4,DTXSID5020865,1,0,0,1,0,1
+"4,4'-Methylenebis(N,N-dimethylaniline)",101-61-1,DTXSID5020869,0,0,1,1,0,1
+"4,4'-Methylenebis(o-toluidine)",838-88-0,DTXSID5020867,0,0,1,1,0,0
+"4,4'-Methylenedianiline dihydrochloride",13552-44-8,DTXSID9020871,0,0,0,1,0,1
+"4,4'-Oxydianiline",101-80-4,DTXSID0021094,0,0,1,1,0,1
+"4,4'-Thiodianiline",139-65-1,DTXSID9021344,0,0,1,1,0,1
+4-(N-Methyl-N-nitrosamino)-1-(3-pyridyl)-1-butanone,64091-91-4,DTXSID3020881,0,0,0,1,0,1
+4-Amino-2-nitrophenol,119-34-6,DTXSID6020064,0,0,0,1,0,0
+"4-Androstene-3,17-dione",63-05-8,DTXSID8024523,0,0,0,1,0,0
+4-Biphenylamine,92-67-1,DTXSID5020071,1,0,0,1,1,0
+"4-Chloro-1,2-diaminobenzene",95-83-0,DTXSID5020283,0,0,1,1,0,1
+4-Chloro-2-methylaniline,95-69-2,DTXSID1041508,0,1,0,1,0,1
+4-Chloro-2-methylaniline hydrochloride,3165-93-3,DTXSID0020288,0,0,0,0,0,1
+4-Chloroaniline,106-47-8,DTXSID9020295,0,0,1,1,0,0
+4-Chloroaniline hydrochloride,20265-96-7,DTXSID4020296,0,0,0,1,0,0
+4-Chlorobenzotrichloride,5216-25-1,DTXSID2027593,0,0,0,1,0,0
+4-Methyl-2-pentanone,108-10-1,DTXSID5021889,0,0,1,1,0,0
+4-Methylimidazole,822-36-6,DTXSID9025617,0,0,1,1,0,0
+4-Nitrobiphenyl,92-93-3,DTXSID9041522,0,0,0,1,0,0
+4-Nitropyrene,57835-92-4,DTXSID5074844,0,0,1,1,0,1
+4-Nitrosodiphenylamine,156-10-5,DTXSID1021031,0,0,0,1,0,0
+4-Vinyl-1-cyclohexene dioxide,106-87-6,DTXSID0020604,0,0,1,1,0,1
+4-Vinylcyclohexene,100-40-3,DTXSID3021437,0,0,1,1,0,0
+"5,5-Diphenylhydantoin",57-41-0,DTXSID8020541,0,0,1,1,0,1
+5-Azacytidine,320-67-2,DTXSID9020116,0,1,0,1,0,1
+5-Chloro-2-methylaniline,95-79-4,DTXSID5020287,0,0,0,1,0,0
+5-Chloro-3-methyl-4-nitro-1H-pyrazole,6814-58-0,DTXSID3058454,0,0,0,1,0,0
+5-Methoxypsoralen,484-20-8,DTXSID1025560,0,1,0,1,0,0
+5-Methylchrysene,3697-24-3,DTXSID6063143,0,0,1,1,0,1
+5-Nitroacenaphthene,602-87-9,DTXSID3020960,0,0,1,1,0,0
+6-Methyl-2-thiouracil,56-04-2,DTXSID2020890,0,0,1,1,0,0
+6-Nitrochrysene,7496-02-8,DTXSID9075454,0,1,0,1,0,1
+6-Propyl-2-thiouracil,51-52-5,DTXSID5021209,0,0,1,1,0,1
+"7,12-Dimethylbenz(a)anthracene",57-97-6,DTXSID1020510,0,0,0,1,0,0
+"7H-Dibenzo[c,g]carbazole",194-59-2,DTXSID9059755,0,0,1,1,0,1
+8-Methoxypsoralen,298-81-7,DTXSID8020830,1,0,0,1,1,0
+AF-2,3688-53-7,DTXSID9020033,0,0,1,1,0,0
+Acetaldehyde,75-07-0,DTXSID5039224,1,0,1,1,0,1
+Acetaldehyde methylformylhydrazone,16568-02-8,DTXSID0039225,0,0,0,1,0,0
+Acetamide,60-35-5,DTXSID7020005,0,0,1,1,0,0
+Acetochlor,34256-82-1,DTXSID8023848,0,0,0,1,0,0
+Acid Red 26,3761-53-3,DTXSID8021228,0,0,1,1,0,0
+Acifluorfen sodium,62476-59-9,DTXSID7023853,0,0,0,1,0,0
+Acrolein,107-02-8,DTXSID5020023,0,1,0,0,0,0
+Acrylamide,79-06-1,DTXSID5020027,0,1,0,1,0,1
+Acrylonitrile,107-13-1,DTXSID5020029,0,0,1,1,0,1
+Actinolite asbestos,77536-66-4,DTXSID40108998,0,0,0,0,1,0
+Actinomycin D,50-76-0,DTXSID9020031,0,0,0,1,0,0
+Adriamycin hydrochloride,25316-40-9,DTXSID3030636,0,0,0,1,0,1
+Aflatoxin,1402-68-2,DTXSID4020036,1,0,0,1,1,0
+Aflatoxin M1,6795-23-9,DTXSID40891797,0,0,1,0,0,0
+Alachlor,15972-60-8,DTXSID1022265,0,0,0,1,0,0
+Alcoholic Beverage Consumption,"","",0,0,0,1,1,0
+Aldrin,309-00-2,DTXSID8020040,0,0,0,1,0,0
+"Amides, coco, N,N-bis(hydroxyethyl)",68603-42-9,DTXSID0024842,0,0,1,1,0,0
+Amitrole,61-82-5,DTXSID0020076,0,0,0,1,0,1
+Ammonium chromate,7788-98-9,DTXSID3064857,0,0,0,0,1,0
+Ammonium dichromate,7789-09-5,DTXSID70872953,0,0,0,0,1,0
+Amosite,12172-73-5,DTXSID5030741,0,0,0,0,1,0
+Aniline,62-53-3,DTXSID8020090,0,1,0,1,0,0
+Aniline hydrochloride,142-04-1,DTXSID3020091,0,1,0,1,0,0
+Anthracene,120-12-7,DTXSID0023878,0,0,0,1,0,0
+Anthraquinone,84-65-1,DTXSID3020095,0,0,1,1,0,0
+Antimony trioxide,1309-64-4,DTXSID4023880,0,0,1,1,0,1
+Aramite,140-57-8,DTXSID3020097,0,0,1,1,0,0
+Arecoline,63-75-2,DTXSID3022617,0,0,1,0,0,0
+Aristolochic acid,313-67-7,DTXSID0040969,1,0,0,0,1,0
+Aristolochic acid II,475-80-9,DTXSID00197166,0,0,0,0,1,0
+Aristolochic acids,67123-64-2,DTXSID70217421,0,0,0,1,1,0
+Arsenic,7440-38-2,DTXSID4023886,1,0,0,1,1,0
+Arsenic oxide (As2O3),1327-53-3,DTXSID0020103,0,0,0,0,1,0
+Asbestos,1332-21-4,DTXSID4023888,0,0,0,1,1,0
+"Asbestos, anthophyllite",77536-67-5,DTXSID00108999,0,0,0,0,1,0
+"Asphalt, oxidized",64742-93-4,DTXSID4028250,0,1,0,0,0,0
+Attapulgite,12174-11-7,DTXSID6050469,0,0,1,1,0,0
+Auramine,492-80-8,DTXSID7043821,0,0,1,1,0,0
+Azaserine,115-02-6,DTXSID9020118,0,0,1,1,0,0
+Azathioprine,446-86-6,DTXSID4020119,1,0,0,1,1,0
+Azobenzene,103-33-3,DTXSID8020123,0,0,0,1,0,0
+Benthiavalicarb-isopropyl,177406-68-7,DTXSID9058232,0,0,0,1,0,0
+Benz(a)anthracene,56-55-3,DTXSID5023902,0,0,1,1,0,1
+Benz(j)aceanthrylene,202-33-5,DTXSID30174041,0,0,1,0,0,0
+Benzene,71-43-2,DTXSID3039242,1,0,0,1,1,0
+Benzo(b)fluoranthene,205-99-2,DTXSID0023907,0,0,1,1,0,1
+Benzo(j)fluoranthene,205-82-3,DTXSID8052691,0,0,1,1,0,1
+Benzo[a]pyrene,50-32-8,DTXSID2020139,1,0,0,1,0,1
+Benzo[c]phenanthrene,195-19-7,DTXSID4075459,0,0,1,0,0,0
+Benzo[k]fluoranthene,207-08-9,DTXSID0023909,0,0,1,1,0,1
+Benzophenone,119-61-9,DTXSID0021961,0,0,1,1,0,0
+Benzotrichloride,98-07-7,DTXSID1020148,0,0,0,1,0,1
+Benzyl Violet 4B,1694-09-3,DTXSID7021441,0,0,1,1,0,0
+Benzyl chloride,100-44-7,DTXSID0020153,0,0,0,1,0,0
+Beryllium,7440-41-7,DTXSID4023913,1,0,0,1,1,0
+Beryllium carbonate hydroxide (3/2/2),66104-24-3,DTXSID10984600,0,0,0,0,1,0
+Beryllium chloride,7787-47-5,DTXSID10858756,0,0,0,0,1,0
+Beryllium hydrogen phosphate,13598-15-7,DTXSID70929198,0,0,0,0,1,0
+Beryllium hydroxide,13327-32-7,DTXSID80893932,0,0,0,0,1,0
+Beryllium oxide (BeO),1304-56-9,DTXSID30872818,0,0,0,0,1,0
+Beryllium sulfate,13510-49-1,DTXSID0020159,0,0,0,0,1,0
+Beryllium sulfate tetrahydrate,7787-56-6,DTXSID3024603,0,0,0,0,1,0
+Beryllium zinc orthosilicate (1/1/1),25638-88-4,DTXSID00948498,0,0,0,0,1,0
+Betel quid with tobacco,"","",0,0,0,1,0,0
+Betel quid without tobacco,"","",0,0,0,1,0,0
+Bis(4-(dimethylamino)phenyl)methanone,90-94-8,DTXSID2020894,0,0,1,1,0,1
+Bis(chloroethyl) ether,111-44-4,DTXSID9020168,0,0,0,1,0,0
+Bis-(2-chloroethyl)sulfide,505-60-2,DTXSID0037100,1,0,0,1,1,0
+"Bitumens, extracts of steam-refined and air refined",128683-24-9,DTXSID801046853,0,0,0,1,0,0
+Bleomycin,11056-06-7,DTXSID1030862,0,0,1,0,0,0
+Bromate,15541-45-4,DTXSID8023923,0,0,0,1,0,0
+Bromkal 80,61288-13-9,DTXSID701016695,0,0,0,0,0,1
+Bromochloroacetic acid,5589-96-8,DTXSID4024642,0,0,1,1,0,1
+Bromodichloroacetic acid,71133-14-7,DTXSID4024644,0,0,0,1,0,1
+Bromodichloromethane,75-27-4,DTXSID1020198,0,0,1,1,0,1
+Bromoethane,74-96-4,DTXSID6020199,0,0,0,1,0,0
+Bromoform,75-25-2,DTXSID1021374,0,0,0,1,0,0
+Busulfan,55-98-1,DTXSID3020910,1,0,0,1,1,0
+Butyl glycidyl ether,2426-08-6,DTXSID9024691,0,0,1,1,0,0
+Butylated hydroxyanisole,25013-16-5,DTXSID7020215,0,0,1,1,0,1
+C.I. Acid Red 114,6459-94-5,DTXSID8021224,0,0,1,1,0,1
+C.I. Azoic Diazo Component 112,92-87-5,DTXSID2020137,1,0,0,1,1,0
+C.I. Basic Red 9 monohydrochloride,569-61-9,DTXSID1021247,0,0,1,1,0,1
+C.I. Basic Violet 14,632-99-5,DTXSID6021246,0,0,1,0,0,0
+C.I. Direct Black 38,1937-37-7,DTXSID7020184,0,0,0,1,1,0
+C.I. Direct Blue 14,72-57-1,DTXSID4026268,0,0,1,1,0,0
+C.I. Direct Blue 15,2429-74-5,DTXSID7020186,0,0,1,1,0,1
+C.I. Direct Blue 218,28407-37-6,DTXSID2020187,0,0,1,1,0,0
+C.I. Direct Blue 6,2602-46-2,DTXSID2020185,0,0,0,1,1,0
+C.I. Direct Brown 95,16071-86-6,DTXSID3020201,0,0,0,1,1,0
+C.I. Disperse Black 6,119-90-4,DTXSID3025091,0,0,1,1,0,1
+C.I. Disperse Black 6 dihydrochloride,20325-40-0,DTXSID1020485,0,0,0,1,0,0
+C.I. Disperse Blue 1,2475-45-8,DTXSID7020188,0,0,1,1,0,1
+C.I. Disperse Yellow 3,2832-40-8,DTXSID6021450,0,0,0,1,0,0
+C.I. Oxidation Base 12A,39156-41-7,DTXSID7020398,0,0,0,1,0,1
+C.I. Pigment Orange 5,3468-63-1,DTXSID6029258,0,0,0,1,0,0
+C.I. Pigment Red 53,5160-02-1,DTXSID3021229,0,0,0,1,0,0
+C.I. Solvent Orange 2,2646-17-5,DTXSID6025808,0,0,1,1,0,0
+C.I. Solvent Red 80,6358-53-8,DTXSID6024838,0,0,1,1,0,0
+C.I. Solvent Yellow 1,60-09-3,DTXSID6024460,0,0,1,1,0,0
+C.I. Solvent Yellow 14,842-07-9,DTXSID4021135,0,0,0,1,0,0
+C.I. Solvent Yellow 2,60-11-7,DTXSID5020491,0,0,1,1,0,1
+C10-12 chloroalkanes,108171-26-2,DTXSID10872316,0,0,0,1,0,1
+Cadmium,7440-43-9,DTXSID1023940,1,0,0,1,1,0
+Cadmium chloride,10108-64-2,DTXSID6020226,0,0,0,0,1,0
+Calcium arsenate,7778-44-1,DTXSID6058182,0,0,0,0,1,0
+Calcium monochromate,13765-19-0,DTXSID0024717,0,0,0,0,1,0
+Captafol,2425-06-1,DTXSID4020242,0,1,0,1,0,1
+Captan,133-06-2,DTXSID9020243,0,0,0,1,0,0
+Carbazole,86-74-8,DTXSID4020248,0,0,1,1,0,0
+Carbon black,1333-86-4,DTXSID7051216,0,0,1,1,0,0
+Carbon nanotubes,308068-56-6,DTXSID301020377,0,0,1,0,0,0
+Carbon tetrachloride,56-23-5,DTXSID8020250,0,0,1,1,0,1
+Carboxymethylnitrosourea,60391-92-6,DTXSID3020251,0,0,0,1,0,0
+"Carrageenan, acid-degraded",53973-98-1,DTXSID8020254,0,0,1,1,0,0
+Chinomethionate,2439-01-2,DTXSID2032342,0,0,0,1,0,0
+Chloral,75-87-6,DTXSID7024744,0,1,0,1,0,0
+Chloral hydrate,302-17-0,DTXSID7020261,0,1,0,1,0,0
+Chlorambucil,305-03-3,DTXSID7020263,1,0,0,1,1,0
+Chloramphenicol,56-75-7,DTXSID7020265,0,1,0,0,0,1
+Chloramphenicol sodium succinate,982-57-0,DTXSID2024747,0,0,0,1,0,0
+Chlordane,57-74-9,DTXSID7020267,0,0,1,1,0,0
+Chlordimeform,6164-98-3,DTXSID2037508,0,0,0,1,0,0
+Chlorendic acid,115-28-6,DTXSID2020268,0,0,1,1,0,1
+Chlornaphazine,494-03-1,DTXSID3060087,1,0,0,1,0,0
+Chlorobenzilate,510-15-6,DTXSID9020299,0,0,0,1,0,0
+Chloroethane,75-00-3,DTXSID1020302,0,0,0,1,0,0
+Chloroform,67-66-3,DTXSID1020306,0,0,1,1,0,1
+Chloromethyl methyl ether,107-30-2,DTXSID6020307,0,0,0,1,1,0
+Chloroprene,126-99-8,DTXSID5020316,0,0,1,1,0,1
+Chlorothalonil,1897-45-6,DTXSID0020319,0,0,1,1,0,0
+Chlorotrianisene,569-57-3,DTXSID1021299,0,0,0,1,0,0
+Chlorozotocin,54749-90-5,DTXSID9020320,0,1,0,1,0,1
+Chromium (VI) ion,18540-29-9,DTXSID7023982,1,0,0,1,1,0
+Chromium lead oxide,11119-70-3,DTXSID201015373,0,0,0,0,1,0
+Chromium trioxide,1333-82-0,DTXSID0040125,0,0,0,0,1,0
+Chrysene,218-01-9,DTXSID0022432,0,0,1,1,0,0
+Chrysotile,12001-29-5,DTXSID0030742,0,0,0,0,1,0
+Cidofovir,113852-37-2,DTXSID3043734,0,0,0,1,0,0
+Cinnamyl anthranilate,87-29-6,DTXSID3020330,0,0,0,1,0,0
+Cisplatin,15663-27-1,DTXSID4024983,0,1,0,1,0,1
+Clofibrate,637-07-0,DTXSID3020336,0,0,0,1,0,0
+Clomiphene citrate (1:1),50-41-9,DTXSID8020337,0,0,0,1,0,0
+Coal tar,8007-45-2,DTXSID1027683,1,0,0,0,1,0
+Cobalt,7440-48-4,DTXSID1031040,0,0,1,1,0,1
+Cobalt chloride,7646-79-9,DTXSID9040180,0,0,0,0,0,1
+Cobalt oxide,11104-61-3,DTXSID801014561,0,0,0,0,0,1
+Cobalt sulfate,10124-43-3,DTXSID1031042,0,0,0,1,0,1
+Cobalt sulfate heptahydrate,10026-24-1,DTXSID7020340,0,0,1,1,0,1
+Cobalt sulfide,12653-56-4,DTXSID301015176,0,0,0,0,0,1
+Cobalt tungsten carbide,60674-89-7,DTXSID20209477,0,0,0,0,0,1
+Cobalt(II) acetate,71-48-7,DTXSID6026373,0,0,0,0,0,1
+Cobalt(II) nitrate,10141-05-6,DTXSID9064970,0,0,0,0,0,1
+Cobalt(II) oxide,1307-96-6,DTXSID6051649,0,0,0,1,0,0
+Coke Oven Emissions,"","",0,0,0,1,1,0
+Creosote,8001-58-9,DTXSID2023987,0,1,0,1,0,0
+Cristobalite,14464-46-1,DTXSID5041801,0,0,0,0,1,0
+Crotonaldehyde,4170-30-3,DTXSID8024864,0,0,1,0,0,0
+Cumene,98-82-8,DTXSID1021827,0,0,1,1,0,1
+Cupferron,135-20-6,DTXSID1020352,0,0,1,1,0,1
+Cycasin,14901-08-7,DTXSID2057574,0,0,1,1,0,0
+Cyclopenta[cd]pyrene,27208-37-3,DTXSID7074822,0,1,0,1,0,0
+Cyclophosphamide,50-18-0,DTXSID5020364,0,0,0,1,1,0
+Cyclophosphamide monohydrate,6055-19-2,DTXSID6024888,0,0,0,1,0,0
+Cyclosporin A,59865-13-3,DTXSID0020365,0,0,0,1,1,0
+Cytembena,21739-91-3,DTXSID5020368,0,0,0,1,0,0
+D&C Red No. 8,2092-56-0,DTXSID6062173,0,0,0,1,0,0
+DDT,50-29-3,DTXSID4020375,0,1,0,1,0,1
+DE 71,117148-05-7,DTXSID30873481,0,0,0,1,0,0
+Dacarbazine,4342-03-4,DTXSID0020369,0,0,1,1,0,1
+Daminozide,1596-84-5,DTXSID9020370,0,0,0,1,0,0
+Danthron,117-10-2,DTXSID9020328,0,0,1,1,0,1
+Daunorubicin,20830-81-3,DTXSID7022883,0,0,1,1,0,0
+Di(2-ethylhexyl) phthalate,117-81-7,DTXSID5020607,0,0,1,1,0,1
+Diazinon,333-41-5,DTXSID9020407,0,1,0,0,0,0
+Diazoaminobenzene,136-35-6,DTXSID9024934,0,0,0,1,0,1
+"Dibenz(c,h)acridine",224-53-3,DTXSID30176929,0,0,1,0,0,0
+"Dibenz[a,c]anthracene",215-58-7,DTXSID9049245,0,0,0,1,0,0
+"Dibenz[a,h]acridine",226-36-8,DTXSID3059761,0,0,1,1,0,1
+"Dibenz[a,h]anthracene",53-70-3,DTXSID9020409,0,1,0,1,0,1
+"Dibenz[a,j]acridine",224-42-0,DTXSID4059758,0,1,0,1,0,1
+"Dibenz[a,j]anthracene",224-41-9,DTXSID8074811,0,0,0,1,0,0
+"Dibenzo(a,e)pyrene",192-65-4,DTXSID3052690,0,0,0,1,0,1
+"Dibenzo[a,h]pyrene",189-64-0,DTXSID4059752,0,0,1,1,0,1
+"Dibenzo[a,i]pyrene",189-55-9,DTXSID9059751,0,0,1,1,0,1
+"Dibenzo[a,l]pyrene",191-30-0,DTXSID9059753,0,1,0,1,0,1
+Diberyllium orthosilicate,13598-00-0,DTXSID10929197,0,0,0,0,1,0
+Dibromoacetic acid,631-64-1,DTXSID1023815,0,0,1,1,0,1
+Dibromoacetonitrile,3252-43-5,DTXSID3024940,0,0,1,1,0,0
+Dibromochloroacetic acid,5278-95-5,DTXSID3031151,0,0,0,0,0,1
+Dichloroacetic acid,79-43-6,DTXSID2020428,0,0,1,1,0,1
+Dichloromethane,75-09-2,DTXSID0020868,0,1,0,1,0,1
+Dichlorvos,62-73-7,DTXSID5020449,0,0,1,1,0,0
+Dieldrin,60-57-1,DTXSID9020453,0,0,0,1,0,0
+Diesel Exhaust Particulates,DIESEL,"",0,0,0,1,0,1
+"Diesel fuel, marine",77650-28-3,DTXSID4025030,0,0,1,0,0,0
+Diethanolamine,111-42-2,DTXSID3021932,0,0,1,1,0,0
+Diethyl sulfate,64-67-5,DTXSID1024045,0,1,0,1,0,1
+Diethylstilbestrol,56-53-1,DTXSID3020465,1,0,0,1,1,0
+Diglycidyl resorcinol ether,101-90-6,DTXSID2020470,0,0,1,1,0,1
+Digoxin,20830-75-5,DTXSID5022934,0,0,1,0,0,0
+Dihydroxymethylfuratrizine,794-93-4,DTXSID401045239,0,0,1,1,0,0
+Diisononyl phthalate,28553-12-0,DTXSID4022521,0,0,0,1,0,0
+Diisopropyl sulfate,2973-10-6,DTXSID3073131,0,0,1,1,0,0
+Dimethyl phosphonate,868-85-9,DTXSID5020493,0,0,0,1,0,0
+Dimethyl sulfate,77-78-1,DTXSID5024055,0,1,0,1,0,1
+Dimethylarsinic acid,75-60-5,DTXSID7020508,0,0,1,1,0,0
+Dimethylcarbamoyl chloride,79-44-7,DTXSID1020512,0,1,0,1,0,1
+Diphenylhydantoin sodium,630-93-3,DTXSID2023775,0,0,0,1,0,1
+"Dipropyl 2,5-pyridinedicarboxylate",136-45-8,DTXSID8032544,0,0,0,1,0,0
+Diuron,330-54-1,DTXSID0020446,0,0,0,1,0,0
+Doxorubicin,23214-92-8,DTXSID8021480,0,1,0,0,0,1
+Elmiron,37319-17-8,DTXSID1025229,0,0,1,0,0,0
+Emissions from combustion of coal,"","",0,0,0,1,0,0
+Emissions from high-temperature unrefined rapeseed oil,"","",0,0,0,1,0,0
+Epichlorohydrin,106-89-8,DTXSID1020566,0,1,0,1,0,1
+Erionite,12510-42-8,DTXSID40872384,1,0,0,1,1,0
+Estragole,140-67-0,DTXSID0020575,0,0,0,1,0,0
+Estrone,53-16-7,DTXSID4022367,0,0,0,1,1,0
+Estropipate,7280-37-7,DTXSID3023005,0,0,0,1,0,0
+Ethanol,64-17-5,DTXSID9020584,1,0,0,0,0,0
+Ethoprop,13194-48-4,DTXSID4032611,0,0,0,1,0,0
+Ethyl acrylate,140-88-5,DTXSID4020583,0,0,1,1,0,0
+Ethyl methanesulfonate,62-50-0,DTXSID6025309,0,0,1,1,0,1
+Ethylbenzene,100-41-4,DTXSID3020596,0,0,1,1,0,0
+Ethylene oxide,75-21-8,DTXSID0020600,1,0,0,1,1,0
+Ethylene thiourea,96-45-7,DTXSID5020601,0,0,0,1,0,1
+Ethyleneimine,151-56-4,DTXSID8020599,0,0,1,1,0,0
+Etoposide,33419-42-0,DTXSID5023035,1,0,0,1,0,0
+Etridiazole,2593-15-9,DTXSID3032547,0,0,0,1,0,0
+Fenoxycarb,72490-01-8,DTXSID7032393,0,0,0,1,0,0
+Fluoro-edenite fibrous amphibole,67164-60-7,DTXSID401335773,0,0,0,1,0,0
+Folpet,133-07-3,DTXSID0021385,0,0,0,1,0,0
+Formaldehyde,50-00-0,DTXSID7020637,1,0,0,1,1,0
+Formic acid 2-[4-(5-nitro-2-furyl)-2-thiazolyl]hydrazide,3570-75-0,DTXSID6020640,0,0,1,1,0,0
+Fumonisin B1,116355-83-0,DTXSID6020644,0,0,1,1,0,0
+Furaltadone,139-91-3,DTXSID4048016,0,0,0,1,0,0
+Furan,110-00-9,DTXSID6020646,0,0,1,1,0,1
+Furazolidone,67-45-8,DTXSID4041997,0,0,0,1,0,0
+Furfuryl alcohol,98-00-0,DTXSID2025347,0,0,1,1,0,0
+Furilazole,121776-33-8,DTXSID4041999,0,0,0,1,0,0
+Furmecyclox,60568-05-0,DTXSID2024119,0,0,0,1,0,0
+Fusarin C,79748-81-5,DTXSID501020204,0,0,0,1,0,0
+Gallium arsenide,1303-00-0,DTXSID2023779,0,0,0,1,0,0
+Ganciclovir,82410-32-0,DTXSID8041032,0,0,0,1,0,0
+Gasoline,86290-81-5,DTXSID50105296,0,0,1,0,0,0
+Gasoline engine exhaust (condensates/extracts),"","",0,0,0,1,0,0
+Gemfibrozil,25812-30-0,DTXSID0020652,0,0,0,1,0,0
+Gentian Violet,548-62-9,DTXSID5020653,0,0,1,1,0,0
+Ginkgo biloba extract,90045-36-6,DTXSID8031366,0,0,1,0,0,0
+Glass wool,308066-92-4,DTXSID30891701,0,0,0,1,0,1
+Glu-P-1,67730-11-4,DTXSID5020657,0,0,1,1,0,0
+Glu-P-2,67730-10-3,DTXSID0020658,0,0,1,1,0,0
+Glycidaldehyde,765-34-4,DTXSID9020665,0,0,1,1,0,0
+Glycidol,556-52-5,DTXSID4020666,0,1,0,1,0,1
+Glycidyl methacrylate,106-91-2,DTXSID0025361,0,1,0,1,0,0
+Glyphosate,1071-83-6,DTXSID1024122,0,1,0,1,0,0
+Goldenseal root powder,NOCAS_31384,DTXSID6031384,0,0,1,1,0,0
+Griseofulvin,126-07-8,DTXSID8020674,0,0,1,1,0,0
+HC Blue 1,2784-94-3,DTXSID6020191,0,0,1,1,0,0
+Heptachlor,76-44-8,DTXSID3020679,0,0,1,1,0,0
+Heptachlor epoxide B,1024-57-3,DTXSID1024126,0,0,0,1,0,0
+Hexabromobiphenyl,36355-01-8,DTXSID3025382,0,0,0,0,0,1
+"Hexachloro-1,3-butadiene",87-68-3,DTXSID7020683,0,0,0,1,0,0
+Hexachlorobenzene,118-74-1,DTXSID2020682,0,0,1,1,0,1
+Hexachlorodibenzo-p-dioxin,34465-46- 8,DTXSID00872820,0,0,0,1,0,0
+Hexachloroethane,67-72-1,DTXSID7020689,0,0,1,1,0,1
+Hexamethylphosphoramide,680-31-9,DTXSID6020694,0,0,1,1,0,1
+Hydrazine,302-01-2,DTXSID3020702,0,1,0,1,0,1
+Hydrazine sulfate,10034-93-2,DTXSID8020703,0,0,0,1,0,1
+Hydrochlorothiazide,58-93-5,DTXSID2020713,0,0,1,0,0,0
+Imazalil,35554-44-0,DTXSID8024151,0,0,0,1,0,0
+"Indeno[1,2,3-cd]pyrene",193-39-5,DTXSID8024153,0,0,1,1,0,1
+Indium phosphide,22398-80-7,DTXSID3031444,0,1,0,1,0,0
+Indium tin oxide,71243-84-0,DTXSID10904045,0,0,0,1,0,0
+Iprovalicarb,140923-17-7,DTXSID0047662,0,0,0,1,0,0
+Iron dextran,9004-66-4,DTXSID1031464,0,0,1,1,0,1
+Isobutyl nitrite,542-56-3,DTXSID3020750,0,0,1,1,0,0
+Isoprene,78-79-5,DTXSID2020761,0,0,1,1,0,1
+Isopyrazam,881685-58-1,DTXSID7058208,0,0,0,1,0,0
+Isoxaflutole,141112-29-0,DTXSID5034723,0,0,0,1,0,0
+Kava kava resin,9000-38-8,DTXSID5031505,0,0,1,0,0,0
+Kepone,143-50-0,DTXSID1020770,0,0,1,1,0,1
+Kresoxim-methyl,143390-89-0,DTXSID2032558,0,0,0,1,0,0
+Lactofen,77501-63-4,DTXSID7024160,0,0,0,1,0,0
+Lasiocarpine,303-34-4,DTXSID1020772,0,0,1,1,0,0
+Lead,7439-92-1,DTXSID2024161,0,0,1,1,0,1
+Lead acetate,15347-57-6,DTXSID10274073,0,0,0,0,0,1
+Lead arsenate,7784-40-9,DTXSID4042092,0,0,0,0,1,0
+Lead phosphate (3:2),7446-27-7,DTXSID5064706,0,0,0,1,0,1
+Lead(II) acetate,301-04-2,DTXSID6020773,0,0,0,1,0,0
+Leather dust,"","",0,0,0,1,0,0
+Leucomalachite green,129-73-7,DTXSID7031531,0,0,1,1,0,0
+Levofuraltadone,3795-88-8,DTXSID6043834,0,0,1,0,0,0
+Lindane,58-89-9,DTXSID2020686,1,0,0,1,0,1
+Lomustine,13010-47-4,DTXSID2023222,0,1,0,1,0,1
+Lynestrenol,52-76-6,DTXSID4021478,0,0,0,1,0,0
+MON-4660,71526-07-3,DTXSID0044575,0,0,0,1,0,0
+Malathion,121-75-5,DTXSID4020791,0,1,0,1,0,0
+"Malonaldehyde, sodium salt",24382-04-5,DTXSID4020793,0,0,0,1,0,0
+Mancozeb,8018-01-7,DTXSID0034695,0,0,0,1,0,0
+Maneb,12427-38-2,DTXSID9020794,0,0,0,1,0,0
+Marijuana smoke,"","",0,0,0,1,0,0
+MeA-alpha-C,68006-83-7,DTXSID5043766,0,0,1,1,0,0
+MeIQ,77094-11-2,DTXSID6020800,0,0,1,1,0,1
+MeIQx,77500-04-0,DTXSID1020801,0,0,1,1,0,1
+Medroxyprogesterone acetate,71-58-9,DTXSID0025527,0,0,1,1,0,0
+Megestrol acetate,595-33-5,DTXSID9040683,0,0,0,1,0,0
+Melamine,108-78-1,DTXSID6020802,0,0,1,0,0,0
+Melphalan,148-82-3,DTXSID6020804,1,0,0,1,1,0
+Mepanipyrim,110235-47-7,DTXSID4042121,0,0,0,1,0,0
+Merphalan,531-76-0,DTXSID9031569,0,0,1,1,0,0
+Mestranol,72-33-3,DTXSID0020814,0,0,0,1,1,0
+Metam-sodium,137-42-8,DTXSID2029167,0,0,0,1,0,0
+Methyl acrylate,96-33-3,DTXSID0024183,0,0,1,1,0,0
+Methyl carbamate,598-55-0,DTXSID8020834,0,0,0,1,0,0
+Methyl iodide,74-88-4,DTXSID0024187,0,0,0,1,0,0
+Methyl mercury,16056-34-1,DTXSID2031615,0,0,0,1,0,0
+Methyl methanesulfonate,66-27-3,DTXSID7020845,0,1,0,1,0,1
+Methylarsonic acid,124-58-3,DTXSID4020903,0,0,1,0,0,0
+Methylazoxymethanol,590-96-5,DTXSID1035076,0,0,0,1,0,0
+Methylazoxymethanol acetate,592-62-1,DTXSID1025568,0,0,1,1,0,0
+Methyleugenol,93-15-2,DTXSID5025607,0,0,1,1,0,1
+Methylhydrazine,60-34-4,DTXSID4020874,0,0,0,1,0,0
+Methylnitronitrosoguanidine,70-25-7,DTXSID2020846,0,1,0,1,0,1
+Metiram,9006-42-2,DTXSID9034737,0,0,0,1,0,0
+Metronidazole,443-48-1,DTXSID2020892,0,0,1,1,0,1
+Microcystin LR,101043-37-2,DTXSID3031654,0,0,1,0,0,0
+Mineral oil - includes paraffin oil,8012-95-1,DTXSID3034743,0,0,0,0,1,0
+Mirex,2385-85-5,DTXSID7020895,0,0,1,1,0,1
+Mitomycin C,50-07-7,DTXSID2020898,0,0,1,1,0,0
+Mitoxantrone,65271-80-9,DTXSID4046947,0,0,1,0,0,0
+Mitoxantrone dihydrochloride,70476-82-3,DTXSID0045173,0,0,0,1,0,0
+Molybdenum trioxide,1313-27-5,DTXSID7020899,0,0,1,1,0,0
+Monobasic lead acetate,1335-32-6,DTXSID1020774,0,0,0,1,0,1
+Monocrotaline,315-22-0,DTXSID9020902,0,0,1,1,0,0
+Myrcene,123-35-3,DTXSID6025692,0,0,1,1,0,0
+N'-Nitrosonornicotine,16543-55-8,DTXSID4021476,0,0,0,1,0,1
+"N,N'-Bis(2-chloroethyl)-N-nitrosourea",154-93-8,DTXSID8022743,0,1,0,1,0,1
+"N,N'-Diacetylbenzidine",613-35-4,DTXSID9036854,0,0,1,1,0,0
+"N,N,4-Trimethylaniline",99-97-8,DTXSID0021832,0,0,1,1,0,0
+"N,N-Dimethyl-N′-[5-[2-(5-nitro-2-furanyl)ethenyl]-1,3,4-oxadiazol-2-yl]methanimidamide",25962-77-0,DTXSID801126079,0,0,1,0,0,0
+"N,N-Dimethylacetamide",127-19-5,DTXSID5020499,0,0,1,1,0,0
+"N,N-Dimethylformamide",68-12-2,DTXSID6020515,0,1,0,1,0,0
+N-(2-Cyanoethyl)-N-methylnitrous amide,60153-49-3,DTXSID70975579,0,0,1,1,0,0
+N-Amyl-N-methylnitrosamine,13256-07-0,DTXSID30157617,0,0,0,1,0,0
+N-Heptyl-N-methylnitrous amide,16338-99-1,DTXSID70936822,0,0,0,1,0,0
+N-Hexyl-N-methylnitrous amide,28538-70-7,DTXSID20951227,0,0,0,1,0,0
+N-Methyl-N-nonylnitrous amide,75881-19-5,DTXSID80997267,0,0,0,1,0,0
+N-Methyl-N-octylnitrous amide,34423-54-6,DTXSID50955970,0,0,0,1,0,0
+N-Methylolacrylamide,924-42-5,DTXSID3020885,0,0,0,1,0,0
+N-Nitroso-N-methyl-N-dodecylamine,55090-44-3,DTXSID4021000,0,0,0,1,0,0
+N-Nitroso-N-methyl-N-tetradecylamine,75881-20-8,DTXSID4021004,0,0,0,1,0,0
+N-Nitroso-N-methyldecylamine,75881-22-0,DTXSID9021005,0,0,0,1,0,0
+N-Nitroso-N-methylethylamine,10595-95-6,DTXSID6021036,0,0,1,1,0,0
+N-Nitroso-N-methylurea,684-93-5,DTXSID4021006,0,1,0,1,0,1
+N-Nitroso-N-methylurethane,615-53-2,DTXSID4021472,0,0,1,1,0,0
+N-Nitrosodi-n-propylamine,621-64-7,DTXSID6021032,0,0,1,1,0,1
+N-Nitrosodibutylamine,924-16-3,DTXSID2021026,0,0,1,1,0,1
+N-Nitrosodiethanolamine,1116-54-7,DTXSID7021027,0,0,1,1,0,1
+N-Nitrosodiethylamine,55-18-5,DTXSID2021028,0,1,0,1,0,1
+N-Nitrosodimethylamine,62-75-9,DTXSID7021029,0,1,0,1,0,1
+N-Nitrosodiphenylamine,86-30-6,DTXSID6021030,0,0,0,1,0,0
+N-Nitrosohexamethyleneimine,932-83-2,DTXSID0021040,0,0,0,1,0,0
+N-Nitrosomethyl-N-propylamine,924-46-9,DTXSID90238991,0,0,0,1,0,0
+N-Nitrosomethylvinylamine,4549-40-0,DTXSID3042211,0,0,1,1,0,1
+N-Nitrosomorpholine,59-89-2,DTXSID4021056,0,0,1,1,0,1
+N-Nitrosopiperidine,100-75-4,DTXSID8021060,0,0,1,1,0,1
+N-Nitrosopyrrolidine,930-55-2,DTXSID8021062,0,0,1,1,0,1
+N-Nitrososarcosine,13256-22-9,DTXSID9074309,0,0,1,1,0,1
+N-[4-(5-Nitro-2-furyl)-2-thiazolyl]acetamide,531-82-8,DTXSID9020952,0,0,1,1,0,0
+Nafenopin,3771-19-5,DTXSID8020911,0,0,1,1,0,0
+Nalidixic acid,389-08-2,DTXSID3020912,0,0,0,1,0,0
+Naphthalene,91-20-3,DTXSID8020913,0,0,1,1,0,1
+Nickel,7440-02-0,DTXSID2020925,0,0,1,1,0,1
+Nickel & Nickel Compounds,NOCAS_872425,DTXSID40872425,1,0,0,1,1,0
+Nickel (II) oxide,1313-99-1,DTXSID7025710,0,0,0,1,1,0
+Nickel carbonate,3333-67-3,DTXSID3025708,0,0,0,1,0,0
+Nickel carbonyl,13463-39-3,DTXSID0024212,0,0,0,1,0,0
+Nickel hydroxide (Ni(OH)2),12054-48-7,DTXSID90274011,0,0,0,1,1,0
+Nickel refinery dust,NOCAS_24213,DTXSID5024213,0,0,0,1,0,0
+Nickel subsulfide,12035-72-2,DTXSID2025711,0,0,0,1,1,0
+Nickel sulfate,7786-81-4,DTXSID6023787,0,0,0,0,1,0
+Nickel sulfide,11113-75-0,DTXSID801014466,0,0,0,0,1,0
+Nickel(II) acetate,373-02-4,DTXSID7020926,0,0,0,1,1,0
+Nickelocene,1271-28-9,DTXSID8025709,0,0,0,1,0,0
+Nifuradene,555-84-0,DTXSID2020973,0,0,1,1,0,0
+Niridazole,61-57-4,DTXSID6045244,0,0,1,1,0,0
+Nitrapyrin,1929-82-4,DTXSID0024216,0,0,0,1,0,0
+Nitrilotriacetic acid,139-13-9,DTXSID6020939,0,0,1,1,0,1
+Nitrilotriacetic acid trisodium monohydrate,18662-53-8,DTXSID5020940,0,0,0,1,0,0
+Nitrobenzene,98-95-3,DTXSID3020964,0,0,1,1,0,1
+Nitrofen,1836-75-5,DTXSID7020970,0,0,1,1,0,1
+Nitrofurazone,59-87-0,DTXSID5020944,0,0,0,1,0,0
+Nitrogen mustard,51-75-2,DTXSID2020975,0,1,0,1,0,0
+Nitrogen mustard N-oxide,126-85-2,DTXSID7020976,0,0,1,1,0,0
+Nitrogen mustard hydrochloride,55-86-7,DTXSID8025757,0,0,0,1,0,1
+Nitrogen mustard oxide,302-70-5,DTXSID0023375,0,0,0,1,0,0
+Nitromethane,75-52-5,DTXSID2020977,0,0,1,1,0,1
+"Nitroso-2,6-dimethylmorpholine",1456-28-6,DTXSID4021470,0,0,0,1,0,0
+Nitrosomethyl-N-butylamine,7068-83-9,DTXSID20220960,0,0,0,1,0,0
+Nitrosomethylundecylamine,68107-26-6,DTXSID9021055,0,0,0,1,0,0
+Norethindrone,68-22-4,DTXSID9023380,0,0,0,1,0,1
+Norethynodrel,68-23-5,DTXSID3021069,0,0,0,1,0,0
+Ochratoxin A,303-47-9,DTXSID7021073,0,0,1,1,0,1
+Oryzalin,19044-88-3,DTXSID8024238,0,0,0,1,0,0
+Oxadiazon,19666-30-9,DTXSID3024239,0,0,0,1,0,0
+Oxazepam,604-75-1,DTXSID1021087,0,0,1,1,0,0
+Oxymetholone,434-07-1,DTXSID5023794,0,0,0,1,0,1
+Parathion,56-38-2,DTXSID7021100,0,0,1,1,0,0
+Pentachlorophenol,87-86-5,DTXSID7021106,1,0,0,1,0,1
+Pentaerythritol dibromide,3296-90-0,DTXSID9020164,0,0,1,1,0,1
+Pentosan polysulfate sodium,140207-93-8,DTXSID70102623,0,0,0,1,0,0
+Perfluorooctanesulfonic acid,1763-23-1,DTXSID3031864,0,0,0,1,0,0
+Perfluorooctanoic acid,335-67-1,DTXSID8031865,0,0,1,1,0,0
+Phenacetin,62-44-2,DTXSID1021116,1,0,0,1,1,1
+Phenazopyridine,94-78-0,DTXSID1023445,0,0,0,1,0,0
+Phenazopyridine hydrochloride,136-40-3,DTXSID1021118,0,0,1,1,0,1
+Phenesterin,3546-10-9,DTXSID6021119,0,0,0,1,0,0
+Phenobarbital,50-06-6,DTXSID5021122,0,0,1,1,0,0
+Phenolphthalein,77-09-8,DTXSID0021125,0,0,1,1,0,1
+Phenoxybenzamine,59-96-1,DTXSID0023458,0,0,0,1,0,0
+Phenoxybenzamine hydrochloride,63-92-3,DTXSID0021127,0,0,1,1,0,1
+Phenyl glycidyl ether,122-60-1,DTXSID8021145,0,0,1,1,0,0
+Phenylhydrazine,100-63-0,DTXSID8021147,0,0,0,1,0,0
+Pioglitazone,111025-46-8,DTXSID3037129,0,1,0,1,0,0
+Pirimicarb,23103-98-2,DTXSID1032569,0,0,0,1,0,0
+"Pitch, coal tar, high-temp.",65996-93-2,DTXSID1028285,1,0,0,1,1,0
+Plutonium,7440-07-5,DTXSID4064682,1,0,0,0,0,0
+Polybrominated biphenyls (PBB),59536-65-1,DTXSID5021174,0,1,0,1,0,1
+Polychlorinated biphenyls,1336-36-3,DTXSID5024267,1,0,0,1,0,1
+Polycyclic aromatic hydrocarbons,130498-29-2,DTXSID3044043,0,0,0,0,0,1
+Ponceau 3R,3564-09-8,DTXSID7021231,0,0,1,1,0,0
+Potassium N-methyldithiocarbamate,137-41-7,DTXSID1034424,0,0,0,1,0,0
+Potassium arsenite anhydrous,13464-35-2,DTXSID10274159,0,0,0,0,1,0
+Potassium bromate,7758-01-2,DTXSID6020195,0,0,1,1,0,0
+Potassium chromate(VI),7789-00-6,DTXSID8064858,0,0,0,0,1,0
+Potassium dichromate,7778-50-9,DTXSID5025948,0,0,0,0,1,0
+Premarin,12126-59-9,DTXSID9021186,0,0,0,0,1,0
+Primidone,125-33-7,DTXSID7023510,0,0,1,1,0,0
+Procarbazine,671-16-9,DTXSID4021189,0,0,0,1,0,1
+Procarbazine hydrochloride,366-70-1,DTXSID3021190,0,1,0,1,0,1
+Procymidone,32809-16-8,DTXSID9033923,0,0,0,1,0,0
+Progesterone,57-83-0,DTXSID3022370,0,0,0,1,0,1
+Propachlor,1918-16-7,DTXSID4024274,0,0,0,1,0,0
+Propargite,2312-35-8,DTXSID4024276,0,0,0,1,0,0
+Propoxur,114-26-1,DTXSID7021948,0,0,0,1,0,0
+Propyleneimine,75-55-8,DTXSID8024286,0,0,1,1,0,1
+Propyzamide,23950-58-5,DTXSID2020420,0,0,0,1,0,0
+Pymetrozine,123312-89-0,DTXSID2032637,0,0,0,1,0,0
+Pyridine,110-86-1,DTXSID9021924,0,0,1,1,0,0
+Quartz (SiO2),14808-60-7,DTXSID3032040,1,0,0,1,1,0
+Quinoline,91-22-5,DTXSID1021798,0,0,1,1,0,0
+R-(+)-Pulegone,89-82-7,DTXSID2025975,0,0,1,1,0,0
+Radium-224,13233-32-4,DTXSID50912341,1,0,0,0,0,0
+Radium-226,13982-63-3,DTXSID3051202,1,0,0,0,0,0
+Radium-228,15262-20-1,DTXSID6050415,1,0,0,0,0,0
+Radon,10043-92-2,DTXSID701015778,1,0,0,0,1,0
+"Refractories, fibers, aluminosilicate",142844-00-6,DTXSID90891702,0,0,1,1,0,0
+Refractory ceramic fibers,NOCAS_24296,DTXSID2024296,0,0,0,0,0,1
+Reserpine,50-55-5,DTXSID7021237,0,0,0,1,0,1
+Residual (heavy) fuel oils,"","",0,0,0,1,0,0
+Resmethrin,10453-86-8,DTXSID7022253,0,0,0,1,0,0
+Rhodamine B,81-88-9,DTXSID6042369,0,0,0,1,0,0
+Riddelliine,23246-96-0,DTXSID4026006,0,0,1,1,0,1
+Riebeckite,12001-28-4,DTXSID5030743,0,0,0,0,1,0
+Safrole,94-59-7,DTXSID0021254,0,0,1,1,0,1
+Sedaxane,874967-67-6,DTXSID2058207,0,0,0,1,0,0
+Selenium sulfide (SeS),7446-34-6,DTXSID9021265,0,0,0,1,0,1
+Semustine,13909-09-6,DTXSID8031603,1,0,0,1,1,0
+Shale oils,68308-34-9,DTXSID7028435,1,0,0,1,0,0
+Silicon carbide,409-21-2,DTXSID5052751,0,1,0,1,0,0
+"Silicon carbide, fibrous",308076-74-6,DTXSID701020379,0,0,1,0,0,0
+Sodium 2-phenylphenate,132-27-4,DTXSID2021153,0,0,1,1,0,0
+Sodium arsenate,7631-89-2,DTXSID5020102,0,0,0,0,1,0
+Sodium arsenite,7784-46-5,DTXSID5020104,0,0,0,0,1,0
+Sodium chromate,7775-11-3,DTXSID7032056,0,0,0,0,1,0
+Sodium dichromate,10588-01-9,DTXSID8021274,0,0,0,0,1,0
+Sodium pentachlorophenate,131-52-2,DTXSID4040264,0,0,0,0,0,1
+"Soots, tars, and mineral oils (untreated and mildly treated oils and used engine oils)","","",0,0,0,1,1,0
+Spirodiclofen,148477-71-8,DTXSID6034928,0,0,0,1,0,0
+Spironolactone,52-01-7,DTXSID6034186,0,0,0,1,0,0
+Stanozolol,10418-03-8,DTXSID3044128,0,0,0,1,0,0
+Sterigmatocystin,10048-13-2,DTXSID2021280,0,0,1,1,0,0
+Streptozotocin,18883-66-4,DTXSID2021282,0,0,1,1,0,1
+Strong Inorganic Acid Mists Containing Sulfuric Acid,"","",0,0,0,1,1,0
+Strontium chromate,7789-06-2,DTXSID70872832,0,0,0,0,1,0
+Styrene,100-42-5,DTXSID2021284,0,1,0,1,0,1
+Styrene oxide,96-09-3,DTXSID2021286,0,1,0,1,0,1
+Sulfallate,95-06-7,DTXSID7021289,0,0,1,1,0,1
+Sulfasalazine,599-79-1,DTXSID0021256,0,0,1,1,0,0
+Sulfuric acid,7664-93-9,DTXSID5029683,0,0,0,0,1,0
+Trim VX,1204332-00-2,DTXSID701052685,0,0,0,1,0,0
+Talc,14807-96-6,DTXSID5032109,0,0,1,1,0,0
+Tamoxifen,10540-29-1,DTXSID1034187,1,0,0,1,1,0
+Teniposide,29767-20-2,DTXSID8023638,0,1,0,0,0,0
+Teriparatide,52232-67-4,DTXSID001027900,0,0,0,1,0,0
+Testosterone,58-22-0,DTXSID8022371,0,0,0,1,0,0
+Tetrachloroethylene,127-18-4,DTXSID2021319,0,1,0,1,0,1
+Tetraethyl lead,78-00-2,DTXSID7023801,0,0,0,0,0,1
+Tetrafluoroethylene,116-14-3,DTXSID6021325,0,1,0,1,0,1
+Tetrahydrofuran,109-99-9,DTXSID1021328,0,0,1,1,0,0
+Tetranitromethane,509-14-8,DTXSID5021334,0,0,1,1,0,1
+Thioacetamide,62-55-5,DTXSID9021340,0,0,1,1,0,1
+Thiodicarb,59669-26-0,DTXSID0032578,0,0,0,1,0,0
+Thiotepa,52-24-4,DTXSID0021339,1,0,0,1,1,0
+Thiouracil,141-90-2,DTXSID4021347,0,0,1,1,0,0
+Thiourea,62-56-6,DTXSID9021348,0,0,0,1,0,1
+Thorium,7440-29-1,DTXSID6049800,1,0,0,0,0,0
+Thorium(IV) oxide,1314-20-1,DTXSID0051657,0,0,0,1,1,0
+Titanium dioxide,13463-67-7,DTXSID3021352,0,0,1,1,0,0
+Tobacco smoke,"","",0,0,0,1,1,0
+"Tobacco, oral use of smokeless products","","",0,0,0,1,1,0
+"Toluene 2,4-diisocyanate",584-84-9,DTXSID7026156,0,0,0,0,0,1
+Toluene diisocyanate,26471-62-5,DTXSID0024341,0,0,1,1,0,1
+"Toluene-2,6-diisocyanate",91-08-7,DTXSID2026157,0,0,0,0,0,1
+Toxaphene,8001-35-2,DTXSID7021368,0,0,1,1,0,1
+Toxins derived from Fusarium moniliforme (Fusarium verticillioides),"","",0,0,0,1,0,0
+Tremolite asbestos,77536-68-6,DTXSID701026177,0,0,0,0,1,0
+Treosulfan,299-75-2,DTXSID0026173,1,0,0,1,0,0
+Triamterene,396-01-0,DTXSID6021373,0,0,1,1,0,0
+Tribromoacetic acid,75-96-7,DTXSID6021668,0,0,0,0,0,1
+Tribufos,78-48-8,DTXSID1024174,0,0,0,1,0,0
+Trichlormethine,817-09-4,DTXSID6074835,0,0,1,1,0,0
+Trichloroacetic acid,76-03-9,DTXSID1021378,0,0,1,1,0,0
+Trichloroethylene,79-01-6,DTXSID0021383,1,0,0,1,1,0
+Tridymite,15468-32-3,DTXSID6049563,0,0,0,0,1,0
+Trimethyl orthophosphate,512-56-1,DTXSID1021403,0,0,0,1,0,0
+Trimethylolpropane triacrylate,15625-89-5,DTXSID0027773,0,0,1,1,0,0
+Triphenyltin hydroxide,76-87-9,DTXSID1021409,0,0,0,1,0,0
+"Tris(1,3-dichloro-2-propyl) phosphate",13674-87-8,DTXSID9026261,0,0,0,1,0,0
+"Tris(2,3-dibromopropyl) phosphate",126-72-7,DTXSID5021413,0,1,0,1,0,1
+Tris(2-chloroethyl) phosphate,115-96-8,DTXSID5021411,0,0,0,1,0,0
+Trp-P-1,62450-06-0,DTXSID0043767,0,0,1,1,0,0
+Trp-P-2,62450-07-1,DTXSID5043768,0,0,1,1,0,0
+Unleaded gasoline (wholly vaporized),"","",0,0,0,1,0,0
+Uracil mustard,66-75-1,DTXSID8026270,0,0,1,1,0,0
+Urethane,51-79-6,DTXSID9021427,0,1,0,1,0,1
+Vanadium oxide (V2O5),1314-62-1,DTXSID2023806,0,0,1,1,0,0
+Vinclozolin,50471-44-8,DTXSID4022361,0,0,0,1,0,0
+Vincristine-prednisone-nitrogen mustard-procarbazine mixt.,113803-47-7,DTXSID701045240,0,0,0,1,0,0
+Vinyl acetate,108-05-4,DTXSID3021431,0,0,1,0,0,0
+Vinyl bromide,593-60-2,DTXSID8021432,0,1,0,1,0,1
+Vinyl chloride,75-01-4,DTXSID8021434,1,0,0,1,1,0
+Vinyl fluoride,75-02-5,DTXSID3021435,0,1,0,1,0,1
+Wood Dust,"","",0,0,0,1,1,0
+Z-Tetrachlorvinphos,22248-79-9,DTXSID1032648,0,0,1,1,0,0
+Zileuton,111406-87-2,DTXSID9023752,0,0,0,1,0,0
+Zinc chromate,13530-65-9,DTXSID7047485,0,0,0,0,1,0
+"alpha-1,2,3,4,5,6-Hexachlorocyclohexane",319-84-6,DTXSID2020684,0,0,0,0,0,1
+alpha-Methylstyrene,98-83-9,DTXSID9025661,0,0,1,1,0,0
+beta-Butyrolactone,3068-88-0,DTXSID1020223,0,0,1,1,0,0
+beta-Hexachlorocyclohexane,319-85-7,DTXSID7020685,0,0,0,0,0,1
+beta-Propiolactone,57-57-8,DTXSID8021197,0,0,1,1,0,1
+bis(2-Chloro-1-methylethyl) ether,108-60-1,DTXSID4020167,0,0,0,1,0,0
+bis(Chloromethyl) ether,542-88-1,DTXSID8020173,0,0,0,1,1,0
+o-Aminoazotoluene,97-56-3,DTXSID1020069,0,0,1,1,0,1
+"p,p'-DDD",72-54-8,DTXSID4020373,0,0,0,1,0,0
+"p,p'-DDE",72-55-9,DTXSID9020374,0,0,0,1,0,0
+p-Nitroanisole,100-17-4,DTXSID9059208,0,0,1,1,0,0
+"trans-2-[(Dimethylamino)methylimino]-5-[2-(5-nitro-2-furyl)vinyl]-1,3,4-oxadiazole",55738-54-0,DTXSID7020502,0,0,0,1,0,0
