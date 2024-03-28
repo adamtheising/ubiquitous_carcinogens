@@ -1,0 +1,942 @@
+---
+title: "Ubiquitous Carcinogens: an exposure data review"
+author: "Adam Theising, US EPA"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    theme: yeti    
+    toc: yes
+    toc_depth: 4
+    toc_float:
+      collapsed: true
+    number_sections: true
+---
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 12px;
+  }
+td {  /* Table  */
+  font-size: 8px;
+}
+h1.title {
+  font-size: 32px;
+  color: Black;
+}
+h1 { /* Header 1 */
+  font-size: 24px;
+  color: Black;
+}
+h2 { /* Header 2 */
+  font-size: 18px;
+  color: Black;
+}
+h3 { /* Header 3 */
+  font-size: 15px;
+  color: Black;
+}
+code.r{ /* Code block */
+    font-size: 12px;
+}
+pre { /* Code block - determines code spacing between lines */
+    font-size: 14px;
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+$~$
+
+**Overview:** this document is a brief data assessment meant to support discussions about ubiquitous carcinogens and disparate exposure. It begins by describing the construction of a unified working carcinogen list. Second, it reports the availability of national carcinogen biomonitoring through CDC's NHANES, and provides chemical-by-chemical descriptive exposure statistics stratified by demographic sub-population. Third, it summarizes previous and ongoing state-level biomonitoring programs, reviewing the extent to which they can provide nationally-relevant carcinogenic exposure information. Lastly, it concludes by summarizing some alternative environmental exposure measures, and discusses potential future avenues for data collection. 
+
+All raw data and R code used for data construction and analysis are available in [this repository](https://github.com/adamtheising/ubiquitous_carcinogens).
+
+$~$
+
+**Executive summary:**
+
+* This exercise identified 715 chemicals that are known or possible carcinogens.
+* Of these 715 carcinogens, a total of 88 (12%) were surveilled by NHANES over the 1998-2018 period. And of those surveilled, detection limits result in nationally-representative average exposure measures being available for only 29 carcinogens.
+* Amongst detected carcinogens in NHANES, average exposure to heavy metals (Cadmium, Lead, and Nickel), DDE, Acrylonitrile, and Melamine were relatively higher in low-income or minority communities.
+* Many US states also have biomonitoring programs. Across state programs, 39 carcinogenic chemicals are or were being surveilled, though only five are carcinogens for which data does not exist in NHANES.
+* Limited alternative national exposure data/metrics exist for carcinogens, and were not systematically compiled or assessed. National-scale environmental exposure studies (e.g. household dust) are thin on chemical coverage. National consumer-based exposure studies exist, but chemical coverage and applicability are uncertain.
+
+$~$
+
+```{r packages, echo = F, warning = F, message = F}
+library(tidyverse)
+library(readxl)
+library(data.table)
+library(DT)
+library(ggplot2)
+library(plotly)
+library(cowplot)
+```
+
+# A unified list of carcinogens
+
+This review's initial task was construction of a single list of carcinogens. Several health institutions produce carcinogen lists, and while there is substantial overlap, differences do exist. In constructing a unified "list of lists", an inclusive approach was taken: all chemicals falling on the following lists were included, with the exception of carcinogens related to radiation, viruses, or obvious pharmaceutical applications:
+
+* International Agency for Research on Cancer Group 1: carcinogenic to humans (*IARC1*)
+* IARC Group 2A: probably carcinogenic to humans (*IARC2A*)
+* IARC Group 2B: possibly carcinogenic to humans (*IARC2B*)
+* NIEHS Report on Carcinogens: known human carcinogen (*ROC_Known*)
+* NIEHS ROC: reasonably anticipated human carcinogen (*ROC_RAHC*)
+* California Proposition 65 list (*Prop65*)
+  + Only included chemicals whose basis for listing was carcinogency
+
+The chemicals on these lists were compiled, duplicates were removed, and all chemical names were standardized to the preferred name per EPA's [CompTox chemical dashboard](https://comptox.epa.gov/dashboard/) after matching on the chemicals CAS number. The CompTox ID (*DTXSID*) was also retained where possible, with an eye to using the dashboard for chemical analysis in the future. **In total, 715 unique carcinogens remain on the final list, shown below.**
+
+The following is a summary of the origin source of carcinogens on the unified list: 62 of the chemicals come solely from the Report on Carcinogens, 41 solely from the IARC classification list, and 186 solely from Proposition 65. 289 carcinogens are on two of the source lists, while 193 are members of all three source lists.
+
+```{r carcinogens, echo = F, warning= F, message = F}
+carc.list <- data.table::fread('./output/merged_carcinogen_list.csv',
+                               encoding = 'UTF-8')
+
+DT::datatable(
+  carc.list,
+  class = 'cell-border stripe',
+  #filter = 'bottom',
+  rownames = FALSE,
+  caption = 'Table 1: Unified list of carcinogens.',
+  extensions = c('FixedColumns'),
+  options = list(
+    dom = 'tlpf',
+    scrollX = TRUE,
+    fixedColumns = TRUE
+    )
+  ) %>%
+  DT::formatStyle(columns = colnames(carc.list), fontSize = '8pt')
+```
+
+A helpful future task would be categorizing these carcinogens by use or chemical group.
+
+$~$
+
+# Carcinogen exposure disparities in NHANES
+Using the unified carcinogen list, a natural starting point for investigating a chemical's biomonitoring availability is the CDC's NHANES data. CDC provides a [publicly-available interactive exposure report](https://www.cdc.gov/exposurereport/data_tables.html) for all biomonitored chemicals, which includes exposure summary statistics stratified by age, gender, and race/ethnicity. In order to additionally capture stratified statistics by household income, the following relies on a merged and harmonized version of the NHANES microdata spanning from 1988 to early 2018, the most recent year of unrestricted data. These data are used to provide an updated environmental justice analysis of carcinogen biomonitoring data, roughly following the screening method proposed in [Belova et al (*Environmental Health*, 2013)](https://ehjournal.biomedcentral.com/articles/10.1186/1476-069X-12-114).
+
+## Summary of carcinogens surveilled in NHANES
+The NHANES biomonitoring microdata were first filtered to include only samples of chemicals that are members the unified carcinogen list. To the extent possible, care was taken to ensure all metabolites of carcinogens were correctly assigned to the parent compound and therefore included in the analysis. For example, N-Acetyl-S-(phenyl)-L-cysteine is volatile organic compound metabolite of benzene, a known carcinogen; Mono-(2-ethyl-5-hydroxyhexyl) phthalate is a metabolite of Bis(2-ethylhexyl) phthalate, which is reasonably anticipated to be a human carcinogen. In such cases, if the metabolite is not itself carcinogenic, the statistical results based on the metabolite are assigned to the carcinogenic parent compound for ease of presentation.
+
+After consolidating the analysis to only carcinogens, summary statistics were calculated for each analyte. Best practices in the use of NHANES were followed. Survey weights were used to account for NHANES' sampling design. CDC’s convention is to **not** report geometric mean estimates for stratification subsamples with >40% of results below the limit of detection; that convention is maintained here. Several tables and figures summarizing the results are presented now.
+
+First is a big-picture summary of the carcinogens that are biomonitored in NHANES. **In total, 88 of the 715 listed carcinogens were surveilled in NHANES between 1988 and 2018. Of these 88 carcinogens, only 29 have a sufficient count of biomonitoring observations above the limit of detection for geometric mean estimates stratified across race/ethnicity, gender, and household income (*GM detected*).** 54 of the 88 carcinogens have a sufficient count of biomonitoring observations above the limit of detection for calculation of a 95th percentile stratified by demographics (*95th percentile detected*). And many of the carcinogens surveilled in more than one fashion (*Analyte count*), either via multiple analytes (e.g. different metabolites for the same parent chemical) or multiple matrices (e.g. blood, urine). 43 of the 88 carcinogens were surveilled most recently in the past decade (*Recent year*).
+
+```{r NHANES1, echo = F, warning= F, message = F}
+nhanes.sum <- data.table::fread('./output/nhanes_summary.csv',
+                               encoding = 'UTF-8')
+
+nhanes.count.mean <- nhanes.sum[, .(mean = mean(mean, na.rm = F)),
+                           by = .(chem, cas)
+                           ][, .(meanobs = max(mean, na.rm = T)),
+                             by = cas
+                             ][meanobs > 0, `GM detected` := TRUE
+                               ][, meanobs := NULL]
+
+nhanes.count.p95 <- nhanes.sum[, .(mean = mean(perc_95, na.rm = F)),
+                           by = .(chem, cas)
+                           ][, .(meanobs = max(mean, na.rm = T)),
+                             by = cas
+                             ][meanobs > 0, `95th percentile detected` := TRUE
+                               ][, meanobs := NULL]
+
+nhanes.count.analytes <- nhanes.sum[, .N, by = .(chem, cas)
+                     ][, .(`Analyte count` = .N),
+                       by = cas]
+
+nhanes.most.recent.year <- nhanes.sum[, recentyear := as.numeric(substr(year,6,9))
+                                      ][, .(recentyear = max(recentyear)),
+                                        by = cas
+                                        ][, `Recent year` := paste0((recentyear-1),'-',recentyear)
+                                          ][,.(cas, `Recent year`)]
+
+summary.together <- merge(
+  merge(
+    merge(
+      merge(nhanes.count.mean,nhanes.count.p95),
+      nhanes.count.analytes),
+    nhanes.most.recent.year),
+  carc.list[, .(NAME, CASRN)],
+  by.x = 'cas', by.y = 'CASRN')
+
+setcolorder(summary.together, c('NAME', 'cas'))
+names(summary.together)[1:2] <- c('Chemical', 'CAS')
+
+DT::datatable(
+  summary.together,
+  class = 'cell-border stripe',
+  #filter = 'bottom',
+  rownames = FALSE,
+  caption = 'Table 2: Summary of carcinogen biomonitoring availability in NHANES.',
+  extensions = c('FixedColumns'),
+  options = list(
+    dom = 'tlpf',
+    scrollX = TRUE,
+    fixedColumns = TRUE
+    )
+  ) %>%
+  DT::formatStyle(columns = colnames(summary.together), fontSize = '8pt')
+
+rm(nhanes.count.analytes,nhanes.count.mean,nhanes.count.p95,nhanes.most.recent.year)
+```
+
+## Stratified summary statistics
+Next, the complete set of chemical-by-chemical stratified statistics are presented in Table 3. Exposure differentials for each analyte are available by gender, household income, and race/ethnicity. Race/ethnicity categories presently consist of Hispanic, non-Hispanic Black, non-Hispanic White, and Other; there is potential to expand these categories in a future analysis. Household income is categorized by whether or not the household earned income above or below twice the poverty line. The statistics presented for each sub-population include the geometric mean, median, 75th percentile, 95th percentile, and 99th percentile; if no value is presented for an analyte, it is due to measurement falling below the the method detection limit.
+
+```{r NHANES2, echo = F, warning= F, message = F}
+nhanes.sum <- data.table::fread('./output/nhanes_summary.csv',
+                               encoding = 'UTF-8')[, frac_nd := NULL]
+
+names(nhanes.sum) <- c('Analyte', 'CAS', 'Sub-population','Mean','Median',
+'75th percentile','95th percentile','99th percentile','Sample Size','Year')
+
+DT::datatable(
+  nhanes.sum,
+  class = 'cell-border stripe',
+  filter = 'top',
+  rownames = FALSE,
+  caption = 'Table 3: Stratified statistics for carcinogens biomonitored in NHANES: 1998-2018.',
+  extensions = c('FixedColumns','Scroller'),
+  options = list(dom = 't',
+                 scrollX = TRUE,
+                 scrollCollapse = TRUE,
+                 deferRender = TRUE,
+                 scrollY = 200,
+                 scroller = TRUE)
+  ) %>%
+  DT::formatStyle(columns = colnames(nhanes.sum), fontSize = '8pt')
+
+```
+
+## Disparate exposure to carcinogens
+To ease comparison of differential exposures across chemicals, two standardized metrics are created. First, the geometric mean ratio ($GMR$) is the ratio between the geometric mean of biomarker $b$ in sub-population $s$ and the geometric mean of that biomarker in a reference sub-population $r$:
+
+\begin{align*}
+{GMR}_{bs} = \frac{{GM}_{bs}}{{GM}_{br}}
+\end{align*}
+
+Second, the percentile mean ratio (${PMR}_{95}$), taken at the 95th percentile, is the ratio between the 95th percentile of biomarker $b$ in sub-population $s$ and the 95th percentile of that biomarker in a reference sub-population $r$
+
+\begin{align*}
+{PMR}_{95,bs} = \frac{P_{95,bs}}{P_{95,br}}
+\end{align*}
+
+These metrics are calculated for each analyte, and the $GMR$ and ${PMR}_{95}$ values are fully summarized in Table 4 below. When considering metrics differentiated by household income, the reference sub-population are members of households earning above twice the poverty line (as compared to the numerator group, households earning below twice the poverty line). When considering metrics differentiated by race/ethnicity, the reference sub-population are non-Hispanic White individuals; race/ethnicity groups in the numerator are therefore Hispanic, non-Hispanic Black, and Other.
+
+```{r NHANES3, echo = F, warning= F, message = F}
+nhanes.sum <- unique(data.table::fread('./output/nhanes_summary.csv',
+                               encoding = 'UTF-8')[, frac_nd := NULL])
+
+nhanes.wide <- data.table::dcast(nhanes.sum,
+                                 chem + cas + year ~ cat, 
+                                 value.var = c('mean','perc_95')
+                                 )[, .(chem, cas, year,
+                                       GMR_income = `mean_Income: PIR below 2` / `mean_Income: PIR above 2`,
+                                       GMR_hisp = `mean_Race/eth: Hispanic` / `mean_Race/eth: Non-hispanic white`,
+                                       GMR_black = `mean_Race/eth: Non-hispanic black` / `mean_Race/eth: Non-hispanic white`,
+                                       GNR_other =  `mean_Race/eth: Other` / `mean_Race/eth: Non-hispanic white`,
+                                       P95R_income = `perc_95_Income: PIR below 2` / `perc_95_Income: PIR above 2`,
+                                       P95R_hisp = `perc_95_Race/eth: Hispanic` / `perc_95_Race/eth: Non-hispanic white`,
+                                       P95R_black = `perc_95_Race/eth: Non-hispanic black` / `perc_95_Race/eth: Non-hispanic white`,
+                                       P95R_other =  `perc_95_Race/eth: Other` / `perc_95_Race/eth: Non-hispanic white`
+                                       )
+                                   ]
+
+names(nhanes.wide)[1:3] <- c('Analyte','CAS','Year')
+
+DT::datatable(
+  nhanes.wide,
+  class = 'cell-border stripe',
+  #filter = 'bottom',
+  rownames = FALSE,
+  caption = 'Table 4: Summary of disparate exposure vis-a-vis GM and P95 ratios for carcinogens in NHANES.',
+  extensions = c('FixedColumns'),
+  options = list(
+    dom = 'tlpf',
+    scrollX = TRUE,
+    fixedColumns = TRUE
+    )
+  ) %>%
+  DT::formatStyle(columns = colnames(nhanes.wide), fontSize = '8pt')
+```
+
+## Visualizing disparate exposure
+Table 4 is dense in information. To more easily highlight key takeaways that result from this analysis, the following visualizations provide a clearer summary of which sub-populations are more heavily exposed to which carcinogens. 
+
+Figure 1 provides a bar chart of GMR values across each of the 29 carcinogens for which measurement was possible^[In future work, survey-weighted confidence intervals should be added to the GMR values shown in this figure.]. The GMR by income group was most elevated for Nickel, PFOS, PFOA, Cobalt, Lead, and Cadmium, suggesting potentially disparate exposure to those carcinogens in lower-income households. For Hispanic sub-populations, relative exposures to 1-Naphthylamine, 2-Naphthylamine, 4-Biphenylamine, 2-Methylaniline, Melamine and Cadmium were particularly elevated. For non-Hispanic Black sub-populations, relative exposures to Acrylonitrile, DDE, 1,3-Butadiene, Acrolein, Ethylene Oxide and Acrylamide were most elevated. And for other non-Hispanic sub-populations, relative exposure to Melamine, DDE, Cadmium, Lead, and Arsenic were most elevated.
+
+```{r NHANES4, echo = F, warning= F, message = F, fig.width=9, fig.height=8}
+nhanes.long.gmr <- merge(data.table::melt(nhanes.wide,
+                                    id.vars = c('Analyte','CAS'),
+                                    measure.vars = c("GMR_income","GMR_hisp","GMR_black","GNR_other")),
+                         carc.list[, .(NAME, CASRN)],
+                         by.x = 'CAS', by.y = 'CASRN', all.x = T
+                         )[, `Carcinogen Name (abbrev)` := substr(NAME,1,15)
+                           ][nchar(`Carcinogen Name (abbrev)`) == 15, 
+                             `Carcinogen Name (abbrev)` := paste0(`Carcinogen Name (abbrev)`,'...')]
+
+a <- ggplot2::ggplot(data = nhanes.long.gmr[!is.na(value)][order(value)],
+       ggplot2::aes(x = `Carcinogen Name (abbrev)`, y = value, fill = variable)) +
+  ggplot2::geom_bar(position = 'dodge', stat='identity', size = 2) +
+  ggplot2::theme_minimal(base_size = 15) +
+  ggplot2::theme(axis.text.x = element_text(color = "grey55", size = 14, vjust = 0.6, angle = 90, face = "plain"),
+        axis.text.y = element_text(color = "grey55", size = 12, face = "plain"),  
+        axis.title.x = element_text(color = "grey55", size = 20, face = "plain"),
+        axis.title.y = element_text(color = "grey55", size = 20, face = "plain"),
+        legend.text = element_text(color = "grey55", size = 12, face = "plain"),
+        legend.title = element_text(color = "grey55", size = 14, face = "plain"),
+        legend.position = c(1, 0.2),
+        plot.title = element_text(size = 10, color = "grey55", face = "plain"),
+        plot.title.position = "plot") + 
+  ggplot2::labs(x = 'Carcinogen name', y = 'GM ratio value', fill = 'Sub-population',
+                title = "Figure 1: Geometric mean ratios by sub-population and chemical") +
+  ggplot2::scale_fill_manual(values = c("#FF0000", "#00A08A", "#F2AD00", "#5BBCD6"))
+
+plot_a <- plotly::ggplotly(a)
+
+plot_a <- plot_a %>% plotly::layout(
+  showlegend = T,
+  updatemenus = list(
+    list(
+      x = 1.5,
+      y = 0.25,
+      buttons = list(
+        list(method = "restyle",
+             args = list("visible", list(TRUE, TRUE, TRUE, TRUE)),
+             label = "Show all GMRs"),
+        list(method = "restyle",
+             args = list("visible", list(TRUE, FALSE, FALSE, FALSE)),
+             label = "Income GMR only"),
+        list(method = "restyle",
+             args = list("visible", list(FALSE, TRUE, FALSE, FALSE)),
+             label = "Hispanic GMR only"),
+        list(method = "restyle",
+             args = list("visible", list(FALSE, FALSE, TRUE, FALSE)),
+             label = "Black GMR only"),
+        list(method = "restyle",
+             args = list("visible", list(FALSE, FALSE, FALSE, TRUE)),
+             label = "Other race/ethn only")
+      )
+    )
+  )
+)
+
+plot_a
+```
+
+Figure 2 provides an analogous figure for the 95th percentile exposure values. At the upper end of the distribution, method detection limits are less binding, so substantially more analytes have a P95 ratio. To simplify visualization, the figure below shows only P95R estimates that are greater than 1, and does so separately by sub-population. A few observations stand out. First, Ethylene thiourea shows a high P95R across each of the 4 sub-populations, and likely results from disparate exposure to more susceptible individuals. Second, for Hispanic sub-populations, several organochlorine pesticides (DDT, b-BHC, and DDE) exhibit elevated P95 ratios. Third, 1,4-Dichlorobenzene show elevated P95 ratios for Hispanic and non-Hispanic Black subpopulations. And lastly, some of the presented P95 ratios are well above 5 -- strikingly high. These results should be taken with a grain of salt until corresponding confidence intervals are calculated and reported.
+
+```{r NHANES5, echo = F, warning= F, message = F, fig.width=9, fig.height=8}
+nhanes.long.p95r <- merge(data.table::melt(nhanes.wide,
+                                    id.vars = c('Analyte','CAS'),
+                                    measure.vars = c("P95R_income","P95R_hisp","P95R_black","P95R_other")),
+                         carc.list[, .(NAME, CASRN)],
+                         by.x = 'CAS', by.y = 'CASRN', all.x = T
+                         )[, `Carcinogen Name (abbrev)` := substr(NAME,1,15)
+                           ][nchar(`Carcinogen Name (abbrev)`) == 15, 
+                             `Carcinogen Name (abbrev)` := paste0(`Carcinogen Name (abbrev)`,'...')]
+
+p95.income <- ggplot2::ggplot(data = nhanes.long.p95r[variable == 'P95R_income'
+                                                      ][value > 1
+                                                        ][order(-value)
+                                                          ][, .(value = max(value)),
+                                                            by = `Carcinogen Name (abbrev)`],
+       ggplot2::aes(x = reorder(`Carcinogen Name (abbrev)`, -value), y = value)) +
+  ggplot2::geom_bar(stat='identity', size = 2, fill = "#FF0000") +
+  ggplot2::theme_minimal(base_size = 15) +
+  ggplot2::theme(axis.text.x = element_text(color = "grey55", size = 10, vjust = 0.6, angle = 90, face = "plain"),
+        axis.text.y = element_text(color = "grey55", size = 10, face = "plain"), 
+        axis.title.x = element_text(color = "grey55", size = 14, face = "plain"),
+        axis.title.y = element_text(color = "grey55", size = 14, face = "plain"),
+        legend.text = element_text(color = "grey55", size = 12, face = "plain"),
+        legend.title = element_text(color = "grey55", size = 14, face = "plain"),
+        plot.title = element_text(size = 12, color = "grey55", face = "plain"),
+        plot.title.position = "plot") + 
+  ggplot2::labs(x = 'Carcinogen name', y = 'P95 ratio value',
+                title = "Lower Income.")
+
+p95.hisp <- ggplot2::ggplot(data = nhanes.long.p95r[variable == 'P95R_hisp'
+                                                      ][value > 1
+                                                        ][order(-value)
+                                                          ][, .(value = max(value)),
+                                                            by = `Carcinogen Name (abbrev)`],
+       ggplot2::aes(x = reorder(`Carcinogen Name (abbrev)`, -value), y = value)) +
+  ggplot2::geom_bar(stat='identity', size = 2, fill = "#00A08A") +
+  ggplot2::theme_minimal(base_size = 15) +
+  ggplot2::theme(axis.text.x = element_text(color = "grey55", size = 10, vjust = 0.6, angle = 90, face = "plain"),
+        axis.text.y = element_text(color = "grey55", size = 10, face = "plain"), 
+        axis.title.x = element_text(color = "grey55", size = 14, face = "plain"),
+        axis.title.y = element_text(color = "grey55", size = 14, face = "plain"),
+        legend.text = element_text(color = "grey55", size = 12, face = "plain"),
+        legend.title = element_text(color = "grey55", size = 14, face = "plain"),
+        plot.title = element_text(size = 12, color = "grey55", face = "plain"),
+        plot.title.position = "plot") + 
+  ggplot2::labs(x = 'Carcinogen name', y = 'P95 ratio value',
+                title = "Hispanic")
+
+p95.black <- ggplot2::ggplot(data = nhanes.long.p95r[variable == 'P95R_black'
+                                                      ][value > 1
+                                                        ][order(-value)
+                                                          ][, .(value = max(value)),
+                                                            by = `Carcinogen Name (abbrev)`],
+       ggplot2::aes(x = reorder(`Carcinogen Name (abbrev)`, -value), y = value)) +
+  ggplot2::geom_bar(stat='identity', size = 2, fill = "#F2AD00") +
+  ggplot2::theme_minimal(base_size = 15) +
+  ggplot2::theme(axis.text.x = element_text(color = "grey55", size = 10, vjust = 0.6, angle = 90, face = "plain"),
+        axis.text.y = element_text(color = "grey55", size = 10, face = "plain"), 
+        axis.title.x = element_text(color = "grey55", size = 14, face = "plain"),
+        axis.title.y = element_text(color = "grey55", size = 14, face = "plain"),
+        legend.text = element_text(color = "grey55", size = 12, face = "plain"),
+        legend.title = element_text(color = "grey55", size = 14, face = "plain"),
+        plot.title = element_text(size = 12, color = "grey55", face = "plain"),
+        plot.title.position = "plot") + 
+  ggplot2::labs(x = 'Carcinogen name', y = 'P95 ratio value',
+                title = "non-Hispanic Black")
+
+p95.other <- ggplot2::ggplot(data = nhanes.long.p95r[variable == 'P95R_other'
+                                                      ][value > 1
+                                                        ][order(-value)
+                                                          ][, .(value = max(value)),
+                                                            by = `Carcinogen Name (abbrev)`],
+       ggplot2::aes(x = reorder(`Carcinogen Name (abbrev)`, -value), y = value)) +
+  ggplot2::geom_bar(stat='identity', size = 2, fill = "#5BBCD6") +
+  ggplot2::theme_minimal(base_size = 15) +
+  ggplot2::theme(axis.text.x = element_text(color = "grey55", size = 10, vjust = 0.6, angle = 90, face = "plain"),
+        axis.text.y = element_text(color = "grey55", size = 10, face = "plain"), 
+        axis.title.x = element_text(color = "grey55", size = 14, face = "plain"),
+        axis.title.y = element_text(color = "grey55", size = 14, face = "plain"),
+        legend.text = element_text(color = "grey55", size = 12, face = "plain"),
+        legend.title = element_text(color = "grey55", size = 14, face = "plain"),
+        plot.title = element_text(size = 12, color = "grey55", face = "plain"),
+        plot.title.position = "plot") + 
+  ggplot2::labs(x = 'Carcinogen name', y = 'P95 ratio value',
+                title = "non-Hispanic Other")
+
+figure.grid <- cowplot::plot_grid(p95.income, p95.hisp, p95.black, p95.other,
+                   ncol = 2)
+
+title <- cowplot::ggdraw() + 
+  cowplot::draw_label(
+    "Figure 2: 95th percentile ratios, by sub-population.",
+    fontface = 'plain',
+    size = 10,
+    color = "grey55",
+    x = 0,
+    hjust = 0
+  ) +
+  ggplot2::theme(
+    # add margin on the left of the drawing canvas,
+    # so title is aligned with left edge of first plot
+    plot.margin = margin(0, 0, 0, 7)
+  )
+
+cowplot::plot_grid(
+  title, figure.grid,
+  ncol = 1,
+  # rel_heights values control vertical title margins
+  rel_heights = c(0.1, 1)
+)
+
+```
+
+$~$
+
+# Carcinogen biomonitoring in state programs
+Several states possess their own biomonitoring program. Many of these programs were started and have continued operations using money from competitive [CDC state biomonitoring grants](https://www.cdc.gov/biomonitoring/state_grants.html). Together, these states form the core of the National Biomonitoring Network, a collaborative effort consisting of federal, state, and local laboratories that aim to ensure quality laboratory practices, helping produce comparable biomonitoring data across levels of government.
+
+The following sections will describe several states' individual biomonitoring efforts, including the extent to which carcinogens are or were being monitored, and any available summary exposure statistics stratified by demographic subgroups. The heatmap figure below summarizes findings on surveillence data availability for carcinogens across the states.
+
+
+``` {r heatmap, echo = F, warning= F, message = F, fig.width=8, fig.height=9}
+state.dta <- data.table::fread('./output/state_chemlist.csv')
+
+# factorize
+state.dta$Carcinogen <- with(state.dta,factor(Carcinogen,levels = rev(sort(unique(Carcinogen)))))
+state.dta$State <- with(state.dta,factor(State,levels = sort(unique(State))))
+
+colors <- c("red", "blue", "purple")
+
+ggplot2::ggplot(state.dta, 
+       ggplot2::aes(x = State, y = Carcinogen, fill = `Monitoring status`)) + 
+  ggplot2::geom_tile() + 
+  ggplot2::scale_fill_manual(values=colors) +
+  ggplot2::theme_minimal() +
+  ggplot2::theme(axis.text.x = element_text(color = "grey55", size = 14, vjust = 0.6, angle = 90, face = "plain"),
+        axis.text.y = element_text(color = "grey55", size = 12, face = "plain"),  
+        axis.title.x = element_text(color = "grey55", size = 20, face = "plain"),
+        axis.title.y = element_text(color = "grey55", size = 20, face = "plain"),
+        legend.text = element_text(color = "grey55", size = 12, face = "plain"),
+        legend.title = element_text(color = "grey55", size = 14, face = "plain"),
+        plot.title = element_text(size = 10, color = "grey55", face = "plain"),
+        plot.title.position = "plot") +
+  ggplot2::labs(title = "Figure 2: Carcinogen surveillance data availability by state")
+```
+
+**Across the states that made information available, 39 carcinogens in total were biomonitored. All of these carcinogens except 4,4'-Oxydianiline, 1-Bromopropane, Aldrin, p,p'-DDD, and TBBPA were monitored in NHANES at some point from 1988-2018.** The modest amount of additional carcinogen coverage from state biomonitoring is disappointing, but a logical result. States rely on the same laboratory methods used nationally by NHANES and are unlikely to have time and resources dedicated to expanding such capabilities. Additionally, a key justification for state biomonitoring programs is the need to understand how local and regional exposures compare to the national distribution. This requires surveillance of chemicals for which the national exposure distribution is known.
+
+Because of the limited value-add that state level biomonitoring results can contribute relative to NHANES -- and several states' discomfort making comparisons across state-level program results with varying statistical precision and sub-populations of interest -- state-level stratified statistics are not aggregated into a single table or figure here. Instead, the following presents a state-by-state summary of biomonitoring capabilities and any available surveillance statistics stratified by race/ethnicity, household income, or gender.
+
+## California
+California was one of the earliest state [biomonitoring programs](https://biomonitoring.ca.gov/) to receive a CDC grant (2009), and today is likely the most advanced in terms of capabilities. By law, California has a formal biomonitoring selection process in place to filter down the universe of chemicals into a [single designation list](https://biomonitoring.ca.gov/chemicals/designated-chemicals) of several hundred. From this designation list, a Scientific Guidance Panel recommends [prioritization of a subset](https://biomonitoring.ca.gov/chemicals/priority-chemicals) based on degree of potential exposure, likelihood of a chemical being a carcinogen/toxicant, the limits of laboratory detection, and more. From this priority list, California DPH selects a final group of chemicals for biomonitoring based on laboratory considerations, feasibility, public resources, and special relevance of a chemical to a particular sub-population being studied. In practice, the state typically has resources to monitor less than 100 chemicals.
+
+California has performed a wide variety of biomonitoring projects over the years; some surveilled a statewide population sample while others focused on particular regions, certain demographic or occupational groups, or populations affected by health outcomes of concern. Ensuring biomonitoring for a diverse set of populations is a primary goal of CA DPH. In sum, California monitored 113 chemicals over this period^[Note: this counts all PAH metabolites as a single chemical group and all PCBs as a single chemical group.]. 12 of these chemicals fall on the unified carcinogen list. A summary of these programs and the carcinogens they surveilled is shown below:
+
+```{r california1, echo = F, warning= F, message = F}
+ca.inventory <- data.table::as.data.table(
+  readxl::read_excel('./raw_data/state_biomonitoring/BiomonitoringCA_Inventory.xlsx')
+)
+
+ca.inv.unique <- data.table::data.table(
+  t(unique(ca.inventory[, .(Project, `Study Group`,`Sample Collection Date`)])))
+data.table::setnames(ca.inv.unique, as.character(ca.inv.unique[1,]))
+ca.inv.unique <- ca.inv.unique[-1,][, Chemical := c('Study sample','Year')]
+data.table::setcolorder(ca.inv.unique, 'Chemical')
+
+ca.inv.chems <- data.table::dcast(
+  unique(ca.inventory[, .(Project,
+                          Chemical = `Chemical measured - abbreviation`,
+                          CAS = `CAS Number` )
+  ][Chemical %like% 'PCB', Chemical := 'PCBs'
+  ][Chemical %like% 'PCB', CAS := '1336-36-3'
+  ][CAS == '14797-73-0', Chemical := 'Perchlorate'
+  ])[, value := T],
+  Chemical + CAS ~ Project,
+  value.var = 'value'
+)
+
+ca.inv.dt <- rbind(ca.inv.unique, ca.inv.chems, fill = T
+                         )[CAS %in% carc.list$CASRN | is.na(CAS)
+                           ][, CAS := NULL]
+data.table::setcolorder(ca.inv.dt, c('Chemical'))
+names(ca.inv.dt) <- 
+  c(" ",
+    "Biomonitoring Exposures Study (BEST): Pilot",
+    "Biomonitoring Exposures Study (BEST): Expanded",
+    "California Childhood Leukemia Study (CCLS)",
+    "California Teachers Study (CTS)",
+    "Firefighter Occupational Exposures (FOX) Project",
+    "Maternal and Infant Environmental Exposure Project (MIEEP)",
+    "Measuring Analytes in Maternal Archived Samples (MAMAS)",
+    "California Regional Exposure Study, Los Angeles County (CARE-LA)",
+    "California Regional Exposure Study, Region 2 (CARE-2)",
+    "California Regional Exposure Study, Region 3 (CARE-3)",
+    "East Bay Diesel Exposure Project (EBDEP)",
+    "Center for the Health Assessment of Mothers and Children of Salinas (CHAMACOS)",
+    "Markers of Autism Risk in Babies: Learning Early Signs (MARBLES)",
+    "Asian/Pacific Islander Community Exposures (ACE) Project: Round 1",
+    "Asian/Pacific Islander Community Exposures (ACE) Project: Round 2") 
+
+DT::datatable(
+  ca.inv.dt,
+  class = 'cell-border stripe',
+  rownames = FALSE,
+  caption = 'Table 5: Carcinogen coverage in biomonitoring studies performed in CA: 2005-2020.',
+  extensions = c('FixedColumns'),
+  options = list(
+    dom = 'tf',
+    scrollX = TRUE,
+    fixedColumns = TRUE,
+    pageLength = -1
+    )
+  ) %>%
+  DT::formatStyle(columns = colnames(ca.inv.dt), fontSize = '8pt') %>%
+  DT::formatStyle(0, target = "row", fontWeight = styleRow(1:2, "bold"))
+
+rm(ca.inv.chems, ca.inv.unique, ca.inventory, ca.inv.together)
+```
+
+Of these studies, the [California Regional Exposure (CARE) Study](https://biomonitoring.ca.gov/projects/california-regional-exposure-care-study) and [Biomonitoring Exposures Study (BEST)](https://biomonitoring.ca.gov/projects/biomonitoring-exposures-study-best-2expanded) provide the best coverage of chemicals and populations more representative of regions or the entire state.^[The Asian/Pacific-Islander Community Exposures (ACE) Project has collected biomonitoring data including measures of metal and PFAS exposure, from samples of the Chinese population of San Francisco and the Vietnamese population of San Jose. Summary statistics comparing these sub-populations' results with national averages in NHANES are available.] The expanded wave of BEST is now complete, but CA DPH did not have weighted and demographically-stratified summary statistics on hand at this time. CA DPH was able to share a new public report for CARE-LA (LA County) and CARE-2 (Riverside, San Bernardino, Imperial, Mono, and Inyo Counties) which were conducted from 2018-2020. In the appendix of the report, demographically-stratified summary statistics are available for several carcinogens. These results (for cadmium, lead, methylmercury, arsenic, PFAS, and PFOA) are shown below:
+
+```{r california2, echo = F, warning= F, message = F}
+ca.dta <- data.table::as.data.table(
+  readxl::read_excel('./raw_data/state_biomonitoring/CA_stratifiedresults.xlsx')
+)[, Mean := sub("\\s\\(.*?\\)", "", Mean)
+  ][CAS %in% carc.list$CASRN]
+                               
+DT::datatable(
+  ca.dta,
+  class = 'cell-border stripe',
+  filter = 'top',
+  rownames = FALSE,
+  caption = 'Table 6: Stratified statistics for carcinogens biomonitored in CA CARE studies: 2018-2020.',
+  extensions = c('FixedColumns','Scroller'),
+  options = list(dom = 't',
+                 scrollX = TRUE,
+                 scrollCollapse = TRUE,
+                 deferRender = TRUE,
+                 scrollY = 200,
+                 scroller = TRUE)
+  ) %>%
+  DT::formatStyle(columns = colnames(ca.dta), fontSize = '8pt')
+```
+
+Helpful points of contact at CA DPH are [Nerissa Wu](mailto:Nerissa.Wu@cdph.ca.gov) and [Kathleen Attfield](mailto:kathleen.attfield@cdph.ca.gov).
+
+## Washington
+In 2010-2011, Washington state conducted a state-level biomonitoring program. Urine samples were obtained from a representative sample of households across the state and paired with a household questionnaire used to determine demographics. The Washington Tracking Network shares the results of this biomonitoring, stratified by demographic variables of interest, on a [public dashboard](https://doh.wa.gov/data-and-statistical-reports/washington-tracking-network-wtn/biomonitoring).
+
+The dashboard data were procured, cleaned and standardized. Of the 25 chemical compounds surveilled in WA, only 7 are members of the carcinogen list. Five are metals: arsenic, beryllium, cadmium, cobalt and lead. The other two are carcinogenic metabolites of arsenic: DMA and MMA. Exposure statistics stratified by gender, household income, race, ethnicity, and age are shown below (blank cells imply statistic not available due to detection limits):
+
+```{r washington, echo = F, warning= F, message = F}
+was.dta <- data.table::fread('./output/WA_strat_table.csv'
+                             )[CAS %in% carc.list$CASRN
+                               ][Analyte != 'Arsenic (V) Acid (μg/g CrCl)']
+
+DT::datatable(
+  was.dta,
+  class = 'cell-border stripe',
+  filter = 'top',
+  rownames = FALSE,
+  caption = 'Table 7: Stratified statistics for carcinogens biomonitored in WA: 2014-2019.',
+  extensions = c('FixedColumns','Scroller'),
+  options = list(dom = 't',
+                 scrollX = TRUE,
+                 scrollCollapse = TRUE,
+                 deferRender = TRUE,
+                 scrollY = 200,
+                 scroller = TRUE)
+  ) %>%
+  DT::formatStyle(columns = colnames(was.dta), fontSize = '8pt')
+```
+
+A helpful point of contact in the WA DOH regarding biomonitoring is [Caroline West](mailto:caroline.west@doh.wa.gov).
+
+## New Jersey
+New Jersey has been awarded CDC grants in 2014 and 2019 for development of their biomonitoring program, [NJHANES](https://www.nj.gov/health/phel/env-testing/chemical-terrorism-lab/biomonitoring_projects.shtml). During the 2014-2019 grant cycle, statewide surveillance was performed on metals in blood and urine, on PFAS in serum, and on PCBs in serum. Demographic information was also collected during a corresponding household survey. 
+
+NJ DOH was unable to immediately provide machine-readable chemical-by-chemical summary statistics stratified by demographics or access to the underlying microdata. They did, however, refer to published and working papers that include results stratified by gender^[These include Du et al. [(*Chemosphere*, 2020)](https://www.sciencedirect.com/science/article/pii/S0045653520319251), Yu et al. [(*IJHEH*, 2019)](https://www.sciencedirect.com/science/article/pii/S1438463919304687), and pre-print results from a working paper by same authors on metals in NJHANES blood and urine data.]; though these do not include measures varying by race/ethnicity or household income, the results are shown below.
+
+```{r newjersey1, echo = F}
+nj.dta <- data.table::as.data.table(
+  readxl::read_excel('./raw_data/state_biomonitoring/NJ_stratifiedresults_2016-2018.xlsx')
+)[CAS %in% carc.list$CASRN
+  ][, Year := '2016-2018'
+    ][order(Chemical, Gender)]
+
+
+DT::datatable(
+  nj.dta,
+  class = 'cell-border stripe',
+  filter = 'top',
+  rownames = FALSE,
+  caption = 'Table 8: Gender-stratified statistics for carcinogens biomonitored in NJ: 2016-2018.',
+  extensions = c('FixedColumns','Scroller'),
+  options = list(dom = 't',
+                 scrollX = TRUE,
+                 scrollCollapse = TRUE,
+                 deferRender = TRUE,
+                 scrollY = 200,
+                 scroller = TRUE)
+  ) %>%
+  DT::formatStyle(columns = colnames(nj.dta), fontSize = '8pt') 
+```
+
+In addition to these results, NJ DOH kindly provided a complete list of NJHANES analytes for the 2019-2024 project cycle. This list includes 122 analytes, including around 20 variations of heavy metals, several polycyclic aromatic hydrocarbons (PAH) metabolites, several VOC metabolites, 12 PFAS and dozens of polychlorinated biphenyls (PCBs) and polybrominated diphenyl ethers (PBDEs). Of these 122 analytes, 27 are carcinogens. Five are metals, two are metabolites of arsenic, and the remainder can be classified as PFAS (PFOA and PFOS), PAHs, PCBs, metabolites of VOCs (e.g. 1-Bromopropane, Benzene, Styrene, etc.), and pesticides or their byproducts (DDT, DDE, Mirex, and hexachlorocyclohexanes).
+
+```{r newjersey2, echo = F}
+nj.dta <- unique(
+  hi <- merge(data.table::as.data.table(
+  readxl::read_excel('./raw_data/state_biomonitoring/NJHANES_Analytes_2019-2024.xlsx')
+  ),
+  data.table::as.data.table(
+    readxl::read_excel('./raw_data/crosswalks/voc_parent_chems.xlsx') #Adjust for VOC metabolites
+  )[, .(CAS, `Metabolite CAS`)][!is.na(`Metabolite CAS`)],
+  by.x = 'CAS', by.y = 'Metabolite CAS', all.x = T
+  )[!is.na(CAS.y), CAS := CAS.y
+][CAS %in% carc.list$CASRN
+][,.(CAS, Matrix)]
+)
+
+nj.carc <- merge(nj.dta,
+                 carc.list[, .(NAME, CASRN)],
+                 by.x = 'CAS', by.y = 'CASRN'
+                 )[, lapply(.SD, paste0, collapse=", "), by = .(NAME,CAS)
+                   ][, Year := '2019-2024'
+                     ][order(NAME)]
+
+names(nj.carc)[3] <- 'Sample media'
+
+DT::datatable(
+  nj.carc,
+  class = 'cell-border stripe',
+  #filter = 'bottom',
+  rownames = FALSE,
+  caption = 'Table 9: Carcinogens biomonitored in NJ: 2019-2024.',
+  extensions = c('FixedColumns','Scroller'),
+  options = list(dom = 't',
+                 scrollX = TRUE,
+                 scrollCollapse = TRUE,
+                 deferRender = TRUE,
+                 scrollY = 200,
+                 scroller = TRUE)
+) %>%
+  DT::formatStyle(columns = colnames(nj.carc), fontSize = '8pt')
+```
+
+Helpful points of contact at NJ DOH are [Tina Fan](mailto:tina.fan@doh.nj.gov) and [Chang Yu](mailto:chang.yu@doh.nj.gov).
+
+## New Hampshire
+New Hampshire has been awarded CDC grants in 2014 and 2019 for development of their biomonitoring program, NH TrACE. During the 2014-2019 grant cycle, statewide surveillance was performed on roughly 20 heavy metals, roughly 15 PFAS, and roughly 10 pesticides. Demographic information was also collected during a corresponding household survey. Linked water testing was also conducted for private wells and publicly-sourced water, providing information on household exposure to metals, radiologicals, PFAS, and a large variety of VOCs and pesticides via the drinking water pathway. In sum, these data provide substantial potential for stratified exposure summary statistics by demographics of interest.
+
+NH produced a [summary report of findings](https://www.dhhs.nh.gov/sites/g/files/ehbemt476/files/inline-documents/2022-02/trace-studyreport-2019.pdf) from this initial cycle in 2019. Unfortunately, this report does not contain any statistics of interest and the underlying raw microdata is not publicly available. Staff from NH DHHS kindly offered to investigate their non-published records for disaggregate statistics; they expect it will be possible to provide them in mid-April. While there was very limited racial and ethnic diversity in NH's population sample, there may be interesting heterogeneity along the household income dimension.
+
+NH has continued NH TrACE during the 2019-2024 award cycle, surveilling 35 of the chemicals studied previously as well as metabolites of polycyclic aromatic hydrocarbons. A summary report on findings is expected late this year, and may include demographically-stratified summary statistics. In addition, smaller-scale biomonitoring studies are targeting residents who rely on private well water, Medicaid recipients, and upstate residents located near an EPA Superfund site; these studies will test for a similar set of chemicals.
+
+Of the chemicals monitored during both cycles, only the 11 shown below are members of the carcinogen list. These carcinogens consist of five heavy metals, two metabolites of arsenic (DMA and MMA), 2 PFAS, metabolites of PAHs, and a single herbicide (2,4-D).
+
+``` {r newhampshire, echo = F, warning= F, message = F}
+nh.2019 <- data.table::as.data.table(
+  readxl::read_excel('./raw_data/state_biomonitoring/NH_2019study.xlsx')
+)[,2:4][, Year := '2014-2019']
+
+nh.2024 <- data.table::as.data.table(
+  readxl::read_excel('./raw_data/state_biomonitoring/NH_2024study.xlsx')
+)[,2:4][, Year := '2019-2024']
+
+nh.together <- rbind(nh.2019, nh.2024)[, lapply(.SD, paste0, collapse=", "), 
+                                       by = .(`Preferred Chemical Name`,CAS)
+                                       ][, Type := sapply(strsplit(as.character(Type), 
+                                                                   split=",\\s*"),
+                                                          function(x) {paste(unique(x), collapse = ', ')})
+                                         ][, Year := sapply(strsplit(as.character(Year), 
+                                                                   split=",\\s*"),
+                                                          function(x) {paste(unique(x), collapse = ', ')})
+                                         ]
+
+nh.carc <- nh.together[CAS %in% carc.list$CASRN][order(`Preferred Chemical Name`)]
+names(nh.carc)[3] <- 'Sample media'
+
+DT::datatable(
+  nh.carc,
+  class = 'cell-border stripe',
+  #filter = 'bottom',
+  rownames = FALSE,
+  caption = 'Table 10: Carcinogens biomonitored in NH: 2014-2024.',
+  extensions = c('FixedColumns','Scroller'),
+  options = list(dom = 't',
+                 scrollX = TRUE,
+                 scrollCollapse = TRUE,
+                 deferRender = TRUE,
+                 scrollY = 200,
+                 scroller = TRUE)
+) %>%
+  DT::formatStyle(columns = colnames(nh.carc), fontSize = '8pt')
+
+```
+
+Helpful points of contact at NH DHHS are [Melissa Josefiak](mailto:melissa.s.josefiak@dhhs.nh.gov) and [Madhumita Chatterjee](mailto:Madhumita.Chatterjee@dhhs.nh.gov).
+
+## Minnesota
+Minnesota established a biomonitoring program by state law in 2007. This program has conducted a variety of projects including a study of PFAS exposure in urban adults, a study of arsenic levels in child living in a neighborhood with known soil contamination, plastic and paraben exposure levels for pregnant women in Minneapolis, and mercury and other heavy metal blood concentrations of newborns in the Twin Cities and Lake Superior region of the state.
+
+Staff at MDoH kindly shared demographically-stratified results from these projects, as available. More specifically, results come from the state's [MN FEET study](https://www.health.state.mn.us/communities/environment/biomonitoring/projects/mnfeet.html) and the [2018 Healthy Rural and Urban Kids pilot project](https://www.health.state.mn.us/communities/environment/biomonitoring/projects/ruralurbankids.html).^[MDoH has not typically produced stratified statistic tables in their public reports but was able to share what they had internally. MN FEET results shown come from a pre-meeting report for the October 2018 Scientific Advisory Panel meeting. Results from the Healthy Rural and Urban Kids project come from a pre-meeting report and slide deck for the June 2020 Scientific Advisory Panel.] As shown below, there is meaningful heterogeneity in exposure to arsenic, methylmercury, lead, and 2,4-D across racial/ethnic and income subpopulations.
+
+```{r minnesota1, echo = F, warning = F}
+#Minnesota chems
+mn.carc <- data.table::as.data.table(
+  readxl::read_excel('./raw_data/state_biomonitoring/MN_stratifiedresults_2018-2020.xlsx')
+)[CAS %in% carc.list$CASRN]
+
+DT::datatable(
+  mn.carc,
+  class = 'cell-border stripe',
+  filter = 'top',
+  rownames = FALSE,
+  caption = 'Table 11: Race/ethnicity- and income-stratified statistics for carcinogens biomonitored in MN: 2018-2020.',
+  extensions = c('FixedColumns','Scroller'),
+  options = list(dom = 't',
+                 scrollX = TRUE,
+                 scrollCollapse = TRUE,
+                 deferRender = TRUE,
+                 scrollY = 200,
+                 scroller = TRUE)
+  ) %>%
+  DT::formatStyle(columns = colnames(mn.carc), fontSize = '8pt') 
+```
+
+In 2019, the MDoH was awarded a CDC grant to perform statewide biomonitoring on the child-aged population. Data collection is ongoing; MDoH intends to perform disparities analyses for all chemical analytes and will share in a public report when available. The state is surveilling a set of 62 chemicals, all by urine, including the standard metals panel, PFAS, pesticides, phthalates, flame retardants, phenols, and metabolites of PAHs. Of these chemicals, nine are carcinogens and are listed below:
+
+```{r minnesota2, echo = F}
+#Minnesota chems
+mn.dta <- merge(unique(data.table::as.data.table(
+  readxl::read_excel('./raw_data/state_biomonitoring/MN_healthykids_chems_2019-2024.xlsx')
+)[CAS %in% carc.list$CASRN
+  ][, .(CAS)]),
+carc.list[, .(NAME, CASRN)],
+by.x = 'CAS', by.y = 'CASRN'
+)[order(NAME)
+  ][, `Sample Media` := 'urine']
+
+setcolorder(mn.dta, 'NAME')
+names(mn.dta)[1] <- 'Preferred Chemical Name'
+
+DT::datatable(
+  mn.dta,
+  class = 'cell-border stripe',
+  #filter = 'bottom',
+  rownames = FALSE,
+  caption = 'Table 12: Carcinogens biomonitored in MN: 2019-2024.',
+  extensions = c('FixedColumns','Scroller'),
+  options = list(dom = 't',
+                 scrollX = TRUE,
+                 scrollCollapse = TRUE,
+                 deferRender = TRUE,
+                 scrollY = 200,
+                 scroller = TRUE)
+) %>%
+  DT::formatStyle(columns = colnames(mn.dta), fontSize = '8pt')
+```
+
+Helpful contacts regarding biomonitoring at MDoH are [Jessica Nelson](mailto:jessica.nelson@state.mn.us) and [Sheila Amenumey](mailto: sheila.amenumey@state.mn.us).
+
+## Iowa
+Iowa was awarded a CDC grant for development of a biomonitoring program in 2019. [The program](https://biomonitoring.shl.uiowa.edu/about-our-program) is currently in progress, with a summary report describing (sub-)population-level findings expected in December 2024. Surveillance focuses two particular sub-populations: IA residents who rely on private wells for drinking water and pregnant women. The program will study exposure to 32 individual chemicals. These consist of the usual set of metals, a group of neonicotinoid insecticides that may be found in private wells, and several phenols for which exposure during pregnancy is of potential concern.
+
+Of these 32 monitored chemicals, only the set of 5 metals shown below are members of the carcinogen list. Because the program is ongoing, no stratified statistics are current available.
+
+```{r iowa, echo = F}
+ia.carc <- data.table::as.data.table(
+  readxl::read_excel('./raw_data/state_biomonitoring/IA_2019-2024.xlsx')
+)[CAS %in% carc.list$CASRN][, 2:4]
+
+names(ia.carc)[3] <- 'Sample media'
+
+DT::datatable(
+  ia.carc,
+  class = 'cell-border stripe',
+  #filter = 'bottom',
+  rownames = FALSE,
+  caption = 'Table 13: Carcinogens biomonitored in IA: 2019-2024.',
+  extensions = c('FixedColumns','Scroller'),
+  options = list(dom = 't',
+                 scrollX = TRUE,
+                 scrollCollapse = TRUE,
+                 deferRender = TRUE,
+                 scrollY = 200,
+                 scroller = TRUE)
+) %>%
+  DT::formatStyle(columns = colnames(ia.carc), fontSize = '8pt')
+```
+
+## New York
+New York state was awarded a CDC grant for development of a [biomonitoring program](https://www.health.ny.gov/environmental/chemicals/chemicals_and_health/biomonitoring.htm) in 2019. Sample collection is complete in some regions of the state, while participant recruitment is ongoing in others. Eligibility was restricted to adults aged 20 years or older who reside at randomly selected addresses across the state.
+
+The program is taking blood samples to screen for eleven unique PFAS and seven heavy metals. Urine samples are testing for a group of 17 heavy metals and pesticides including organophosphates, phenoxy acids, and pyrethroids. Unfortunately, the exact pesticide chemicals being screened were not public information at time of writing and NY state did not respond to outreach.
+
+Of the known chemicals being monitored by NY state, only 5 metals and 2 PFAS, shown below, are members of the carcinogen list. Again, because the program is ongoing, no stratified statistics are current available.
+
+```{r newyork, echo = F}
+ny.carc <- data.table::as.data.table(
+  readxl::read_excel('./raw_data/state_biomonitoring/NY_2019-2024study.xlsx')
+)[CAS %in% carc.list$CASRN
+  ][, 2:4
+    ][, lapply(.SD, paste0, collapse=", "), by = .(`Preferred Chemical Name`,CAS)]
+
+names(ny.carc)[3] <- 'Sample media'
+
+DT::datatable(
+  ny.carc,
+  class = 'cell-border stripe',
+  #filter = 'bottom',
+  rownames = FALSE,
+  caption = 'Table 14: Carcinogens biomonitored in NY: 2019-2024.',
+  extensions = c('FixedColumns','Scroller'),
+  options = list(dom = 't',
+                 scrollX = TRUE,
+                 scrollCollapse = TRUE,
+                 deferRender = TRUE,
+                 scrollY = 200,
+                 scroller = TRUE)
+) %>%
+  DT::formatStyle(columns = colnames(ny.carc), fontSize = '8pt')
+```
+
+NY state did not respond to outreach attempts.
+
+## Massachusetts
+Massachusetts was awarded a CDC grant for development of their state biomonitoring during the 2014 award cycle. From 2014-2019, MA DPH conducted both a statewide representative study and a smaller-scale study targeting low income residents. Unfortunately, MA DPH was unable to provide stratified biomonitoring statistics from these studies at this time; the program's funding expired before a final report with such information could be drafted. MA DPH staff plans to finish this report in near future for public consumption, but in the meantime was able to provide a list of analytes that were monitored during the study period. This of sixteen chemicals includes six carcinogens, shown below:
+
+```{r massachusetts, echo = F}
+ma.carc <- data.table::as.data.table(
+  readxl::read_excel('./raw_data/state_biomonitoring/MA_chemlist_2014-2019.xlsx')
+)[CAS %in% carc.list$CASRN
+  ][, lapply(.SD, paste0, collapse=", "), by = .(Analyte, CAS)]
+
+names(ma.carc)[3] <- 'Sample media'
+
+DT::datatable(
+  ma.carc,
+  class = 'cell-border stripe',
+  #filter = 'bottom',
+  rownames = FALSE,
+  caption = 'Table 15: Carcinogens biomonitored in MA: 2014-2019.',
+  extensions = c('FixedColumns','Scroller'),
+  options = list(dom = 't',
+                 scrollX = TRUE,
+                 scrollCollapse = TRUE,
+                 deferRender = TRUE,
+                 scrollY = 200,
+                 scroller = TRUE)
+) %>%
+  DT::formatStyle(columns = colnames(ma.carc), fontSize = '8pt')
+```
+
+A helpful contact at MA DPH is [Meg Blanchet](meg.blanchet@mass.gov).
+
+## Michigan
+
+Michigan has varying biomonitoring projects complete and underway. Most relevantly, Michigan DHHS received a biomonitoring grant in 2019 to perform a [large-scale, state-representative exposure study](https://www.michigan.gov/mdhhs/safety-injury-prev/environmental-health/topics/dehbio/michem). The state is measuring 197 analytes, including 45 PFAS, 100 PCBs, 17 organochlorine pesticides, 24 heavy metals, 10 PDBEs, and PBB. Must of the sample collection has already been completed. Of these 197 analytes, XXX are members of the carcinogen list, and are shown below:
+
+```{r michigan, echo = F}
+mi.carc <- merge(unique(data.table::as.data.table(
+  readxl::read_excel('./raw_data/state_biomonitoring/MI_2019-2024_monitorlist.xlsx')
+)[CAS %in% carc.list$CASRN
+][,.(CAS, `Sample Media`)
+  ]),
+carc.list[,.(CASRN, NAME)],
+by.x = 'CAS', by.y = 'CASRN')[, lapply(.SD, paste0, collapse=", "), by = .(NAME, CAS)
+                              ][order(NAME)]
+
+names(mi.carc)[1] <- 'Analyte'
+
+DT::datatable(
+  mi.carc,
+  class = 'cell-border stripe',
+  #filter = 'bottom',
+  rownames = FALSE,
+  caption = 'Table 16: Carcinogens biomonitored in MI: 2019-2024.',
+  extensions = c('FixedColumns','Scroller'),
+  options = list(dom = 't',
+                 scrollX = TRUE,
+                 scrollCollapse = TRUE,
+                 deferRender = TRUE,
+                 scrollY = 200,
+                 scroller = TRUE)
+) %>%
+  DT::formatStyle(columns = colnames(mi.carc), fontSize = '8pt')
+```
+
+A helpful contact at MI DHHS is [Rachel Long](LongR5@michigan.gov).
+
+## Other notable governmental biomonitoring efforts:
+Several states not listed above were recipients of biomonitoring grants from CDC in 2014, but did not publicly provide useful data gleaned from their programs nor effective contact information. These states include Virginia and the Four Corners State Consortium (Utah, Arizona, Colorado, and New Mexico). The National Biomonitoring Network includes in its ranks several states that do not yet have biomonitoring programs in place, but aspire to in the future; these states include TX, LA, AR, TN, SC, NC, WI, VT, RI, and DC.
+
+In multiple conversations with scientists at state health departments, it was noted that New York City has previously done two rounds of biomonitoring [(NYC HANES)](https://med.nyu.edu/departments-institutes/population-health/divisions-sections-centers/epidemiology/center-innovation-measuring-population-health/new-york-city-health-nutrition-examination-survey). In the most recent 2013-2014 survey, however, blood and urine samples for relevant carcinogens were limited; only information on Pb and Hg were available. The earlier 2004 survey round produced academic publications where demographically-stratified summary statistics were presented for Pb, Hg, and Cd, as well as several pesticides^[See [McKelvey et al. (2013)](https://ehp.niehs.nih.gov/doi/10.1289/ehp.1206015) and [McKelvey et al. (2007)](https://ehp.niehs.nih.gov/doi/10.1289/ehp.10056) for these statistics.]. Given the volume of biomonitoring available elsewhere for these chemicals, analysis of these data is left for future work.
+
+ATSDR and its state health department partners conducted the Biomonitoring of Great Lakes Populations program from 2010-2020. This program targeted vulnerable populations (including subsistence anglers, immigrants, and tribal communities) in the Great Lakes region (MN, WI, MI, and NY). Carcinogenic legacy contaminants and chemicals of emerging concern were measured in blood and urine, including Pb, Hg, Mirex, Hexachlorobenzene, DDT, DDE, PCBs, PAHs, PFAS/PFOAs, and Toxaphene. Data collected from the multiple cross-sectional studies were not available in a consistent and accessible public fashion, so were not included in this analysis. More information on the program is [available here](https://www.atsdr.cdc.gov/sites/great_lakes_biomonitoring/index.html).
+
+Finally, NIEHS established the [Human Health Exposure Analysis Resource](https://www.niehs.nih.gov/research/supported/exposure/hhear) (HHEAR) program during an initial funding cycle running from 2019-2024. The HHEAR consortium provides NIH research grantees with laboratory support -- including for both targeted and non-targeted biomonitoring -- as well as a data center for storage, analysis, and integration of data across projects and grantees. In theory, biomonitoring data generated and maintained through the HHEAR consortium will be deidentified and made publicly available for external users. In practice, this does not yet appear to be the case, as only NIH grantees and their sponsorees can access the data center. Nonetheless, this program may be provide a complementary source for biomonitoring data across the US.
+
+$~$
+
+# Alternative exposure measures and discussion
+
+AHHS I and II. (Dave Jacobs checking with colleagues for other ideas.)
+
+Silent spring is limited geographic scope and diversity. They have a couple meta-analyses looking at a broad set of ubiquitous chemicals, but these do not differentially consider race/hh income.
+
+Studies using [consumer purchase data](https://ehp.niehs.nih.gov/doi/full/10.1289/EHP8610) to measure exposure.

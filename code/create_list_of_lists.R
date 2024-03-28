@@ -182,4 +182,12 @@ ipr <- ipr[!(NAME %in%
 
 rm(dupes, all.dupes)
 
+# Fix some encoding issues.
+ipr <- ipr[CASRN == '120-80-9', NAME := '1,2-Benzenediol'
+    ][CASRN == '13327-32-7', NAME := 'Beryllium hydroxide'
+      ][CASRN == '25962-77-0', NAME := 'N,N-Dimethyl-N′-[5-[2-(5-nitro-2-furanyl)ethenyl]-1,3,4-oxadiazol-2-yl]methanimidamide'
+        ][CASRN == '1204332-00-2', NAME := 'Trim VX'
+          ][NAME == 'Diesel Exhaust Particulates', CASRN := 'DIESEL'
+          ]
+
 data.table::fwrite(ipr, './output/merged_carcinogen_list.csv')

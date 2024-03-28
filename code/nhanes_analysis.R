@@ -74,8 +74,39 @@ nhanes.merged <- dplyr::full_join(nhanes.demo,
 rm(nhanes.demo,nhanes.chem,nhanes.weights,nhanes.coms)
 
 ###############################################
+## Metabolites
+voc.metab <- data.table::as.data.table(
+  readxl::read_excel('./raw_data/crosswalks/voc_parent_chems.xlsx')
+)
+
+phth.metab <- data.table::as.data.table(
+  readxl::read_excel('./raw_data/crosswalks/phthalate_parent_chems.xlsx')
+)
+
+metabs <- rbind(voc.metab, phth.metab)
+remove(voc.metab, phth.metab)
+
+###############################################
 ## List carcinogens that match in NHANES
-cas.match <- nhanes.dict[cas_num %in% unique(carcin$CASRN)]
+# cas_num keeps track of metabolites' number in NHANES
+# CAS keeps track of parent compound number for presentation, etc.
+cas.match <- merge(nhanes.dict[cas_num %in% c(unique(carcin$CASRN),
+                                        unique(metabs[!is.na(`Metabolite CAS`)]$`Metabolite CAS`))
+                                        ][!(cas_num == '')],
+                   metabs,
+                   by.x = 'cas_num', by.y = 'Metabolite CAS', all.x = T
+                   )[is.na(`Parent Compound`), CAS := cas_num 
+                     ][, final_description_use := variable_description_use
+                       ][!is.na(`Parent Compound`), 
+                       final_description_use := paste0(`Parent Compound`,
+                                                          ' metabolite: ',
+                                                          variable_description_use)
+                       ][CAS %in% c(unique(carcin$CASRN))
+                         ][, `Parent Compound` := NULL
+                           ][, Metabolite := NULL
+                             ][final_description_use == 'Mono-isononyl phthalate (ng/mL)', #mislabeled CAS in source data, I believe.
+                               final_description_use := 'Di-isononyl phthalate metabolite: Mono-isononyl phthalate (ng/mL)']
+
 # unique(cas.match$cas_num) #84 unique chems
 
 ## Loop through all carcinogens on list.
@@ -142,7 +173,8 @@ for (i in 1:dim(cas.match)[1]){
                                             median = survey::svyby(~chem, ~RIAGENDR, dsn.subset, survey::svyquantile, quantiles = 0.5, keep.var=FALSE)[,2],
                                             perc_75 = survey::svyby(~chem, ~RIAGENDR, dsn.subset, survey::svyquantile, quantiles = 0.75, keep.var=FALSE)[,2],
                                             perc_95 = survey::svyby(~chem, ~RIAGENDR, dsn.subset, survey::svyquantile, quantiles = 0.95, keep.var=FALSE)[,2],
-                                            perc_99 = survey::svyby(~chem, ~RIAGENDR, dsn.subset, survey::svyquantile, quantiles = 0.99, keep.var=FALSE)[,2]) %>%
+                                            perc_99 = survey::svyby(~chem, ~RIAGENDR, dsn.subset, survey::svyquantile, quantiles = 0.99, keep.var=FALSE)[,2],
+                                            sample_size = svyby(~chem, ~RIAGENDR, dsn.subset, unwtd.count, keep.var=FALSE)[,2]) %>%
                              dplyr::mutate(cat = ifelse(RIAGENDR == 1,
                                                         "Gender: male", 
                                                         "Gender: female")) %>%
@@ -151,10 +183,11 @@ for (i in 1:dim(cas.match)[1]){
                            # Race/Ethn varying statistics
                            subset.quan %>%
                              dplyr::reframe(RIDRETH1 = survey::svyby(~chem, ~RIDRETH1, dsn.subset, survey::svyquantile, quantiles = 0.5, keep.var=T)[,1],
-                                            median = survey::svyby(~chem, ~RIDRETH1, dsn.subset, survey::svyquantile, quantiles = 0.5, keep.var=T)[,2],
+                                            median = survey::svyby(~chem, ~RIDRETH1, dsn.subset, survey::svyquantile, quantiles = 0.5, keep.var=FALSE)[,2],
                                             perc_75 = survey::svyby(~chem, ~RIDRETH1, dsn.subset, survey::svyquantile, quantiles = 0.75, keep.var=FALSE)[,2],
                                             perc_95 = survey::svyby(~chem, ~RIDRETH1, dsn.subset, survey::svyquantile, quantiles = 0.95, keep.var=FALSE)[,2],
-                                            perc_99 = survey::svyby(~chem, ~RIDRETH1, dsn.subset, survey::svyquantile, quantiles = 0.99, keep.var=FALSE)[,2]) %>%
+                                            perc_99 = survey::svyby(~chem, ~RIDRETH1, dsn.subset, survey::svyquantile, quantiles = 0.99, keep.var=FALSE)[,2],
+                                            sample_size = svyby(~chem, ~RIDRETH1, dsn.subset, unwtd.count, keep.var=FALSE)[,2]) %>%
                              mutate(cat = ifelse(RIDRETH1 %in% c(1,2),
                                                  "Race/eth: Hispanic", 
                                                  ifelse(RIDRETH1 == 3,
@@ -172,7 +205,8 @@ for (i in 1:dim(cas.match)[1]){
                                             median = survey::svyby(~chem, ~inc.pov, dsn.subset, survey::svyquantile, quantiles = 0.5, keep.var=FALSE)[,2],
                                             perc_75 = survey::svyby(~chem, ~inc.pov, dsn.subset, survey::svyquantile, quantiles = 0.75, keep.var=FALSE)[,2],
                                             perc_95 = survey::svyby(~chem, ~inc.pov, dsn.subset, survey::svyquantile, quantiles = 0.95, keep.var=FALSE)[,2],
-                                            perc_99 = survey::svyby(~chem, ~inc.pov, dsn.subset, survey::svyquantile, quantiles = 0.99, keep.var=FALSE)[,2]) %>%
+                                            perc_99 = survey::svyby(~chem, ~inc.pov, dsn.subset, survey::svyquantile, quantiles = 0.99, keep.var=FALSE)[,2],
+                                            sample_size = svyby(~chem, ~inc.pov, dsn.subset, unwtd.count, keep.var=FALSE)[,2]) %>%
                              dplyr::mutate(inc.pov = unique(subset.quan$inc.pov)) %>%
                              mutate(cat = ifelse(inc.pov == 1,
                                                  "Income: PIR below 2", 
@@ -182,8 +216,8 @@ for (i in 1:dim(cas.match)[1]){
                              dplyr::select(-inc.pov) %>%
                              dplyr::relocate(cat)
                            ) %>%
-    dplyr::mutate(chem = cas.match[i,]$variable_description_use) %>%
-    dplyr::mutate(cas = cas.match[i,]$cas_num) %>%
+    dplyr::mutate(chem = cas.match[i,]$final_description_use) %>%
+    dplyr::mutate(cas = cas.match[i,]$CAS) %>%
     dplyr::mutate(year = ifelse(unique(subset.quan$maxyear) == 10,
                                 '2017-2018',
                                 ifelse(unique(subset.quan$maxyear) == 9,
@@ -205,7 +239,7 @@ for (i in 1:dim(cas.match)[1]){
                                        ifelse(unique(subset.quan$maxyear) == 1,
                                               '1999-2000',
                                               '1988-1994')))))))))))  %>% 
-    dplyr::mutate(dplyr::across(c(median, perc_99), ~ na_if(., 0)))
+    dplyr::mutate(dplyr::across(c(median, perc_75, perc_95, perc_99), ~ na_if(., 0)))
   
   rm(subset.quan, dsn.subset)
   
@@ -283,5 +317,9 @@ for (i in 1:dim(cas.match)[1]){
   print(paste0('Iteration ',i,' complete.'))
 }
 
-combined <- data.table::rbindlist(return.me)
+combined <- data.table::rbindlist(return.me
+                                  )[chem != '3-fluoranthene (ng/L)'  #not sure why this made it in.
+                                    ][chem == 'N-Acetyl-S-(4-hydroxy-2-butenyl)-L-Cysteine (ng/mL)',
+                                      chem := '1,3-Butadiene metabolite: N-Acetyl-S-(4-hydroxy-2-butenyl)-L-Cysteine (ng/mL)'] #the metabolite has no CAS, so name didn't match correctly.
+
 data.table::fwrite(combined, './output/nhanes_summary.csv')

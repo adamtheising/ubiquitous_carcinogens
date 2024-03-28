@@ -35,7 +35,7 @@ NAME,CASRN,DTXSID,IARC1,IARC2A,IARC2B,Prop65,ROC_Known,ROC_RAHC
 "1,4-Dioxane",123-91-1,DTXSID4020533,0,0,1,1,0,1
 "1,6-Dinitropyrene",42397-64-8,DTXSID90872819,0,0,1,1,0,1
 "1,8-Dinitropyrene",42397-65-9,DTXSID2073514,0,0,1,1,0,1
-"1,​2-​Benzenediol",120-80-9,DTXSID3020257,0,0,1,1,0,0
+"1,2-Benzenediol",120-80-9,DTXSID3020257,0,0,1,1,0,0
 "1-Amino-2,4-dibromoanthraquinone",81-49-2,DTXSID4039235,0,0,1,1,0,1
 1-Amino-2-methylanthraquinone,82-28-0,DTXSID7020057,0,0,0,1,0,1
 1-Bromo-3-chloropropane,109-70-6,DTXSID1051565,0,0,1,1,0,0
@@ -211,7 +211,7 @@ Beryllium,7440-41-7,DTXSID4023913,1,0,0,1,1,0
 Beryllium carbonate hydroxide (3/2/2),66104-24-3,DTXSID10984600,0,0,0,0,1,0
 Beryllium chloride,7787-47-5,DTXSID10858756,0,0,0,0,1,0
 Beryllium hydrogen phosphate,13598-15-7,DTXSID70929198,0,0,0,0,1,0
-Beryllium hydroxide (Be(OH)​2),13327-32-7,DTXSID80893932,0,0,0,0,1,0
+Beryllium hydroxide,13327-32-7,DTXSID80893932,0,0,0,0,1,0
 Beryllium oxide (BeO),1304-56-9,DTXSID30872818,0,0,0,0,1,0
 Beryllium sulfate,13510-49-1,DTXSID0020159,0,0,0,0,1,0
 Beryllium sulfate tetrahydrate,7787-56-6,DTXSID3024603,0,0,0,0,1,0
@@ -347,7 +347,7 @@ Dichloroacetic acid,79-43-6,DTXSID2020428,0,0,1,1,0,1
 Dichloromethane,75-09-2,DTXSID0020868,0,1,0,1,0,1
 Dichlorvos,62-73-7,DTXSID5020449,0,0,1,1,0,0
 Dieldrin,60-57-1,DTXSID9020453,0,0,0,1,0,0
-Diesel Exhaust Particulates,"","",0,0,0,1,0,1
+Diesel Exhaust Particulates,DIESEL,"",0,0,0,1,0,1
 "Diesel fuel, marine",77650-28-3,DTXSID4025030,0,0,1,0,0,0
 Diethanolamine,111-42-2,DTXSID3021932,0,0,1,1,0,0
 Diethyl sulfate,64-67-5,DTXSID1024045,0,1,0,1,0,1
@@ -645,7 +645,7 @@ Styrene oxide,96-09-3,DTXSID2021286,0,1,0,1,0,1
 Sulfallate,95-06-7,DTXSID7021289,0,0,1,1,0,1
 Sulfasalazine,599-79-1,DTXSID0021256,0,0,1,1,0,0
 Sulfuric acid,7664-93-9,DTXSID5029683,0,0,0,0,1,0
-TRIM� VX,1204332-00-2,DTXSID701052685,0,0,0,1,0,0
+Trim VX,1204332-00-2,DTXSID701052685,0,0,0,1,0,0
 Talc,14807-96-6,DTXSID5032109,0,0,1,1,0,0
 Tamoxifen,10540-29-1,DTXSID1034187,1,0,0,1,1,0
 Teniposide,29767-20-2,DTXSID8023638,0,1,0,0,0,0
