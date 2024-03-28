@@ -61,8 +61,8 @@ $~$
 * This exercise identified 715 chemicals that are known or possible carcinogens.
 * Of these 715 carcinogens, a total of 88 (12%) were surveilled by NHANES over the 1998-2018 period. And of those surveilled, detection limits result in nationally-representative average exposure measures being available for only 29 carcinogens.
 * Amongst detected carcinogens in NHANES, average exposure to heavy metals (Cadmium, Lead, and Nickel), DDE, Acrylonitrile, and Melamine were relatively higher in low-income or minority communities.
-* Many US states also have biomonitoring programs. Across state programs, 39 carcinogenic chemicals are or were being surveilled, though only five are carcinogens for which data does not exist in NHANES.
-* Limited alternative national exposure data/metrics exist for carcinogens, and were not systematically compiled or assessed. National-scale environmental exposure studies (e.g. household dust) are thin on chemical coverage. National consumer-based exposure studies exist, but chemical coverage and applicability are uncertain.
+* Many US states also have biomonitoring programs, but these programs provide little additional chemical coverage. Across state programs, 39 carcinogenic chemicals are or were being surveilled, though only five are carcinogens for which data does not exist in NHANES.
+* Limited alternative national exposure data/metrics exist for carcinogens, and were not systematically compiled or assessed. National-scale environmental exposure studies (e.g. household dust, drinking water, indoor air) are thin on chemical coverage. National consumer-good-based exposure studies exist, but chemical coverage and applicability are uncertain.
 
 $~$
 
@@ -357,7 +357,7 @@ p95.income <- ggplot2::ggplot(data = nhanes.long.p95r[variable == 'P95R_income'
         plot.title = element_text(size = 12, color = "grey55", face = "plain"),
         plot.title.position = "plot") + 
   ggplot2::labs(x = 'Carcinogen name', y = 'P95 ratio value',
-                title = "Lower Income.")
+                title = "Lower Income")
 
 p95.hisp <- ggplot2::ggplot(data = nhanes.long.p95r[variable == 'P95R_hisp'
                                                       ][value > 1
@@ -925,7 +925,7 @@ A helpful contact at MI DHHS is [Rachel Long](LongR5@michigan.gov).
 ## Other notable governmental biomonitoring efforts:
 Several states not listed above were recipients of biomonitoring grants from CDC in 2014, but did not publicly provide useful data gleaned from their programs nor effective contact information. These states include Virginia and the Four Corners State Consortium (Utah, Arizona, Colorado, and New Mexico). The National Biomonitoring Network includes in its ranks several states that do not yet have biomonitoring programs in place, but aspire to in the future; these states include TX, LA, AR, TN, SC, NC, WI, VT, RI, and DC.
 
-In multiple conversations with scientists at state health departments, it was noted that New York City has previously done two rounds of biomonitoring [(NYC HANES)](https://med.nyu.edu/departments-institutes/population-health/divisions-sections-centers/epidemiology/center-innovation-measuring-population-health/new-york-city-health-nutrition-examination-survey). In the most recent 2013-2014 survey, however, blood and urine samples for relevant carcinogens were limited; only information on Pb and Hg were available. The earlier 2004 survey round produced academic publications where demographically-stratified summary statistics were presented for Pb, Hg, and Cd, as well as several pesticides^[See [McKelvey et al. (2013)](https://ehp.niehs.nih.gov/doi/10.1289/ehp.1206015) and [McKelvey et al. (2007)](https://ehp.niehs.nih.gov/doi/10.1289/ehp.10056) for these statistics.]. Given the volume of biomonitoring available elsewhere for these chemicals, analysis of these data is left for future work.
+In multiple conversations with scientists at state health departments, it was noted that New York City has previously done two rounds of biomonitoring [(NYC HANES)](https://med.nyu.edu/departments-institutes/population-health/divisions-sections-centers/epidemiology/center-innovation-measuring-population-health/new-york-city-health-nutrition-examination-survey). In the most recent 2013-2014 survey, however, blood and urine samples for relevant carcinogens were limited; only information on Pb and Hg were available. The earlier 2004 survey round produced academic publications where demographically-stratified summary statistics were presented for Pb, Hg, and Cd, as well as several pesticides^[See McKelvey et al. [(Env Health Persp, 2013)](https://ehp.niehs.nih.gov/doi/10.1289/ehp.1206015) and McKelvey et al. [(Env Health Persp, 2007)](https://ehp.niehs.nih.gov/doi/10.1289/ehp.10056) for these statistics.]. Given the volume of biomonitoring available elsewhere for these chemicals, analysis of these data is left for future work.
 
 ATSDR and its state health department partners conducted the Biomonitoring of Great Lakes Populations program from 2010-2020. This program targeted vulnerable populations (including subsistence anglers, immigrants, and tribal communities) in the Great Lakes region (MN, WI, MI, and NY). Carcinogenic legacy contaminants and chemicals of emerging concern were measured in blood and urine, including Pb, Hg, Mirex, Hexachlorobenzene, DDT, DDE, PCBs, PAHs, PFAS/PFOAs, and Toxaphene. Data collected from the multiple cross-sectional studies were not available in a consistent and accessible public fashion, so were not included in this analysis. More information on the program is [available here](https://www.atsdr.cdc.gov/sites/great_lakes_biomonitoring/index.html).
 
@@ -935,8 +935,22 @@ $~$
 
 # Alternative exposure measures and discussion
 
-AHHS I and II. (Dave Jacobs checking with colleagues for other ideas.)
+Given the relatively sparse biomonitoring coverage of carcinogenic chemicals through NHANES and state programs, a fuller understanding might of disparate carcinogen exposure should likely include alternative exposure measures. The following paragraphs describe ideas about potential data sources, but no data has yet been collected.
 
-Silent spring is limited geographic scope and diversity. They have a couple meta-analyses looking at a broad set of ubiquitous chemicals, but these do not differentially consider race/hh income.
+Carcinogens are ubiquitous in both indoor and outdoor living environments. Beginning with the former, there are a few possible avenues for assessing disparate exposure. Household dust and air sampling studies are a common method for measuring indoor chemical exposure. Unfortunately, nationally representative studies of such nature are few and far between. HUD's national American Health Homes Survey (rounds I and II) have collected some dust samples, with a historically heavy emphasis on measuring lead concentrations in dust and soil. The first round of the survey also collected information about arsenic, while the second round collected information about formaldehyde. Both rounds of the survey collected pesticide wipe samples as well. Stout II et al [(Env Sci Tech, 2009)](https://pubs.acs.org/doi/10.1021/es8030243) describes the pesticide findings from AHHS I; findings from the second survey round are not publicly available yet. The key takeaway, however, is that AHHS provides a picture of disparate household exposure for only a limited set of carcinogens.
 
-Studies using [consumer purchase data](https://ehp.niehs.nih.gov/doi/full/10.1289/EHP8610) to measure exposure.
+At a non-national geographic scale, there is substantial academic literature describing household dust exposure to chemicals. A full literature review that collects metadata on carcinogens studied, demographically-stratified exposure statistics, and how participants were selected into the study would be incredible informative, but was not feasible for this report. Many studies in this literature are based on convenience samples, or focus on only certain subpopulations and chemicals that are particularly relevant to their living situation. Thus many studies are limited in geographic scope and/or participant diversity. Some representative studies in this vein of the literature might include:
+
+* Mitro et al. [(Env Sci Tech, 2016)](https://pubs.acs.org/doi/10.1021/acs.est.6b02023)
+* Dodson et al. [(Env Sci Tech, 2015)](https://pubs.acs.org/doi/10.1021/es502988r)
+* Ongoing EPA-funded research projects focused on [PFAS via household dust](https://www.epa.gov/research-grants/collection-concordant-multimedia-measurements-evaluate-pfas-human-exposure-2).
+
+A similar literature review collecting metadata for published research on disparities of in-home air or drinking water carcinogen exposure would also be very informative. Some potentially representative studies might include:
+
+* Evans et al. [(Heliyon, 2019)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6819845/)
+* Ferguson et al. [(Env Intl, 2020)](https://www.sciencedirect.com/science/article/pii/S0160412019340917?via%3Dihub)
+* ATSDR [Multi-site Study](https://www.atsdr.cdc.gov/pfas/activities/studies/multi-site.html), again a PFAS focus
+
+An analysis could also consider disparities in outside-the-home environmental exposure to carcinogens. EPA's RSEI rasters provide high-resolution, chemical-by-chemical exposure measures based on modeled releases of chemicals that are listed on the TRI. If one were to overlay the RSEI data on high-resolution demographic/population density rasters from NASA, it would likely be feasible to characterize disparate exposure to individual carcinogens using these data. This, of course, would provide an incomplete picture of exposure however; not all industrial facilities that release carcinogens report to TRI, and many carcinogenic chemicals are not on the TRI list.
+
+A final avenue for measuring disparities in carcinogen exposure could be through the assessment of chemicals in consumer products. [Recent research](https://ehp.niehs.nih.gov/doi/full/10.1289/EHP8610) from a group in EPA's Office of Research and Development has linked household consumer goods purchase data with household demographic information and information about the chemicals present in each goods' ingredient list. Using similar methods, it may be possible to characterize disparate exposure to carcinogens in consumer goods.
