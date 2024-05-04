@@ -1,0 +1,42 @@
+"itemset","support","count"
+"{Ethanol}",0.481519591702338,23398
+"{Titanium dioxide}",0.106684227856437,5184
+"{Talc}",0.0270620678300955,1315
+"{Nickel}",0.0223905169575239,1088
+"{Butylated hydroxyanisole}",0.0190360553177478,925
+"{Mineral oil - includes paraffin oil}",0.0137676983865657,669
+"{Naphthalene}",0.0122859729996707,597
+"{Ethylbenzene}",0.00761442212709911,370
+"{Lead}",0.00633849193282845,308
+"{1,4-Dichlorobenzene}",0.00570052683569312,277
+"{Formaldehyde}",0.00495966414224564,241
+"{Cumene}",0.00401300625617386,195
+"{Carbaryl}",0.00353967731313796,172
+"{Quartz-alpha (SiO2)}",0.00257243990780375,125
+"{2,4-Dichlorophenoxyacetic acid}",0.00242838327296674,118
+"{Thiourea}",0.00150230490615739,73
+"{Diethanolamine}",0.00148172538689496,72
+"{Cadmium}",0.000987816924596642,48
+"{Arsenic}",0.000905498847546921,44
+"{Dichloromethane}",0.000740862693447481,36
+"{Phenolphthalein}",0.000617385577872901,30
+"{Nickel (II) oxide}",0.000576226539348041,28
+"{Vinyl acetate}",0.000535067500823181,26
+"{Coconut oil acid/Diethanolamine condensate (2:1)}",0.000452749423773461,22
+"{Myrcene}",0.000452749423773461,22
+"{1,4-Dioxane}",0.00028811326967402,14
+"{Diuron}",0.00028811326967402,14
+"{Ethylene oxide}",0.00022637471188673,11
+"{Acetamide}",0.0002057951926243,10
+"{Chlorothalonil}",0.0002057951926243,10
+"{Phenyl glycidyl ether}",0.0002057951926243,10
+"{Tetrachloroethylene}",0.00018521567336187,9
+"{4-Methyl-2-pentanone}",0.00012347711557458,6
+"{Asphalt, oxidized}",0.00012347711557458,6
+"{Melamine}",0.00010289759631215,5
+"{Nitrofurazone}",8.23180770497201e-05,4
+"{1-Chloro-4-(trifluoromethyl)benzene}",4.11590385248601e-05,2
+"{1,2-Propylene oxide}",4.11590385248601e-05,2
+"{C.I. Solvent Yellow 14}",4.11590385248601e-05,2
+"{Furan}",4.11590385248601e-05,2
+"{Di(2-ethylhexyl) phthalate}",2.057951926243e-05,1

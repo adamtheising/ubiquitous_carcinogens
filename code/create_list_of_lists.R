@@ -190,4 +190,67 @@ ipr <- ipr[CASRN == '120-80-9', NAME := '1,2-Benzenediol'
           ][NAME == 'Diesel Exhaust Particulates', CASRN := 'DIESEL'
           ]
 
+# Functional uses: pull bulk data from CompTox / Chem expo
+# Download comptox ID database if necessary (too large to include on GH)
+if('ChemExpo_bulk_functional_uses.csv' %in% list.files('./raw_data/')){
+  funct <- data.table::fread('./raw_data/ChemExpo_bulk_functional_uses.csv')
+} else {
+  # Data download from cluster below and save locally.
+  download.file('https://comptox.epa.gov/chemexpo/dl_functional_uses/',
+                './raw_data/ChemExpo_bulk_functional_uses.csv')
+  funct <- data.table::fread('./raw_data/ChemExpo_bulk_functional_uses.csv')
+}
+
+funct.keep <- unique(funct[`Curated CAS` %in% ipr[!(CASRN == '')]$CASRN,
+                    .(`Curated CAS`, `Harmonized Functional Use`)
+                    ][!(`Harmonized Functional Use` == '')]
+                    )[order(`Curated CAS`, `Harmonized Functional Use`)
+                      ][, .(lapply(`.SD`, paste, collapse = '; ')),
+                        by = 'Curated CAS'
+                        ][, V1 := as.character(V1)
+                        ][, function_count := stringr::str_count(V1, pattern = ';') + 1]
+
+data.table::setcolorder(funct.keep, c(1,3,2))
+names(funct.keep) <- c('CAS', 'Function_count', 'Functions')
+rm(funct)
+
+# Product uses: pull bulk data from CompTox / Chem expo
+if('ChemExpo_bulk_composition_chemicals.csv' %in% list.files('./raw_data/')){
+  comp <- data.table::fread('./raw_data/ChemExpo_bulk_composition_chemicals.csv')
+} else {
+  # Data download from cluster below and save locally.
+  download.file('https://comptox.epa.gov/chemexpo/dl_co_chemicals/',
+                './raw_data/ChemExpo_bulk_composition_chems.zip',
+                method = 'curl')
+  unzip(zipfile = './raw_data/ChemExpo_bulk_composition_chems.zip',
+        exdir = './raw_data/')
+  comp <- data.table::fread('./raw_data/ChemExpo_bulk_composition_chemicals.csv')
+  file.remove('./raw_data/ChemExpo_bulk_composition_chems.zip')
+}
+
+comp.keep <- unique(comp[`Curated CAS` %in% ipr[!(CASRN == '')]$CASRN,
+                           .(`Curated CAS`, `PUC General Category`)
+][!(`PUC General Category` == '')]
+)[order(`Curated CAS`, `PUC General Category`)
+][, .(lapply(`.SD`, paste, collapse = '; ')),
+  by = 'Curated CAS'
+][, V1 := as.character(V1)
+][, PUC_count := stringr::str_count(V1, pattern = ';') + 1]
+
+data.table::setcolorder(comp.keep, c(1,3,2))
+names(comp.keep) <- c('CAS', 'PUC_count', 'PUCs')
+rm(comp)
+
+# Merge in the function/PUC
+ipr <- merge(ipr,
+             funct.keep,
+             by.x = 'CASRN',
+             by.y = 'CAS',
+             all.x = T) %>%
+  merge(.,
+        comp.keep,
+        by.x = 'CASRN',
+        by.y = 'CAS',
+        all.x = T)
+
 data.table::fwrite(ipr, './output/merged_carcinogen_list.csv')
