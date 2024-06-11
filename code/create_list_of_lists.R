@@ -9,6 +9,9 @@ options(scipen=999)
 library(tidyverse)
 library(data.table)
 library(openxlsx)
+library(httr)
+library(jsonlite)
+#library(PubChemR)
 
 setwd('C:/Users/atheisin/OneDrive - Environmental Protection Agency (EPA)/Documents/GitHub/ubiquitous_carcinogens/')
 
@@ -20,6 +23,9 @@ if('DSSTox_Identifiers_and_CASRN_2021r1.csv' %in% list.files('./raw_data/')){
   comptox.dta <- data.table::fread('https://clowder.edap-cluster.com/files/616dd943e4b0a5ca8aeea69d/blob')
   data.table::fwrite(comptox.dta, './raw_data/DSSTox_Identifiers_and_CASRN_2021r1.csv')
 }
+
+# Need a public key to access comptox API
+apikey <- data.table::fread('comptox_apikey.csv')$comptox_api
 
 ###############################
 # Start by merging IARC data
@@ -55,9 +61,9 @@ roc.match <- merge(roc[!is.na(CASRN)],comptox.dta,
 # ROC data that needs formatting
 roc.nomatch <- roc[!(CASRN %in% roc.match$CASRN)]
 roc.crosswalk <- data.table::fread('./raw_data/crosswalks/roc_crosswalk.csv' # This was manually created.
-                                   )[is.na(bio_flag) # Drop viruses, etc.
-                                     ][is.na(radiation_flag) #
-                                       ]#[is.na(alc_tob_flag)] # Drop alcohol & tobacco consumption
+                                   )#[is.na(bio_flag) # Drop viruses, etc.
+                                     #][is.na(radiation_flag) #
+                                      # ]#[is.na(alc_tob_flag)] # Drop alcohol & tobacco consumption
                                        
 roc.nomatch <- merge(roc.nomatch, roc.crosswalk,
       by.x = c('NAME'),
@@ -103,9 +109,9 @@ p65.match <- p65.comptox[CASRN %in% p65.oehha$`CAS No.`]
 # Data that needs formatting
 p65.nomatch <- p65.oehha[!(`CAS No.` %in% p65.match$CASRN)]
 p65.crosswalk <- data.table::fread('./raw_data/crosswalks/p65_crosswalk.csv' # This was manually created.
-)[is.na(bio_flag) # Drop viruses, etc.
-][is.na(radiation_flag) #
-]#[is.na(alc_tob_flag)] # Drop alcohol & tobacco consumption
+)#[is.na(bio_flag) # Drop viruses, etc.
+#][is.na(radiation_flag) #
+#]#[is.na(alc_tob_flag)] # Drop alcohol & tobacco consumption
 
 p65.nomatch <- merge(p65.nomatch, p65.crosswalk,
                      by.x = c('Chemical'),
@@ -115,7 +121,7 @@ p65.nomatch <- merge(p65.nomatch, p65.crosswalk,
       LIST ='Prop65',
       DTXSID)]
 
-# Bind cleaned RoC lists together
+# Bind cleaned P65 lists together
 p65.clean <- rbind(p65.match,
                    merge(p65.nomatch, comptox.dta[, .(dtxsid, preferredName)],
                          by.x = 'DTXSID', by.y = 'dtxsid', all.x = T
@@ -129,8 +135,62 @@ p65.clean <- rbind(p65.match,
 
 rm(p65.comptox,p65.crosswalk,p65.match,p65.nomatch,p65.oehha)
 
+#######################################
+# Pull in EU + UK SVHC lists
+eu.svhc <- data.table::as.data.table(
+  openxlsx::read.xlsx('./raw_data/EU_SVHC_candidatelist.xlsx',
+                      startRow = 4)
+)[`Reason.for.inclusion` %like% 'Carcinogenic'
+][, .(name = Substance.name,
+      cas = `CAS.No.`)
+][cas == '10588-01-9, 7789-12-0', cas := '10588-01-9'
+][cas == '10124-36-4, 31119-53-6', cas := '10124-36-4'
+][cas == '302-01-2, 7803-57-8', cas := '302-01-2'
+][cas == '12139-21-8', cas := '1306-19-0']
+
+eu.clean <- rbind(merge(comptox.dta[, .(dtxsid, casrn, preferredName)],
+                        eu.svhc[cas != '-'],
+                        by.x = 'casrn',
+                        by.y = 'cas')[,. (NAME = preferredName,
+                                          CASRN = casrn,
+                                          LIST ='SVHC_EU',
+                                          DTXSID = dtxsid)],
+                  eu.svhc[cas == '-'
+                  ][, .(NAME = name,
+                        CASRN = '',
+                        LIST = 'SVHC_EU',
+                        DTXSID = '')])
+
+uk.svhc <- data.table::as.data.table(
+  openxlsx::read.xlsx('./raw_data/UK_SVHC_candidatelist.xlsx',
+                      startRow = 3,
+                      sheet = 'Candidate List')
+)[`Reason.for.inclusion` %like% 'Carcinogenic'
+][, .(name = `Substance.name.Note:.Group.entries.are.split.in.different.rows`,
+      cas = `CAS.No.`)
+][cas == '10588-01-9, 7789-12-0', cas := '10588-01-9'
+][cas == '10124-36-4, 31119-53-6', cas := '10124-36-4'
+][cas == '302-01-2, 7803-57-8', cas := '302-01-2'
+][cas == '12139-21-8', cas := '1306-19-0']
+
+uk.clean <- rbind(merge(comptox.dta[, .(dtxsid, casrn, preferredName)],
+                        uk.svhc[cas != '-'],
+                        by.x = 'casrn',
+                        by.y = 'cas')[,. (NAME = preferredName,
+                                          CASRN = casrn,
+                                          LIST ='SVHC_UK',
+                                          DTXSID = dtxsid)],
+                  uk.svhc[cas == '-'
+                  ][, .(NAME = name,
+                        CASRN = '',
+                        LIST = 'SVHC_UK',
+                        DTXSID = '')])
+
+rm(eu.svhc, uk.svhc)
+
 # merge and save to csv
-ipr <- data.table::dcast(rbind(unique(iarc.clean), unique(roc.clean), unique(p65.clean)),
+ipr <- data.table::dcast(rbind(unique(iarc.clean), unique(roc.clean), unique(p65.clean),
+                         unique(eu.clean), unique(uk.clean)),
                          NAME + CASRN + DTXSID ~ LIST, length)
 
 # manual correction of duplicates
@@ -157,7 +217,8 @@ ipr <- ipr[!(NAME %in%
                   'Diesel engine exhaust',
                   'Coke oven emissions',
                   'Alcoholic beverages, when associated with alcohol abuse',
-                  'Alcoholic beverages'
+                  'Alcoholic beverages',
+                  'Estrogens, steroidal'
                   ))
             ][NAME == '1,2-Propylene oxide', IARC2B := 1L
               ][NAME == '1,2-Propylene oxide', Prop65 := 1L
@@ -178,9 +239,15 @@ ipr <- ipr[!(NAME %in%
               ][NAME == 'Diesel Exhaust Particulates', Prop65 := 1L
                 ][NAME == 'Coke Oven Emissions', Prop65 := 1L
                   ][NAME == 'Alcoholic Beverage Consumption', Prop65 := 1L
-                    ][NAME == 'Tobacco, oral use of smokeless products', ROC_Known := 1L]
+                    ][NAME == 'Tobacco, oral use of smokeless products', ROC_Known := 1L
+            ][NAME == 'Estrogens, Steroidal', Prop65 := 1L]
 
 rm(dupes, all.dupes)
+
+ipr.noncas <- ipr[CASRN == '']
+
+fwrite(ipr.noncas, './output/noncas_carcinogen_list.csv')
+
 
 # Fix some encoding issues.
 ipr <- ipr[CASRN == '120-80-9', NAME := '1,2-Benzenediol'
@@ -188,7 +255,11 @@ ipr <- ipr[CASRN == '120-80-9', NAME := '1,2-Benzenediol'
       ][CASRN == '25962-77-0', NAME := 'N,N-Dimethyl-N′-[5-[2-(5-nitro-2-furanyl)ethenyl]-1,3,4-oxadiazol-2-yl]methanimidamide'
         ][CASRN == '1204332-00-2', NAME := 'Trim VX'
           ][NAME == 'Diesel Exhaust Particulates', CASRN := 'DIESEL'
-          ]
+          ][CASRN != ''
+          ][!(CASRN %like% 'NOCAS')
+          ][!(CASRN == 'DIESEL')]
+
+
 
 # Functional uses: pull bulk data from CompTox / Chem expo
 # Download comptox ID database if necessary (too large to include on GH)
@@ -253,4 +324,114 @@ ipr <- merge(ipr,
         by.y = 'CAS',
         all.x = T)
 
-data.table::fwrite(ipr, './output/merged_carcinogen_list.csv')
+
+# Merge in supplemental information about ubiquity.
+
+# Available chemical lists on comptox
+#all.inv.lists <- httr::GET('https://api-ccte.epa.gov/chemical/list/',
+#                           httr::add_headers(`accept` = 'application/json'), 
+#                           httr::content_type('application/json'),
+#                           httr::add_headers(`x-api-key` = apikey)) %>%
+#  httr::content(.) %>%
+#  data.table::rbindlist()
+
+inventory.list <- vector(mode = 'list', length = dim(ipr)[1])
+pubchemcid.list <- vector(mode = 'list', length = dim(ipr)[1])
+for (i in 184:dim(ipr)[1]){
+  # API info about list membership
+  api.call <- httr::GET(paste0('https://api-ccte.epa.gov/chemical/list/search/by-dtxsid/', ipr$DTXSID[i]),
+                        httr::add_headers(`accept` = 'application/json'), 
+                        httr::add_headers(`x-api-key` = apikey)) %>%
+    httr::content(.) %>%
+    data.table::rbindlist(.)
+  
+  if(dim(api.call)[1] > 0){
+    inventory.list[[i]] <- data.table::transpose(api.call[, .(V1, val = 1L)], 
+                                                 make.names = 'V1')
+  }
+  
+  #API info about pubchem ID
+  api.call2 <- httr::GET(paste0('https://api-ccte.epa.gov/chemical/detail/search/by-dtxsid/', ipr$DTXSID[i]),
+                         httr::add_headers(`accept` = 'application/json'), 
+                         httr::add_headers(`x-api-key` = apikey)) %>%
+    httr::content(.)
+  
+  if(!(is.null(api.call2$pubchemCid))){
+    pubchemcid.list[[i]] <- api.call2$pubchemCid
+  }
+
+  if (i %% 10 == 0){print(paste0('Iteration ',i,' complete.'))}
+}
+rm(api.call, api.call2, i)
+
+pubchemcid.together <- data.table::data.table(PUBCHEMCID = as.integer(purrr::map(pubchemcid.list, 
+                                                                      ~ifelse(is.null(.x),NA_integer_,.x))),
+                                              .id = 1:dim(ipr)[1]
+                                              )[!is.na(PUBCHEMCID)
+                                                ][, DTXSID := ipr$DTXSID[.id]
+                                                ][, .id := NULL]
+
+inventory.together <- data.table::rbindlist(inventory.list, fill = T, idcol = T
+)[, DTXSID := ipr[.id]$DTXSID
+][, .id := NULL
+][, .(DTXSID, CDR2016, CDR2020,
+      TSCA_ACTIVE_NCTI_0823,
+      MMDBV1)]
+inventory.together[is.na(inventory.together)] <- 0L
+# CDR2016,2020 are flags for whether chem was produced/imported into US during those CDR rounds
+# TSCA_Active are flags for whether chem is active on the non-confidential TSCA registry
+# MMDBV1 are flags for whether chem was detected in the Multimedia Monitoring Database...
+#... it is a very rough proxy for ubiquity: https://www.nature.com/articles/s41597-022-01365-8
+
+inventory.together <- merge(inventory.together,
+                            pubchemcid.together,
+                            all.x = T,
+                            by = 'DTXSID')
+
+data.table::setcolorder(inventory.together, 'DTXSID')
+
+rm(inventory.list, pubchemcid.list, pubchemcid.together)
+
+# Merge together
+carc.list <- merge(ipr,
+                   inventory.together,
+                   by = 'DTXSID',
+                   all.x = T)
+
+# Pubchem patent/literature info
+pubchemids <- unique(carc.list[!is.na(PUBCHEMCID)]$PUBCHEMCID)
+pchem.patent.lit <- vector(mode = 'list', length = length(pubchemids))
+for (i in 1:length(pubchemids)){
+  pchem.patent.lit[[i]] <- data.table::fread(
+    paste0('https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/',
+    pubchemids[i],
+    '/property/PatentCount,LiteratureCount/CSV')
+    )
+}
+patent.lit <- data.table::rbindlist(pchem.patent.lit)
+
+carc.list <- merge(carc.list,
+                   patent.lit,
+                   by.x = 'PUBCHEMCID',
+                   by.y = 'CID',
+                   all.x = T)
+
+rm(pubchemids, pchem.patent.lit, patent.lit, i)
+
+# Can pull info for uses in bulk as such, but it's a nested mess.
+#temp <- httr::GET(url = 'https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/7503/JSON?heading=Uses') %>%
+#  httr::content(., as = 'text') %>%
+#  jsonlite::fromJSON()
+
+data.table::setcolorder(carc.list,
+                        neworder = c("DTXSID","NAME","CASRN","PUBCHEMCID","IARC1",               
+                                     "IARC2A","IARC2B","Prop65","ROC_Known",            
+                                     "ROC_RAHC","SVHC_EU","SVHC_UK",
+                                     "CDR2016","CDR2020","TSCA_ACTIVE_NCTI_0823","MMDBV1",
+                                     "Function_count","Functions","PUC_count","PUCs",
+                                     "PatentCount","LiteratureCount"
+                                      ))
+
+data.table::setorder(carc.list, CASRN)
+
+data.table::fwrite(carc.list, './output/merged_carcinogen_list.csv')

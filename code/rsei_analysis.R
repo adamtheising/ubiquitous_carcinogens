@@ -14,7 +14,7 @@ library(furrr)
 ##############################
 ### Pull in RSEI microdata ###
 setwd('C:/Users/atheisin/OneDrive - Environmental Protection Agency (EPA)/Documents/research/TRI_data')
-dta.1 <- fread('censusmicroblockgroup2022_2022.csv',
+dta.1 <- data.table::fread('censusmicroblockgroup2022_2022.csv',
                select = c('GeoID','ReleaseNumber','ChemicalNumber',
                           'FacilityNumber','Media','Conc'),
                colClasses = c(GeoID = 'character')

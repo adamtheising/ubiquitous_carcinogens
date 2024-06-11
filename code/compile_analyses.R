@@ -294,4 +294,4 @@ list_of_datasets <- list('Aggregated Scores' = together.summary,
                          'HH Products summary' = hhprod.sum,
                          'DW summary' = dw.sum, 
                          'RSEI summary' = rsei.sum)
-openxlsx::write.xlsx(list_of_datasets, './output/summary_5_1_2024.xlsx')
+openxlsx::write.xlsx(list_of_datasets, './output/summary_6_11_2024.xlsx')
