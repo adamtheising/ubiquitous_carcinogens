@@ -1,0 +1,141 @@
+"","associated_cancer_types","sex","sex_code","race","race_code","deaths","population","crude_rate","ethnicity","eth_group"
+"1","Bladder","Female","F","American Indian or Alaska Native","AIAN",17,2445447,0.695169431191925,NA,NA
+"2","Bladder","Male","M","American Indian or Alaska Native","AIAN",0,2454038,0,NA,NA
+"3","Bladder","Female","F","Asian or Pacific Islander","A-PI",66,11673012,0.565406769049839,NA,NA
+"4","Bladder","Male","M","Asian or Pacific Islander","A-PI",38,10804734,0.351697691030617,NA,NA
+"5","Bladder","Female","F","Black or African American","B-AA",277,24514353,1.12995027851643,NA,NA
+"6","Bladder","Male","M","Black or African American","B-AA",119,22666892,0.524994780934237,NA,NA
+"7","Bladder","Female","F","White","WH",237,26988332,0.878157271816576,"Hispanic","H"
+"8","Bladder","Female","F","White","WH",902,101606777,0.887736061148756,"Non-Hispanic","NH"
+"9","Bladder","Male","M","White","WH",111,27486257,0.403838179931156,"Hispanic","H"
+"10","Bladder","Male","M","White","WH",489,98844281,0.494717544659969,"Non-Hispanic","NH"
+"11","Dermal","Female","F","American Indian or Alaska Native","AIAN",0,2445447,0,NA,NA
+"12","Dermal","Male","M","American Indian or Alaska Native","AIAN",0,2454038,0,NA,NA
+"13","Dermal","Female","F","Asian or Pacific Islander","A-PI",35,11673012,0.299836922980975,NA,NA
+"14","Dermal","Male","M","Asian or Pacific Islander","A-PI",40,10804734,0.370208095821702,NA,NA
+"15","Dermal","Female","F","Black or African American","B-AA",68,24514353,0.277388516025693,NA,NA
+"16","Dermal","Male","M","Black or African American","B-AA",56,22666892,0.247056367498464,NA,NA
+"17","Dermal","Female","F","White","WH",125,26988332,0.463163118046717,"Hispanic","H"
+"18","Dermal","Female","F","White","WH",2602,101606777,2.56085280610761,"Non-Hispanic","NH"
+"19","Dermal","Male","M","White","WH",154,27486257,0.560279997381964,"Hispanic","H"
+"20","Dermal","Male","M","White","WH",5106,98844281,5.16570098779918,"Non-Hispanic","NH"
+"21","Endocrine","Female","F","American Indian or Alaska Native","AIAN",0,2445447,0,NA,NA
+"22","Endocrine","Male","M","American Indian or Alaska Native","AIAN",0,2454038,0,NA,NA
+"23","Endocrine","Female","F","Asian or Pacific Islander","A-PI",76,11673012,0.651074461330118,NA,NA
+"24","Endocrine","Male","M","Asian or Pacific Islander","A-PI",50,10804734,0.462760119777127,NA,NA
+"25","Endocrine","Female","F","Black or African American","B-AA",134,24514353,0.546618546285925,NA,NA
+"26","Endocrine","Male","M","Black or African American","B-AA",67,22666892,0.29558529682852,NA,NA
+"27","Endocrine","Female","F","White","WH",118,26988332,0.437225983436101,"Hispanic","H"
+"28","Endocrine","Female","F","White","WH",735,101606777,0.723376945614563,"Non-Hispanic","NH"
+"29","Endocrine","Male","M","White","WH",87,27486257,0.316521816702798,"Hispanic","H"
+"30","Endocrine","Male","M","White","WH",717,98844281,0.725383393703881,"Non-Hispanic","NH"
+"31","Gastrointestinal","Female","F","American Indian or Alaska Native","AIAN",328,7336341,4.47089359668532,NA,NA
+"32","Gastrointestinal","Male","M","American Indian or Alaska Native","AIAN",426,7362114,5.78638146597567,NA,NA
+"33","Gastrointestinal","Female","F","Asian or Pacific Islander","A-PI",2196,35019036,6.2708750749164,NA,NA
+"34","Gastrointestinal","Male","M","Asian or Pacific Islander","A-PI",2339,32414202,7.21597280105801,NA,NA
+"35","Gastrointestinal","Female","F","Black or African American","B-AA",7141,73543059,9.70995780852684,NA,NA
+"36","Gastrointestinal","Male","M","Black or African American","B-AA",7862,68000676,11.5616497694817,NA,NA
+"37","Gastrointestinal","Female","F","White","WH",4555,80964996,5.62588800720746,"Hispanic","H"
+"38","Gastrointestinal","Female","F","White","WH",36665,304820331,12.0283971478267,"Non-Hispanic","NH"
+"39","Gastrointestinal","Male","M","White","WH",5300,82458771,6.4274545154208,"Hispanic","H"
+"40","Gastrointestinal","Male","M","White","WH",43053,296532843,14.5187964896017,"Non-Hispanic","NH"
+"41","Hematologic","Female","F","American Indian or Alaska Native","AIAN",70,4890894,1.43123118186573,NA,NA
+"42","Hematologic","Male","M","American Indian or Alaska Native","AIAN",87,4908076,1.77258868852072,NA,NA
+"43","Hematologic","Female","F","Asian or Pacific Islander","A-PI",427,23346024,1.82900523018395,NA,NA
+"44","Hematologic","Male","M","Asian or Pacific Islander","A-PI",568,21609468,2.62847748033408,NA,NA
+"45","Hematologic","Female","F","Black or African American","B-AA",2137,49028706,4.35867102019784,NA,NA
+"46","Hematologic","Male","M","Black or African American","B-AA",2324,45333784,5.12641962559313,NA,NA
+"47","Hematologic","Female","F","White","WH",1175,53976664,2.17686665481957,"Hispanic","H"
+"48","Hematologic","Female","F","White","WH",11537,203213554,5.67727879017361,"Non-Hispanic","NH"
+"49","Hematologic","Male","M","White","WH",1481,54972514,2.69407362377496,"Hispanic","H"
+"50","Hematologic","Male","M","White","WH",16185,197688562,8.18712010257832,"Non-Hispanic","NH"
+"51","Hepatic","Female","F","American Indian or Alaska Native","AIAN",76,2445447,3.10781628062272,NA,NA
+"52","Hepatic","Male","M","American Indian or Alaska Native","AIAN",188,2454038,7.66084306762976,NA,NA
+"53","Hepatic","Female","F","Asian or Pacific Islander","A-PI",385,11673012,3.29820615279073,NA,NA
+"54","Hepatic","Male","M","Asian or Pacific Islander","A-PI",902,10804734,8.34819256077938,NA,NA
+"55","Hepatic","Female","F","Black or African American","B-AA",758,24514353,3.09206610510993,NA,NA
+"56","Hepatic","Male","M","Black or African American","B-AA",2016,22666892,8.89402922994471,NA,NA
+"57","Hepatic","Female","F","White","WH",884,26988332,3.27548957082639,"Hispanic","H"
+"58","Hepatic","Female","F","White","WH",3602,101606777,3.54503912667164,"Non-Hispanic","NH"
+"59","Hepatic","Male","M","White","WH",2028,27486257,7.37823269279626,"Hispanic","H"
+"60","Hepatic","Male","M","White","WH",9418,98844281,9.52811827322615,"Non-Hispanic","NH"
+"61","Lymphatic","Female","F","American Indian or Alaska Native","AIAN",41,2445447,1.676585098757,NA,NA
+"62","Lymphatic","Male","M","American Indian or Alaska Native","AIAN",62,2454038,2.52644824570769,NA,NA
+"63","Lymphatic","Female","F","Asian or Pacific Islander","A-PI",349,11673012,2.98980246058172,NA,NA
+"64","Lymphatic","Male","M","Asian or Pacific Islander","A-PI",400,10804734,3.70208095821702,NA,NA
+"65","Lymphatic","Female","F","Black or African American","B-AA",659,24514353,2.68822105971959,NA,NA
+"66","Lymphatic","Male","M","Black or African American","B-AA",860,22666892,3.7940799294407,NA,NA
+"67","Lymphatic","Female","F","White","WH",721,26988332,2.67152486489347,"Hispanic","H"
+"68","Lymphatic","Female","F","White","WH",6798,101606777,6.69049860719428,"Non-Hispanic","NH"
+"69","Lymphatic","Male","M","White","WH",967,27486257,3.51812180174259,"Hispanic","H"
+"70","Lymphatic","Male","M","White","WH",9301,98844281,9.40975027174309,"Non-Hispanic","NH"
+"71","Nervous","Female","F","American Indian or Alaska Native","AIAN",36,2445447,1.47212350134761,NA,NA
+"72","Nervous","Male","M","American Indian or Alaska Native","AIAN",37,2454038,1.50771911437394,NA,NA
+"73","Nervous","Female","F","Asian or Pacific Islander","A-PI",242,11673012,2.07315815318274,NA,NA
+"74","Nervous","Male","M","Asian or Pacific Islander","A-PI",317,10804734,2.93389915938699,NA,NA
+"75","Nervous","Female","F","Black or African American","B-AA",598,24514353,2.43938724387301,NA,NA
+"76","Nervous","Male","M","Black or African American","B-AA",696,22666892,3.07055771033806,NA,NA
+"77","Nervous","Female","F","White","WH",641,26988332,2.37510046934357,"Hispanic","H"
+"78","Nervous","Female","F","White","WH",6295,101606777,6.19545288795057,"Non-Hispanic","NH"
+"79","Nervous","Male","M","White","WH",776,27486257,2.82322907771691,"Hispanic","H"
+"80","Nervous","Male","M","White","WH",8378,98844281,8.47595826004339,"Non-Hispanic","NH"
+"81","Prostatic","Female","F","American Indian or Alaska Native","AIAN",0,0,NA,NA,NA
+"82","Prostatic","Male","M","American Indian or Alaska Native","AIAN",153,2454038,6.23462228376252,NA,NA
+"83","Prostatic","Female","F","Asian or Pacific Islander","A-PI",0,0,NA,NA,NA
+"84","Prostatic","Male","M","Asian or Pacific Islander","A-PI",769,10804734,7.11725064217222,NA,NA
+"85","Prostatic","Female","F","Black or African American","B-AA",0,0,NA,NA,NA
+"86","Prostatic","Male","M","Black or African American","B-AA",5602,22666892,24.7144601915428,NA,NA
+"87","Prostatic","Female","F","White","WH",0,0,NA,"Hispanic","H"
+"88","Prostatic","Female","F","White","WH",0,0,NA,"Non-Hispanic","NH"
+"89","Prostatic","Male","M","White","WH",2088,27486257,7.59652360086715,"Hispanic","H"
+"90","Prostatic","Male","M","White","WH",24095,98844281,24.3767264592678,"Non-Hispanic","NH"
+"91","Renal","Female","F","American Indian or Alaska Native","AIAN",50,2445447,2.0446159740939,NA,NA
+"92","Renal","Male","M","American Indian or Alaska Native","AIAN",95,2454038,3.87117069906823,NA,NA
+"93","Renal","Female","F","Asian or Pacific Islander","A-PI",133,11673012,1.13938030732771,NA,NA
+"94","Renal","Male","M","Asian or Pacific Islander","A-PI",234,10804734,2.16571736055696,NA,NA
+"95","Renal","Female","F","Black or African American","B-AA",542,24514353,2.21094964244008,NA,NA
+"96","Renal","Male","M","Black or African American","B-AA",930,22666892,4.10290038881378,NA,NA
+"97","Renal","Female","F","White","WH",434,26988332,1.6081023458582,"Hispanic","H"
+"98","Renal","Female","F","White","WH",3739,101606777,3.67987265258891,"Non-Hispanic","NH"
+"99","Renal","Male","M","White","WH",861,27486257,3.13247453081735,"Hispanic","H"
+"100","Renal","Male","M","White","WH",7417,98844281,7.50372194016971,"Non-Hispanic","NH"
+"101","Reproductive","Female","F","American Indian or Alaska Native","AIAN",360,9781788,3.68030875336902,NA,NA
+"102","Reproductive","Male","M","American Indian or Alaska Native","AIAN",0,2454038,0,NA,NA
+"103","Reproductive","Female","F","Asian or Pacific Islander","A-PI",2500,46692048,5.35423076751742,NA,NA
+"104","Reproductive","Male","M","Asian or Pacific Islander","A-PI",0,10804734,0,NA,NA
+"105","Reproductive","Female","F","Black or African American","B-AA",10041,98057412,10.2399194463749,NA,NA
+"106","Reproductive","Male","M","Black or African American","B-AA",91,22666892,0.401466597185004,NA,NA
+"107","Reproductive","Female","F","White","WH",5403,107953328,5.00494065361283,"Hispanic","H"
+"108","Reproductive","Female","F","White","WH",48986,406427108,12.0528377747874,"Non-Hispanic","NH"
+"109","Reproductive","Male","M","White","WH",28,27486257,0.101869090433084,"Hispanic","H"
+"110","Reproductive","Male","M","White","WH",356,98844281,0.36016246605102,"Non-Hispanic","NH"
+"111","Respiratory","Female","F","American Indian or Alaska Native","AIAN",415,9781788,4.24257814624484,NA,NA
+"112","Respiratory","Male","M","American Indian or Alaska Native","AIAN",534,9816152,5.4400135613222,NA,NA
+"113","Respiratory","Female","F","Asian or Pacific Islander","A-PI",2046,46692048,4.38190246013625,NA,NA
+"114","Respiratory","Male","M","Asian or Pacific Islander","A-PI",2847,43218936,6.58739030502741,NA,NA
+"115","Respiratory","Female","F","Black or African American","B-AA",7122,98057412,7.26309195270216,NA,NA
+"116","Respiratory","Male","M","Black or African American","B-AA",10335,90667568,11.3987837415028,NA,NA
+"117","Respiratory","Female","F","White","WH",2697,107953328,2.49830185874399,"Hispanic","H"
+"118","Respiratory","Female","F","White","WH",57973,406427108,14.2640583905146,"Non-Hispanic","NH"
+"119","Respiratory","Male","M","White","WH",4375,109945028,3.97926134504236,"Hispanic","H"
+"120","Respiratory","Male","M","White","WH",77989,395377124,19.7252180932957,"Non-Hispanic","NH"
+"121","Thyroid","Female","F","American Indian or Alaska Native","AIAN",0,2445447,0,NA,NA
+"122","Thyroid","Male","M","American Indian or Alaska Native","AIAN",0,2454038,0,NA,NA
+"123","Thyroid","Female","F","Asian or Pacific Islander","A-PI",76,11673012,0.651074461330118,NA,NA
+"124","Thyroid","Male","M","Asian or Pacific Islander","A-PI",50,10804734,0.462760119777127,NA,NA
+"125","Thyroid","Female","F","Black or African American","B-AA",134,24514353,0.546618546285925,NA,NA
+"126","Thyroid","Male","M","Black or African American","B-AA",67,22666892,0.29558529682852,NA,NA
+"127","Thyroid","Female","F","White","WH",118,26988332,0.437225983436101,"Hispanic","H"
+"128","Thyroid","Female","F","White","WH",735,101606777,0.723376945614563,"Non-Hispanic","NH"
+"129","Thyroid","Male","M","White","WH",87,27486257,0.316521816702798,"Hispanic","H"
+"130","Thyroid","Male","M","White","WH",717,98844281,0.725383393703881,"Non-Hispanic","NH"
+"131",NA,"Female","F","American Indian or Alaska Native","AIAN",21,2445447,0.858738709119437,NA,NA
+"132",NA,"Male","M","American Indian or Alaska Native","AIAN",45,2454038,1.83371243640074,NA,NA
+"133",NA,"Female","F","Asian or Pacific Islander","A-PI",97,11673012,0.830976615118703,NA,NA
+"134",NA,"Male","M","Asian or Pacific Islander","A-PI",255,10804734,2.36007661086335,NA,NA
+"135",NA,"Female","F","Black or African American","B-AA",512,24514353,2.08857235595816,NA,NA
+"136",NA,"Male","M","Black or African American","B-AA",769,22666892,3.3926133322557,NA,NA
+"137",NA,"Female","F","White","WH",245,26988332,0.907799711371566,"Hispanic","H"
+"138",NA,"Female","F","White","WH",3741,101606777,3.68184102523004,"Non-Hispanic","NH"
+"139",NA,"Male","M","White","WH",523,27486257,1.90276908201797,"Hispanic","H"
+"140",NA,"Male","M","White","WH",10472,98844281,10.5944419788941,"Non-Hispanic","NH"
